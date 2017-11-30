@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace KoWorkersTests
 {
     [TestClass]
-    public class PersonTest
+    public class UnitTest1
     {
         [TestMethod]
         public void ShouldCreateAPerson()
@@ -14,18 +14,8 @@ namespace KoWorkersTests
             Person newPerson = new Person("Lars");
 
             Assert.AreEqual("Lars", newPerson.GetName());
-        }
-        [TestMethod]
-        public void ShouldRenameAPerson()
 
-        {
-            Person newPerson = new Person("Lars");
 
-            Assert.AreEqual("Lars", newPerson.GetName());
-
-            newPerson.SetName("Jesper");
-
-            Assert.AreEqual("Jesper", newPerson.GetName());
         }
 
         [TestMethod]
@@ -35,7 +25,9 @@ namespace KoWorkersTests
             PersonRepository personRepo = new PersonRepository();
             Person newPerson = new Person("Lars");
             personRepo.persons.Add(newPerson);
-            Assert.AreEqual(1, personRepo.Count());
+         
+
+            Assert.AreEqual("Lars", personRepo.ListAllPersons());
 
 
         }
