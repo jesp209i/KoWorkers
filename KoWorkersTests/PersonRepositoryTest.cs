@@ -1,11 +1,10 @@
-﻿
-using System;
+﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace KoWorkersTest
+namespace KoWorkersTests
 {
     [TestClass]
-    public class UnitTest2
+    public class UnitTest1
     {
         [TestMethod]
         public void TestMethod1()
