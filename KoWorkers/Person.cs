@@ -8,18 +8,21 @@ namespace KoWorkers
 {
     public class Person
     {
+        public string FirstName { get; set; }
         private string firstName;
         public Person(string newFirstName)
         {
             firstName = newFirstName;
+            FirstName = newFirstName;
         }
         public string GetName()
         {
             return firstName;
         }
-        public string SetName(string setFirstName)
+        public void SetName(string setFirstName)
         {
             firstName = setFirstName;
+            
         }
     }
 }
