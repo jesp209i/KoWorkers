@@ -9,15 +9,14 @@ namespace KoWorkers
     public class PersonRepository
     {
         public List<Person> persons = new List<Person>();
-
-        public string ListAllPersons()
+        public int Count() // for testing
         {
-            String person = "";
-            for (int i = 0; i < persons.Count; i++)
+            int personCounter = 0;
+            foreach (Person person in persons)
             {
-                person += persons[i].FirstName;
+                personCounter++;
             }
-            return person;
+            return personCounter;
         }
     }
 }
