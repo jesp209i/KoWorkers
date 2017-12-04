@@ -1,0 +1,7 @@
+CREATE TABLE KOW_EMPLOYEE
+(
+EmployeeID	int					NOT NULL UNIQUE IDENTITY (1,1),
+FirstName	Nvarchar(100)		NOT NULL,
+LastName	Nvarchar(100)		NOT NULL,
+CONSTRAINT	EMPLOYEE_PK	PRIMARY KEY (EmployeeID)
+);

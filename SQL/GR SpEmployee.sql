@@ -1,0 +1,13 @@
+use DB2017_C02;
+GO
+alter PROC SpEmployee
+As
+BEGIN
+SELECT
+	*
+FROM
+	KOW_EMPLOYEE
+ORDER BY
+ 	LastName DESC
+END
+
