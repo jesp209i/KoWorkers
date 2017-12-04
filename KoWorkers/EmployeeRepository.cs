@@ -44,12 +44,9 @@ namespace KoWorkers
                 try
                 {
                     con.Open();
-                    SqlCommand fetchAllWorkers = new SqlCommand("SpEmployee", con);
+                    SqlCommand fetchAllWorkers = new SqlCommand("SpAllEmployees", con);
                     fetchAllWorkers.CommandType = CommandType.StoredProcedure;
-
-
                     SqlDataReader reader = fetchAllWorkers.ExecuteReader();
-
                     if (reader.HasRows)
                     {
                         while (reader.Read())
@@ -57,17 +54,14 @@ namespace KoWorkers
                             int employeeID = int.Parse(reader["EmployeeID"].ToString());
                             string lastName = reader["LastName"].ToString();
                             string firstName = reader["FirstName"].ToString();
-                            Employee employee = new Employee(employeeID ,firstName,lastName);
+                            Employee employee = new Employee(employeeID, firstName, lastName);
                             employees.Add(employee);
                         }
-
                     }
                 }
                 catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl\n" + e.Message); }
             }
         }
-
-        
         public void AddEmployee(Employee newEmployee)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -80,14 +74,22 @@ namespace KoWorkers
                     cmd1.CommandType = CommandType.StoredProcedure;
                     cmd1.Parameters.Add(new SqlParameter("@LastName", newEmployee.LastName));
                     cmd1.Parameters.Add(new SqlParameter("@FirstName", newEmployee.FirstName));
-
                     cmd1.ExecuteNonQuery();
                 }
                 catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl\n" + e.Message); }
             }
             FetchAllEmployees();
         }
+        /*
+        TODO:
 
+        Stored Procedures der mangler implementereing:
+        SpEmployeeById
+        SpRemoveEmployee
+        SpUpdateEmployee
+         
+         
+         */
     }
 }
 
