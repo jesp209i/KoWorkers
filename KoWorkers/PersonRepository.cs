@@ -18,6 +18,16 @@ namespace KoWorkers
             }
             return personCounter;
         }
+        public string ListAllPersons()
+        {
+            string person = "";
+                for (int i = 0; i < persons.Count; i++)
+                            {
+                person += persons[i].FirstName;
+                }
+                        return person;
+        }
+        
     }
 }
 
