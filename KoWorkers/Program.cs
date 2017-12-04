@@ -10,6 +10,8 @@ namespace KoWorkers
     {
         static void Main(string[] args)
         {
+            Connection prog = new KoWorkers.Connection();
+            prog.Run();
         }
     }
 }

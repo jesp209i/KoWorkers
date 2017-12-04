@@ -13,12 +13,7 @@ namespace KoWorkers
         private static string connectionstring =
             "server = EALSQL1.eal.local; database = DB2017_C02; user Id=USER_C02; Password=SesamLukOp_02;";
 
-        static void Main(string[] args)
-        {
-            Connection prog = new KoWorkers.Connection();
-            prog.Run();
-        }
-        private void Run()
+        public void Run()
         {
             using (SqlConnection con = new SqlConnection(connectionstring))
             {
@@ -26,9 +21,8 @@ namespace KoWorkers
                 {
                     con.Open();
 
-                    SqlCommand cmd1 = new SqlCommand("SpEmployee", con);
+                    SqlCommand cmd1 = new SqlCommand("SpNewEmployee", con);
                     cmd1.CommandType = CommandType.StoredProcedure;
-                    cmd1.Parameters.Add(new SqlParameter("@EmployeeID", 1));
                     cmd1.Parameters.Add(new SqlParameter("@LastName", "Larsen"));
                     cmd1.Parameters.Add(new SqlParameter("@FirstName", "Lars"));
 
@@ -52,7 +46,7 @@ namespace KoWorkers
 
                     }
                 }
-                catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl" + e.Message); }
+                catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl\n" + e.Message); }
             }
         }
     }
