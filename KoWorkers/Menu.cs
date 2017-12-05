@@ -16,7 +16,13 @@ namespace KoWorkers
             do
             {
 
-                ShowStartMenu();
+            Console.Clear();
+            Console.WriteLine("KoWorkers");
+            Console.WriteLine("---------");
+            Console.WriteLine("1. Medarbejderadministration");
+            Console.WriteLine();
+            Console.WriteLine("0. Afslut");
+
                 string choise = GetUserChoise("Indtast valg:");
                 switch (choise)
                 {
@@ -33,8 +39,16 @@ namespace KoWorkers
             bool keepMenuRunning = true;
             do
             {
+            Console.Clear();
+            Console.WriteLine("KoWorkers // Medarbejderadministration");
+            Console.WriteLine("---------");
+            Console.WriteLine();
+            Console.WriteLine("  1. Tilføj medarbejer - 0. Afslut medarbejderadministration");
+            Console.WriteLine();
+            Console.WriteLine("---------");
+            Console.WriteLine();
+            Console.WriteLine(employeeControl.employeeRepo.ListAllEmployees());
 
-                ShowEmployeeMenu();
                 string choise = GetUserChoise("Indtast valg:");
                 switch (choise)
                 {
@@ -62,18 +76,7 @@ namespace KoWorkers
             employeeControl.AddEmployee(firstName, lastName);
         }
 
-        private void ShowEmployeeMenu()
-        {
-            Console.Clear();
-            Console.WriteLine("KoWorkers // Medarbejderadministration");
-            Console.WriteLine("---------");
-            Console.WriteLine();
-            Console.WriteLine("  1. Tilføj medarbejer - 0. Afslut medarbejderadministration");
-            Console.WriteLine();
-            Console.WriteLine("---------");
-            Console.WriteLine();
-            Console.WriteLine(employeeControl.employeeRepo.ListAllEmployees());
-        }
+       
 
         private void MenuError()
         {
@@ -81,15 +84,7 @@ namespace KoWorkers
             Console.ReadKey();
         }
 
-        private void ShowStartMenu()
-        {
-            Console.Clear();
-            Console.WriteLine("KoWorkers");
-            Console.WriteLine("---------");
-            Console.WriteLine("1. Medarbejderadministration");
-            Console.WriteLine();
-            Console.WriteLine("0. Afslut");
-        }
+       
         public string GetUserChoise(string text)
         {
             Console.WriteLine(text);
