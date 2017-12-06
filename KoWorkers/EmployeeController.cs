@@ -19,5 +19,13 @@ namespace KoWorkers
             Employee newEmployee = new Employee(firstName, lastName);
             employeeRepo.AddEmployee(newEmployee);
         }
+        public Employee GetEmployee(int employeeId)
+        {
+            return employeeRepo.GetEmployeeFromList(employeeId);
+        }
+        public string RemoveEmployee(Employee removeEmployee)
+        {
+            return employeeRepo.RemoveEmployee(removeEmployee);
+        }
     }
 }

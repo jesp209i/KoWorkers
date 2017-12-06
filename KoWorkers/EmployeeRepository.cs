@@ -26,12 +26,24 @@ namespace KoWorkers
             }
             return personCounter;
         }
+        public Employee GetEmployeeFromList(int id)
+        {
+            Employee employee = null;
+            for (int i = 0; i<employees.Count();i++)
+            { 
+                if (employees[i].EmployeeId == id)
+                {
+                    employee = employees[i];
+                }
+            }
+            return employee;
+        }
         public string ListAllEmployees()
         {
             string person = "";
                 for (int i = 0; i < employees.Count; i++)
                             {
-                person += employees[i].GetName();
+                person += employees[i].EmployeeId + ". " + employees[i].GetName() + "\n";
                 }
                         return person;
         }
@@ -80,12 +92,33 @@ namespace KoWorkers
             }
             FetchAllEmployees();
         }
+        public string RemoveEmployee(Employee removeEmployee)
+        {
+            // SpRemoveEmployee
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+
+                    SqlCommand removesEmployee = new SqlCommand("SpRemoveEmployee", con);
+                    removesEmployee.CommandType = CommandType.StoredProcedure;
+                    removesEmployee.Parameters.Add(new SqlParameter("@LastName", removeEmployee.LastName));
+                    removesEmployee.Parameters.Add(new SqlParameter("@FirstName", removeEmployee.FirstName));
+                    removesEmployee.Parameters.Add(new SqlParameter("@EmployeeId", removeEmployee.EmployeeId));
+
+                    removesEmployee.ExecuteNonQuery();
+                }
+                catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl\n" + e.Message); }
+            }
+            FetchAllEmployees();
+            return removeEmployee.GetName();
+        }
         /*
         TODO:
 
         Stored Procedures der mangler implementereing:
         SpEmployeeById
-        SpRemoveEmployee
         SpUpdateEmployee
          
          
