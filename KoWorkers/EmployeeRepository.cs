@@ -141,9 +141,6 @@ namespace KoWorkers
 
         Stored Procedures der mangler implementereing:
         SpEmployeeById
-        SpUpdateEmployee
-         
-         
          */
     }
 }
