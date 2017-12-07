@@ -27,5 +27,9 @@ namespace KoWorkers
         {
             return employeeRepo.RemoveEmployee(removeEmployee);
         }
+        public string UpdateEmployee (Employee updateEmployee)
+        {
+            return employeeRepo.UpdateEmployee(updateEmployee);
+        }
     }
 }

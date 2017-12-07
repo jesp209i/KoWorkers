@@ -114,6 +114,28 @@ namespace KoWorkers
             FetchAllEmployees();
             return removeEmployee.GetName();
         }
+        public string UpdateEmployee(Employee updateEmployee)
+        {
+            // SpRemoveEmployee
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+
+                    SqlCommand updatesEmployee = new SqlCommand("SpUpdateEmployee", con);
+                    updatesEmployee.CommandType = CommandType.StoredProcedure;
+                    updatesEmployee.Parameters.Add(new SqlParameter("@LastName", updateEmployee.LastName));
+                    updatesEmployee.Parameters.Add(new SqlParameter("@FirstName", updateEmployee.FirstName));
+                    updatesEmployee.Parameters.Add(new SqlParameter("@EmployeeId", updateEmployee.EmployeeId));
+
+                    updatesEmployee.ExecuteNonQuery();
+                }
+                catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl\n" + e.Message); }
+            }
+            FetchAllEmployees();
+            return updateEmployee.GetName();
+        }
         /*
         TODO:
 

@@ -43,8 +43,7 @@ namespace KoWorkers
             Console.WriteLine("KoWorkers // Medarbejderadministration");
             Console.WriteLine("---------");
             Console.WriteLine();
-            Console.WriteLine("  1. Tilføj medarbejer - 0. Afslut medarbejderadministration");
-                Console.WriteLine("  S. Slet medarbejder");
+            Console.WriteLine("  1. Tilføj medarbejer \n  2. Slet medarbejder \n  3. Opdater medarbejder \n  0. Afslut medarbejderadministration");
             Console.WriteLine();
             Console.WriteLine("---------");
             Console.WriteLine();
@@ -54,14 +53,41 @@ namespace KoWorkers
                 switch (choise)
                 {
                     case "1": NewEmployee(); break;
-                    case "S": RemoveEmployee(); break;
+                    case "2": RemoveEmployee(); break;
+                    case "3": UpdateEmployee(); break;
                     case "0": keepMenuRunning = false; break;
                     default: MenuError(); break;
                 }
 
             } while (keepMenuRunning);
         }
+        private void UpdateEmployee()
+        {
+            Console.Clear();
+            Console.WriteLine("Opdater medarbejder");
+            Console.WriteLine("--------");
+            Console.WriteLine();
+            Console.WriteLine("vælg en person fra listen som du vil opdatere");
+            Console.WriteLine("--------");
+            Console.WriteLine(employeeControl.employeeRepo.ListAllEmployees());
+            string getNumberOfEmployee;
+            do
+            {
+                getNumberOfEmployee = GetUserChoise("indtast tal ud for navn");
+            } while (!int.TryParse(getNumberOfEmployee, out int s));
+            Employee updateEmployee = employeeControl.GetEmployee(int.Parse(getNumberOfEmployee));
+            string newFirstName = GetUserChoise("Indtast nyt fornavn");
+            string newLastName = GetUserChoise("Indtast nyt efternavn");
+            updateEmployee.FirstName = newFirstName;
+            updateEmployee.LastName = newLastName;
+            employeeControl.UpdateEmployee(updateEmployee);
 
+
+            Console.WriteLine();
+            Console.WriteLine("Tryk en tast for at fortsætte");
+            Console.ReadLine();
+
+        }
         private void RemoveEmployee()
         {
             Console.Clear();
