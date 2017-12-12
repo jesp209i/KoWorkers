@@ -43,7 +43,7 @@ namespace KoWorkers
             string person = "";
                 for (int i = 0; i < employees.Count; i++)
                             {
-                person += employees[i].EmployeeId + ". " + employees[i].GetName() + "\n";
+                person += employees[i].EmployeeId + ". " + employees[i].GetName() + " Tlf: " + employees[i].GetTelephoneNO() +"\n";
                 }
                         return person;
         }
@@ -88,6 +88,8 @@ namespace KoWorkers
                     cmd1.CommandType = CommandType.StoredProcedure;
                     cmd1.Parameters.Add(new SqlParameter("@LastName", newEmployee.LastName));
                     cmd1.Parameters.Add(new SqlParameter("@FirstName", newEmployee.FirstName));
+                    cmd1.Parameters.Add(new SqlParameter("@Pin", newEmployee.PinCode));
+                    cmd1.Parameters.Add(new SqlParameter("@TelephoneNo", newEmployee.TelephoneNo));
                     cmd1.ExecuteNonQuery();
                 }
                 catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl\n" + e.Message); }

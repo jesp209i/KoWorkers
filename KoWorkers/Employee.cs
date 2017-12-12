@@ -46,5 +46,10 @@ namespace KoWorkers
         {
             PinCode = setPinCode;
         }
+
+        public int GetTelephoneNO()
+        {
+            return TelephoneNo;
+        }
     }
 }
