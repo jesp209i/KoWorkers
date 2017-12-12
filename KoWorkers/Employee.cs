@@ -13,6 +13,7 @@ namespace KoWorkers
         public string LastName { get; set; }
         public int PinCode { get; set; }
         public int TelephoneNo { get; set; }
+        public bool isCheckedIn = false;
     
         public Employee(string newFirstName, string newLastName,int newPinCode, int newTelephoneNo)
         {

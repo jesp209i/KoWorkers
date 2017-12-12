@@ -188,6 +188,13 @@ namespace KoWorkers
             } while (isNumber == false);
             return value;
         }
+        public void CheckIn()
+        {
+            int pin;
+            pin = GetDigits(4);
+
+            employeeControl.CheckInByPin(pin);
+        }
 
     }
 }

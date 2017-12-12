@@ -31,5 +31,10 @@ namespace KoWorkers
         {
             return employeeRepo.UpdateEmployee(updateEmployee);
         }
+
+        public Employee CheckInByPin(int pin)
+        {
+            return employeeRepo.GetEmployeeByPin(pin);  
+        }
     }
 }
