@@ -143,9 +143,9 @@ namespace KoWorkers
             Console.WriteLine();
             lastName = GetUserChoice("Efternavn:");
             Console.WriteLine();
-            pinCode = GetUserPinCode();
+            pinCode = GetDigits(4);
             Console.WriteLine();
-            telephoneNo = 10;
+            telephoneNo = GetDigits(8);
             employeeControl.AddEmployee(firstName, lastName, pinCode, telephoneNo);
         }
 
@@ -165,23 +165,24 @@ namespace KoWorkers
             return userInput;
         }
 
-        private int GetUserPinCode()
+        private int GetDigits(int numberLength)
         {
             int value;
             bool isNumber = false;
+            
             do
             {
-                Console.WriteLine("indtast 4 cifret Pin:");
+                Console.WriteLine("indtast tal:");
                 string userInput = Console.ReadLine();
-                if (int.TryParse(userInput, out value) && userInput.Length == 4)
+                if (int.TryParse(userInput, out value) && userInput.Length == numberLength)
                 {
-                    Console.WriteLine("Pin indtastet");
+                    Console.WriteLine("tal indtastet");
                     Console.ReadKey();
                     isNumber = true;
                 }
                 else
                 {
-                    Console.WriteLine("Forkert pin, pin må kun indeholde tal");
+                    Console.WriteLine("Forkert indtastning, pin må kun indeholde tal");
                     Console.ReadKey();
                 }
             } while (isNumber == false);
