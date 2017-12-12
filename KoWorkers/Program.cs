@@ -10,8 +10,8 @@ namespace KoWorkers
     {
         static void Main(string[] args)
         {
-            Connection prog = new KoWorkers.Connection();
-            prog.Run();
+            Menu menu = new Menu();
+            menu.StartMenu();
         }
     }
 }
