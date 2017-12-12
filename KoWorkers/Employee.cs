@@ -28,14 +28,14 @@ namespace KoWorkers
             return isCheckedIn;
         }
 
-        public Employee(int employeeId, string newFirstName, string newLastName, int newPinCode, int newTelephoneNo, bool newIsCheckedIn)
+        public Employee(int employeeId, string newFirstName, string newLastName, int newPinCode, int newTelephoneNo)
         {
             EmployeeId = employeeId;
             FirstName = newFirstName;
             LastName = newLastName;
             PinCode = newPinCode;
             TelephoneNo = newTelephoneNo;
-            isCheckedIn = newIsCheckedIn;
+            
         }
         public string GetName()
         {
