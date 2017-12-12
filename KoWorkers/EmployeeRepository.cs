@@ -76,8 +76,9 @@ namespace KoWorkers
                 catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl\n" + e.Message); }
             }
         }
-        public void AddEmployee(Employee newEmployee)
+        public string AddEmployee(Employee newEmployee)
         {
+            string message = newEmployee.GetName() + " er tilføjet";
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 try
@@ -92,9 +93,10 @@ namespace KoWorkers
                     cmd1.Parameters.Add(new SqlParameter("@TelephoneNo", newEmployee.TelephoneNo));
                     cmd1.ExecuteNonQuery();
                 }
-                catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl\n" + e.Message); }
+                catch (SqlException e) { message = "Der skete en fejl\n" + e.Message +"\nMedarbejder blev ikke tilføjet"; }
             }
             FetchAllEmployees();
+            return message;
         }
         public string RemoveEmployee(Employee removeEmployee)
         {

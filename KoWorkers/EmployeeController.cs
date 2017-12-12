@@ -16,10 +16,10 @@ namespace KoWorkers
             timesheetRepo = new TimesheetRepository();
         }
 
-        public void AddEmployee(string firstName, string lastName, int pinCode, int telephoneNo)
+        public string AddEmployee(string firstName, string lastName, int pinCode, int telephoneNo)
         {
             Employee newEmployee = new Employee(firstName, lastName, pinCode, telephoneNo);
-            employeeRepo.AddEmployee(newEmployee);
+            return employeeRepo.AddEmployee(newEmployee);
         }
         public Employee GetEmployee(int employeeId)
         {

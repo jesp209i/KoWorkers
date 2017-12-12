@@ -143,10 +143,11 @@ namespace KoWorkers
             Console.WriteLine();
             lastName = GetUserChoice("Efternavn:");
             Console.WriteLine();
-            pinCode = GetDigits(4);
+            pinCode = GetDigits(4, "Indtast PIN-kode");
             Console.WriteLine();
-            telephoneNo = GetDigits(8);
-            employeeControl.AddEmployee(firstName, lastName, pinCode, telephoneNo);
+            telephoneNo = GetDigits(8, "Indtast telefonnr");
+            Console.WriteLine(employeeControl.AddEmployee(firstName, lastName, pinCode, telephoneNo));
+            Console.ReadLine();
         }
 
        
@@ -165,25 +166,25 @@ namespace KoWorkers
             return userInput;
         }
 
-        private int GetDigits(int numberLength)
+        private int GetDigits(int numberLength, string message)
         {
             int value;
             bool isNumber = false;
             
             do
             {
-                Console.WriteLine("indtast tal:");
+                Console.WriteLine(message + " som er " + numberLength + " cifre");
                 string userInput = Console.ReadLine();
                 if (int.TryParse(userInput, out value) && userInput.Length == numberLength)
                 {
                     Console.WriteLine("tal indtastet");
-                    Console.ReadKey();
+                    
                     isNumber = true;
                 }
                 else
                 {
-                    Console.WriteLine("Forkert indtastning, pin må kun indeholde tal");
-                    Console.ReadKey();
+                    Console.WriteLine("Forkert indtastning, du må kun indeholde tal");
+                    
                 }
             } while (isNumber == false);
             return value;
@@ -191,7 +192,7 @@ namespace KoWorkers
         public void CheckIn()
         {
             int pin;
-            pin = GetDigits(4);
+            pin = GetDigits(4, "Skriv din PIN-kode");
 
             employeeControl.CheckInByPin(pin);
             
