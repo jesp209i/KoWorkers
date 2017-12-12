@@ -66,7 +66,9 @@ namespace KoWorkers
                             int employeeID = int.Parse(reader["EmployeeID"].ToString());
                             string lastName = reader["LastName"].ToString();
                             string firstName = reader["FirstName"].ToString();
-                            Employee employee = new Employee(employeeID, firstName, lastName);
+                            int pinCode = int.Parse(reader["Pin"].ToString());
+                            int telephoneNo = int.Parse (reader["TelephoneNo"].ToString());
+                            Employee employee = new Employee(employeeID, firstName, lastName,pinCode, telephoneNo);
                             employees.Add(employee);
                         }
                     }
