@@ -13,7 +13,7 @@ namespace KoWorkers
         public string LastName { get; set; }
         public int PinCode { get; set; }
         public int TelephoneNo { get; set; }
-        public bool isCheckedIn = false;
+        private bool isCheckedIn = false;
     
         public Employee(string newFirstName, string newLastName,int newPinCode, int newTelephoneNo)
         {
@@ -23,14 +23,19 @@ namespace KoWorkers
             PinCode = newPinCode;
 
         }
-        public Employee(int employeeId, string newFirstName, string newLastName, int newPinCode, int newTelephoneNo)
+        public bool IsChekedIn()
+        {
+            return isCheckedIn;
+        }
+
+        public Employee(int employeeId, string newFirstName, string newLastName, int newPinCode, int newTelephoneNo, bool newIsCheckedIn)
         {
             EmployeeId = employeeId;
             FirstName = newFirstName;
             LastName = newLastName;
             PinCode = newPinCode;
             TelephoneNo = newTelephoneNo;
-
+            isCheckedIn = newIsCheckedIn;
         }
         public string GetName()
         {

@@ -9,9 +9,11 @@ namespace KoWorkers
     public class EmployeeController
     {
         public EmployeeRepository employeeRepo;
+        public TimesheetRepository timesheetRepo;
         public EmployeeController()
         {
             employeeRepo = new EmployeeRepository();
+            timesheetRepo = new TimesheetRepository();
         }
 
         public void AddEmployee(string firstName, string lastName, int pinCode, int telephoneNo)
@@ -34,7 +36,14 @@ namespace KoWorkers
 
         public Employee CheckInByPin(int pin)
         {
+            
             return employeeRepo.GetEmployeeByPin(pin);  
+            
+        }
+        
+        public Timesheet GetEmployeeTimesheet(int employeeId)
+        {
+            return timesheetRepo.GetEmployeeTimesheet(employeeId);
         }
     }
 }

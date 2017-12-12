@@ -194,6 +194,7 @@ namespace KoWorkers
             pin = GetDigits(4);
 
             employeeControl.CheckInByPin(pin);
+            
         }
 
     }
