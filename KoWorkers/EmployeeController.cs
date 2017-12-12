@@ -14,9 +14,9 @@ namespace KoWorkers
             employeeRepo = new EmployeeRepository();
         }
 
-        public void AddEmployee(string firstName, string lastName)
+        public void AddEmployee(string firstName, string lastName, int pinCode, int telephoneNo)
         {
-            Employee newEmployee = new Employee(firstName, lastName);
+            Employee newEmployee = new Employee(firstName, lastName, pinCode, telephoneNo);
             employeeRepo.AddEmployee(newEmployee);
         }
         public Employee GetEmployee(int employeeId)

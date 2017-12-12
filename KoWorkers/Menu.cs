@@ -131,6 +131,8 @@ namespace KoWorkers
         {
             string firstName;
             string lastName;
+            int pinCode;
+            int telephoneNo;
             Console.Clear();
             Console.WriteLine("KoWorkers // Medarbejderadministration  // Tilføj medarbejder");
             Console.WriteLine("---------");
@@ -140,7 +142,11 @@ namespace KoWorkers
             firstName = GetUserChoice("Først fornavn:");
             Console.WriteLine();
             lastName = GetUserChoice("Efternavn:");
-            employeeControl.AddEmployee(firstName, lastName);
+            Console.WriteLine();
+            pinCode = GetUserPinCode();
+            Console.WriteLine();
+            telephoneNo = 10;
+            employeeControl.AddEmployee(firstName, lastName, pinCode, telephoneNo);
         }
 
        
@@ -158,5 +164,29 @@ namespace KoWorkers
             string userInput = Console.ReadLine();
             return userInput;
         }
+
+        private int GetUserPinCode()
+        {
+            int value;
+            bool isNumber = false;
+            do
+            {
+                Console.WriteLine("indtast 4 cifret Pin:");
+                string userInput = Console.ReadLine();
+                if (int.TryParse(userInput, out value) && userInput.Length == 4)
+                {
+                    Console.WriteLine("Pin indtastet");
+                    Console.ReadKey();
+                    isNumber = true;
+                }
+                else
+                {
+                    Console.WriteLine("Forkert pin, pin må kun indeholde tal");
+                    Console.ReadKey();
+                }
+            } while (isNumber == false);
+            return value;
+        }
+
     }
 }

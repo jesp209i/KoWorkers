@@ -11,18 +11,24 @@ namespace KoWorkers
         public int EmployeeId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-
-        public Employee(string newFirstName, string newLastName)
+        public int PinCode { get; set; }
+        public int TelephoneNo { get; set; }
+    
+        public Employee(string newFirstName, string newLastName,int newPinCode, int newTelephoneNo)
         {
+            TelephoneNo = newTelephoneNo;
             FirstName = newFirstName;
             LastName = newLastName;
+            PinCode = newPinCode;
 
         }
-        public Employee(int employeeId, string newFirstName, string newLastName)
+        public Employee(int employeeId, string newFirstName, string newLastName, int newPinCode, int newTelephoneNo)
         {
             EmployeeId = employeeId;
             FirstName = newFirstName;
             LastName = newLastName;
+            PinCode = newPinCode;
+            TelephoneNo = newTelephoneNo;
 
         }
         public string GetName()
@@ -34,6 +40,10 @@ namespace KoWorkers
             FirstName = setFirstName;
             LastName = setLastName;
 
+        }
+        public void SetPinCode(int setPinCode)
+        {
+            PinCode = setPinCode;
         }
     }
 }
