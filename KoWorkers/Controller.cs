@@ -46,6 +46,7 @@ namespace KoWorkers
                     timesheet = timesheetRepo.AddTimesheet(employee);
                 }
             }
+            return employee;
             
             
             

@@ -69,10 +69,10 @@ namespace KoWorkers
                             string firstName = reader["FirstName"].ToString();
                             int pinCode = int.Parse(reader["Pin"].ToString());
                             int telephoneNo = int.Parse (reader["TelephoneNo"].ToString());
-                            if (int.Parse(reader["OpenShift"].ToString()) > 0)
-                            {
-                                isCheckedIn = true;
-                            }                                                     
+                            //if (int.Parse(reader["OpenShift"].ToString()) > 0)
+                            //{
+                            //    isCheckedIn = true;
+                            //}                                                     
                             Employee employee = new Employee(employeeID, firstName, lastName,pinCode, telephoneNo,isCheckedIn);
                             employees.Add(employee);
                         }
