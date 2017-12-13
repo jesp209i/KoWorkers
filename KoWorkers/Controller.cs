@@ -37,12 +37,14 @@ namespace KoWorkers
         public Employee CheckInByPin(int pin)
         {
             Employee employee = employeeRepo.GetEmployeeByPin(pin);
-
+            Timesheet timesheet = null;
             if (employee != null && employee.IsChekedIn() == false)
             {
                 timesheetRepo.GetEmployeeTimesheet(employee.EmployeeId);
                 if (timesheetRepo.GetEmployeeTimesheet(employee.EmployeeId) == null)
-                { timesheetRepo.AddTimesheet(employee); }
+                {
+                    timesheet = timesheetRepo.AddTimesheet(employee);
+                }
             }
             
             
