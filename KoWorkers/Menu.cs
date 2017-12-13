@@ -8,7 +8,7 @@ namespace KoWorkers
 {
     public class Menu
     {
-        public EmployeeController employeeControl = new EmployeeController();
+        public Controller employeeControl = new Controller();
 
         public void StartMenu()
         {

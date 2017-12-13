@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace KoWorkers
 {
-    public class EmployeeController
+    public class Controller
     {
         public EmployeeRepository employeeRepo;
         public TimesheetRepository timesheetRepo;
-        public EmployeeController()
+        public Controller()
         {
             employeeRepo = new EmployeeRepository();
             timesheetRepo = new TimesheetRepository();
@@ -36,14 +36,20 @@ namespace KoWorkers
 
         public Employee CheckInByPin(int pin)
         {
+            Employee employee = employeeRepo.GetEmployeeByPin(pin);
+
+            if (employee != null && employee.IsChekedIn() == false)
+            {
+                timesheetRepo.GetEmployeeTimesheet(employee.EmployeeId);
+                if (timesheetRepo.GetEmployeeTimesheet(employee.EmployeeId) == null)
+                { timesheetRepo.AddTimesheet(employee); }
+            }
             
-            return employeeRepo.GetEmployeeByPin(pin);  
+            
             
         }
         
-        public Timesheet GetEmployeeTimesheet(int employeeId)
-        {
-            return timesheetRepo.GetEmployeeTimesheet(employeeId);
-        }
+       
+
     }
 }

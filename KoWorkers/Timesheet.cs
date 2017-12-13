@@ -14,19 +14,13 @@ namespace KoWorkers
         public int EmployeeId { get; set; }
         public List<Shift> shifts = new List<Shift>();
 
-        public int getTimesheetYear()
+       public Timesheet(int newTimesheetID, int newTimesheetYear, int newTimesheetMonth, int newEmployeeId)
         {
-            DateTime date = DateTime.Now;
-            TimesheetYear = int.Parse(date.Year.ToString());
-            return TimesheetYear;
-
-        }
-
-        public int getTimesheetMonth()
-        {
-            DateTime date = DateTime.Now;
-            TimesheetMonth = int.Parse(date.Month.ToString());
-            return TimesheetMonth;
+            TimesheetID = newTimesheetID;
+            TimesheetYear = newTimesheetYear;
+            TimesheetMonth = newTimesheetMonth;
+            EmployeeId = newEmployeeId;
+            
         }
     }
 }
