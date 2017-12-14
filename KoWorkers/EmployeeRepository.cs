@@ -43,7 +43,7 @@ namespace KoWorkers
             string person = "";
                 for (int i = 0; i < employees.Count; i++)
                             {
-                person += employees[i].EmployeeId + ". " + employees[i].GetName() + "\n";
+                person += employees[i].EmployeeId + ". " + employees[i].GetName() + " Tlf: " + employees[i].GetTelephoneNO() +"\n";
                 }
                         return person;
         }
@@ -63,10 +63,17 @@ namespace KoWorkers
                     {
                         while (reader.Read())
                         {
+                            bool isCheckedIn = false;
                             int employeeID = int.Parse(reader["EmployeeID"].ToString());
                             string lastName = reader["LastName"].ToString();
                             string firstName = reader["FirstName"].ToString();
-                            Employee employee = new Employee(employeeID, firstName, lastName);
+                            int pinCode = int.Parse(reader["Pin"].ToString());
+                            int telephoneNo = int.Parse (reader["TelephoneNo"].ToString());
+                            //if (int.Parse(reader["OpenShift"].ToString()) > 0)
+                            //{
+                            //    isCheckedIn = true;
+                            //}                                                     
+                            Employee employee = new Employee(employeeID, firstName, lastName,pinCode, telephoneNo,isCheckedIn);
                             employees.Add(employee);
                         }
                     }
@@ -74,8 +81,9 @@ namespace KoWorkers
                 catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl\n" + e.Message); }
             }
         }
-        public void AddEmployee(Employee newEmployee)
+        public string AddEmployee(Employee newEmployee)
         {
+            string message = newEmployee.GetName() + " er tilføjet";
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 try
@@ -86,11 +94,14 @@ namespace KoWorkers
                     cmd1.CommandType = CommandType.StoredProcedure;
                     cmd1.Parameters.Add(new SqlParameter("@LastName", newEmployee.LastName));
                     cmd1.Parameters.Add(new SqlParameter("@FirstName", newEmployee.FirstName));
+                    cmd1.Parameters.Add(new SqlParameter("@Pin", newEmployee.PinCode));
+                    cmd1.Parameters.Add(new SqlParameter("@TelephoneNo", newEmployee.TelephoneNo));
                     cmd1.ExecuteNonQuery();
                 }
-                catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl\n" + e.Message); }
+                catch (SqlException e) { message = "Der skete en fejl\n" + e.Message +"\nMedarbejder blev ikke tilføjet"; }
             }
             FetchAllEmployees();
+            return message;
         }
         public string RemoveEmployee(Employee removeEmployee)
         {
@@ -135,6 +146,20 @@ namespace KoWorkers
             }
             FetchAllEmployees();
             return updateEmployee.GetName();
+        }
+
+        public Employee GetEmployeeByPin(int pin)
+        {
+            Employee employee = null;
+            
+            for (int i = 0; i < employees.Count(); i++)
+            {
+                if (employees[i].PinCode == pin)
+                {
+                    employee = employees[i];
+                }
+            }
+            return employee;
         }
         /*
         TODO:

@@ -8,7 +8,7 @@ namespace KoWorkers
 {
     public class Menu
     {
-        public EmployeeController employeeControl = new EmployeeController();
+        public Controller employeeControl = new Controller();
 
         public void StartMenu()
         {
@@ -131,6 +131,8 @@ namespace KoWorkers
         {
             string firstName;
             string lastName;
+            int pinCode;
+            int telephoneNo;
             Console.Clear();
             Console.WriteLine("KoWorkers // Medarbejderadministration  // Tilføj medarbejder");
             Console.WriteLine("---------");
@@ -140,7 +142,12 @@ namespace KoWorkers
             firstName = GetUserChoice("Først fornavn:");
             Console.WriteLine();
             lastName = GetUserChoice("Efternavn:");
-            employeeControl.AddEmployee(firstName, lastName);
+            Console.WriteLine();
+            pinCode = GetDigits(4, "Indtast PIN-kode");
+            Console.WriteLine();
+            telephoneNo = GetDigits(8, "Indtast telefonnr");
+            Console.WriteLine(employeeControl.AddEmployee(firstName, lastName, pinCode, telephoneNo));
+            Console.ReadLine();
         }
 
        
@@ -158,5 +165,38 @@ namespace KoWorkers
             string userInput = Console.ReadLine();
             return userInput;
         }
+
+        private int GetDigits(int numberLength, string message)
+        {
+            int value;
+            bool isNumber = false;
+            
+            do
+            {
+                Console.WriteLine(message + " som er " + numberLength + " cifre");
+                string userInput = Console.ReadLine();
+                if (int.TryParse(userInput, out value) && userInput.Length == numberLength)
+                {
+                    Console.WriteLine("tal indtastet");
+                    
+                    isNumber = true;
+                }
+                else
+                {
+                    Console.WriteLine("Forkert indtastning, du må kun indeholde tal");
+                    
+                }
+            } while (isNumber == false);
+            return value;
+        }
+        public void CheckIn()
+        {
+            int pin;
+            pin = GetDigits(4, "Skriv din PIN-kode");
+
+            employeeControl.CheckInByPin(pin);
+            
+        }
+
     }
 }

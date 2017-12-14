@@ -43,11 +43,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Employee.cs" />
-    <Compile Include="EmployeeController.cs" />
+    <Compile Include="Controller.cs" />
     <Compile Include="EmployeeRepository.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shift.cs" />
+    <Compile Include="ShiftRepository.cs" />
+    <Compile Include="Timesheet.cs" />
+    <Compile Include="TimesheetRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -11,19 +11,32 @@ namespace KoWorkers
         public int EmployeeId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-
-        public Employee(string newFirstName, string newLastName)
+        public int PinCode { get; set; }
+        public int TelephoneNo { get; set; }
+        private bool isCheckedIn;
+    
+        public Employee(string newFirstName, string newLastName,int newPinCode, int newTelephoneNo)
         {
+            TelephoneNo = newTelephoneNo;
             FirstName = newFirstName;
             LastName = newLastName;
+            PinCode = newPinCode;
 
         }
-        public Employee(int employeeId, string newFirstName, string newLastName)
+        public bool IsChekedIn()
+        {
+            return isCheckedIn;
+        }
+
+        public Employee(int employeeId, string newFirstName, string newLastName, int newPinCode, int newTelephoneNo,bool newIsCheckedIn)
         {
             EmployeeId = employeeId;
             FirstName = newFirstName;
             LastName = newLastName;
-
+            PinCode = newPinCode;
+            TelephoneNo = newTelephoneNo;
+            isCheckedIn = newIsCheckedIn;
+            
         }
         public string GetName()
         {
@@ -34,6 +47,15 @@ namespace KoWorkers
             FirstName = setFirstName;
             LastName = setLastName;
 
+        }
+        public void SetPinCode(int setPinCode)
+        {
+            PinCode = setPinCode;
+        }
+
+        public int GetTelephoneNO()
+        {
+            return TelephoneNo;
         }
     }
 }
