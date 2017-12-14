@@ -87,6 +87,12 @@ namespace KoWorkersTests
             TimesheetRepository timesheetRepo = new TimesheetRepository();
             Assert.AreEqual(12, timesheetRepo.GetTimesheetMonth());
         }
+        [TestMethod]
+        public void ShouldShowDateHMS()
+        {
+            ShiftRepository shiftRepository = new ShiftRepository();
+            Assert.AreEqual(11, shiftRepository.GetStartTime());
+        }
 
     }
 }
