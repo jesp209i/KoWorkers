@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,15 +19,37 @@ namespace KoWorkers
             DateTime shiftDate = time.Date;
             return shiftDate;
         }
-        public DateTime GetStartTime()
-        {
+        public DateTime GetTime()
+        {  
             DateTime time = DateTime.Now;
-            DateTime startTime = new DateTime(time.Hour, time.Minute, time.Second);
-            return startTime;
+            return time;
         }
-        //public Shift AddShift()
-        //{
+        public int AddShift(int timeshiftID)
+        {
+            int shift = -1;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
 
-        //}
+                    SqlCommand cmd1 = new SqlCommand("SpNewShift", con);
+                    cmd1.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd1.Parameters.Add(new SqlParameter("@ShiftDate", GetShiftDate()));
+                    cmd1.Parameters.Add(new SqlParameter("@StartTime", GetTime()));
+                    cmd1.Parameters.Add(new SqlParameter("@TimeSheetID", timeshiftID));
+                    SqlDataReader reader = cmd1.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            shift = int.Parse(reader["ShiftID"].ToString());
+                         
+                        }
+                    }
+                }
+                catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl\n" + e.Message); }
+            } return shift;
+        }
     }
 }

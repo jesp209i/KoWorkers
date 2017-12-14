@@ -91,7 +91,7 @@ namespace KoWorkersTests
         public void ShouldShowDateHMS()
         {
             ShiftRepository shiftRepository = new ShiftRepository();
-            Assert.AreEqual(11, shiftRepository.GetStartTime());
+            Assert.AreEqual(DateTime.Now, shiftRepository.GetTime());
         }
 
     }

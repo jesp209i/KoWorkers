@@ -40,11 +40,15 @@ namespace KoWorkers
             Timesheet timesheet = null;
             if (employee != null && employee.IsChekedIn() == false)
             {
-                timesheetRepo.GetEmployeeTimesheet(employee.EmployeeId);
+               timesheet = timesheetRepo.GetEmployeeTimesheet(employee.EmployeeId);
                 if (timesheetRepo.GetEmployeeTimesheet(employee.EmployeeId) == null)
                 {
                     timesheet = timesheetRepo.AddTimesheet(employee);
                 }
+                ShiftRepository shiftRepository = new ShiftRepository();
+                int shiftID = shiftRepository.AddShift(timesheet.TimesheetID);
+                employee.SetOpenShift(shiftID);
+
             }
             return employee;
             

@@ -13,6 +13,12 @@ namespace KoWorkers
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
 
-
+        public Shift (int newTimeshiftID, DateTime newShiftDate, DateTime newStartTime, DateTime newEndTime)
+        {
+            TimeSheetID = newTimeshiftID;
+            ShiftDate = newShiftDate;
+            StartTime = newStartTime;
+            EndTime = newEndTime;
+        }
     }
 }
