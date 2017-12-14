@@ -27,7 +27,7 @@ namespace KoWorkerGui
             InitializeComponent();
         }
 
-        private void Admin_Button_Copy_Click(object sender, RoutedEventArgs e)
+        private void Admin_Button_Click(object sender, RoutedEventArgs e)
         {
             Coworker_Window coworker_Window = new Coworker_Window();
             App.Current.MainWindow = coworker_Window;
@@ -35,6 +35,14 @@ namespace KoWorkerGui
             coworker_Window.Show();
 
 
+        }
+
+        private void TjekInd_Ud_Button_Click(object sender, RoutedEventArgs e)
+        {
+            CheckIn_Window CheckIn_Window = new CheckIn_Window();
+            App.Current.MainWindow = CheckIn_Window;
+            this.Close();
+            CheckIn_Window.Show();
         }
     }
 }

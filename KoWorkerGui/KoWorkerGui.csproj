@@ -77,10 +77,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CheckIn_Window.xaml.cs">
+      <DependentUpon>CheckIn_Window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RemoveEmployee_Window.xaml.cs">
       <DependentUpon>RemoveEmployee_Window.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ShowInformation_Window.xaml.cs">
+      <DependentUpon>ShowInformation_Window.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddEmployee_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CheckIn_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -107,6 +117,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="RemoveEmployee_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ShowInformation_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,16 @@
+﻿<Window x:Class="KoWorkerGui.ShowInformation_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KoWorkerGui"
+        mc:Ignorable="d"
+        Title="KoWorker" Height="300" Width="300">
+    <Grid>
+        <TextBox x:Name="FirstName_Button" HorizontalAlignment="Left" Height="34" Margin="32,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152"/>
+        <TextBox x:Name="LastName_Button" HorizontalAlignment="Left" Height="34" Margin="32,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152"/>
+        <TextBox x:Name="TelephoneNo_Button" HorizontalAlignment="Left" Height="34" Margin="32,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152"/>
+        <Button x:Name="Back_Button" Content="Tilbage" HorizontalAlignment="Left" Height="25" Margin="199,235,0,0" VerticalAlignment="Top" Width="65" Click="Back_Button_Click"/>
+
+    </Grid>
+</Window>
