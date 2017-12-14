@@ -13,8 +13,8 @@ namespace KoWorkers
         public string LastName { get; set; }
         public int PinCode { get; set; }
         public int TelephoneNo { get; set; }
-        private bool isCheckedIn;
-    
+        private int openShift = -1;
+
         public Employee(string newFirstName, string newLastName,int newPinCode, int newTelephoneNo)
         {
             TelephoneNo = newTelephoneNo;
@@ -23,20 +23,14 @@ namespace KoWorkers
             PinCode = newPinCode;
 
         }
-        public bool IsChekedIn()
-        {
-            return isCheckedIn;
-        }
-
-        public Employee(int employeeId, string newFirstName, string newLastName, int newPinCode, int newTelephoneNo,bool newIsCheckedIn)
+       
+        public Employee(int employeeId, string newFirstName, string newLastName, int newPinCode, int newTelephoneNo)
         {
             EmployeeId = employeeId;
             FirstName = newFirstName;
             LastName = newLastName;
             PinCode = newPinCode;
-            TelephoneNo = newTelephoneNo;
-            isCheckedIn = newIsCheckedIn;
-            
+            TelephoneNo = newTelephoneNo;            
         }
         public string GetName()
         {
@@ -56,6 +50,14 @@ namespace KoWorkers
         public int GetTelephoneNO()
         {
             return TelephoneNo;
+        }
+        public void SetOpenShift (int shiftId)
+        {
+            openShift = shiftId;
+        }
+        public int GetOpenShift()
+        {
+            return openShift;
         }
     }
 }

@@ -38,7 +38,7 @@ namespace KoWorkers
         {
             Employee employee = employeeRepo.GetEmployeeByPin(pin);
             Timesheet timesheet = null;
-            if (employee != null && employee.IsChekedIn() == false)
+            if (employee != null && employee.GetOpenShift() == -1)
             {
                 timesheetRepo.GetEmployeeTimesheet(employee.EmployeeId);
                 if (timesheetRepo.GetEmployeeTimesheet(employee.EmployeeId) == null)

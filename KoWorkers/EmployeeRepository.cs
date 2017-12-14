@@ -63,18 +63,42 @@ namespace KoWorkers
                     {
                         while (reader.Read())
                         {
-                            bool isCheckedIn = false;
                             int employeeID = int.Parse(reader["EmployeeID"].ToString());
                             string lastName = reader["LastName"].ToString();
                             string firstName = reader["FirstName"].ToString();
                             int pinCode = int.Parse(reader["Pin"].ToString());
-                            int telephoneNo = int.Parse (reader["TelephoneNo"].ToString());
-                            //if (int.Parse(reader["OpenShift"].ToString()) > 0)
-                            //{
-                            //    isCheckedIn = true;
-                            //}                                                     
-                            Employee employee = new Employee(employeeID, firstName, lastName,pinCode, telephoneNo,isCheckedIn);
+                            int telephoneNo = int.Parse(reader["TelephoneNo"].ToString());
+                            Employee employee = new Employee(employeeID, firstName, lastName, pinCode, telephoneNo);
                             employees.Add(employee);
+                        }
+                    }
+                }
+                catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl\n" + e.Message); }
+            }
+            EmployeeHasOpenShifts();
+        }
+
+        private void EmployeeHasOpenShifts()
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand employeesHasOpenShift = new SqlCommand("SpHasOpenShift", con);
+                    employeesHasOpenShift.CommandType = CommandType.StoredProcedure;
+                    DateTime date = DateTime.Now;
+                    int getYear = date.Year;
+                    int getMonth = date.Month;
+                    employeesHasOpenShift.Parameters.Add(new SqlParameter("@TimeSheetYear", getYear));
+                    employeesHasOpenShift.Parameters.Add(new SqlParameter("@TimeSheetMonth", getMonth));
+                    SqlDataReader reader = employeesHasOpenShift.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            Employee editEmployeeOpenShiftStatus = GetEmployeeFromList(int.Parse(reader["EmployeeID"].ToString()));
+                            editEmployeeOpenShiftStatus.SetOpenShift(int.Parse(reader["OpenShift"].ToString()));
                         }
                     }
                 }
