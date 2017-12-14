@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="RemoveEmployee_Window" Height="300" Width="300">
     <Grid>
-        
+        <ListBox x:Name="RemoveEmployees_ListBox" HorizontalAlignment="Left" Height="201" Margin="10,10,0,0" VerticalAlignment="Top" Width="262" SelectionChanged="RemoveEmployees_ListBox_SelectionChanced" />
+        <Button x:Name="RemoveEmployee_Button" Content="Remove" HorizontalAlignment="Left" Height="27" Margin="122,233,0,0" VerticalAlignment="Top" Width="70" Click="RemoveEmployee_Button_Click"/>
+        <Button x:Name="Back_Button" Content="Tilbage" HorizontalAlignment="Left" Height="27" Margin="192,233,0,0" VerticalAlignment="Top" Width="80" Click="Back_Button_Click"/>
+        <Label x:Name="ShowSelected_Label" Content="Label" HorizontalAlignment="Left" Margin="22,216,0,0" VerticalAlignment="Top" Width="95"/>
+
     </Grid>
 </Window>
