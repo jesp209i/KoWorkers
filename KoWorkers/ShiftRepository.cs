@@ -24,7 +24,7 @@ namespace KoWorkers
             DateTime time = DateTime.Now;
             return time;
         }
-        public int AddShift(int timeshiftID)
+        public int AddShift(int EmployeeID)
         {
             int shift = -1;
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -37,7 +37,7 @@ namespace KoWorkers
                     cmd1.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd1.Parameters.Add(new SqlParameter("@ShiftDate", GetShiftDate()));
                     cmd1.Parameters.Add(new SqlParameter("@StartTime", GetTime()));
-                    cmd1.Parameters.Add(new SqlParameter("@TimeSheetID", timeshiftID));
+                    cmd1.Parameters.Add(new SqlParameter("@EmployeeID", EmployeeID));
                     SqlDataReader reader = cmd1.ExecuteReader();
                     if (reader.HasRows)
                     {

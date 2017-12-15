@@ -8,14 +8,14 @@ namespace KoWorkers
 {
     public class Shift
     {
-        public int TimeSheetID { get; set; }
+        public int EmployeeID { get; set; }
         public DateTime ShiftDate { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
 
-        public Shift (int newTimeshiftID, DateTime newShiftDate, DateTime newStartTime, DateTime newEndTime)
+        public Shift (int newEmployeeID, DateTime newShiftDate, DateTime newStartTime, DateTime newEndTime)
         {
-            TimeSheetID = newTimeshiftID;
+            EmployeeID = newEmployeeID;
             ShiftDate = newShiftDate;
             StartTime = newStartTime;
             EndTime = newEndTime;

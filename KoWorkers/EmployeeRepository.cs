@@ -15,7 +15,7 @@ namespace KoWorkers
         public List<Employee> employees = new List<Employee>();
         public EmployeeRepository()
         {
-            FetchAllEmployees(); // Henter Employees fra DB og laver en liste
+            FetchAllCurrentEmployees(); // Henter Employees fra DB og laver en liste
         }
         public int Count() // for testing
         {
@@ -48,7 +48,7 @@ namespace KoWorkers
                         return person;
         }
 
-        public void FetchAllEmployees()
+        public void FetchAllCurrentEmployees()
         {
             employees.Clear(); // nulstiller listen inden den bliver hentet igen
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -124,7 +124,7 @@ namespace KoWorkers
                 }
                 catch (SqlException e) { message = "Der skete en fejl\n" + e.Message +"\nMedarbejder blev ikke tilføjet"; }
             }
-            FetchAllEmployees();
+            FetchAllCurrentEmployees();
             return message;
         }
         public string RemoveEmployee(Employee removeEmployee)
@@ -138,15 +138,14 @@ namespace KoWorkers
 
                     SqlCommand removesEmployee = new SqlCommand("SpRemoveEmployee", con);
                     removesEmployee.CommandType = CommandType.StoredProcedure;
-                    removesEmployee.Parameters.Add(new SqlParameter("@LastName", removeEmployee.LastName));
-                    removesEmployee.Parameters.Add(new SqlParameter("@FirstName", removeEmployee.FirstName));
+                    removesEmployee.Parameters.Add(new SqlParameter("@EndDate", DateTime.Now));
                     removesEmployee.Parameters.Add(new SqlParameter("@EmployeeId", removeEmployee.EmployeeId));
 
                     removesEmployee.ExecuteNonQuery();
                 }
                 catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl\n" + e.Message); }
             }
-            FetchAllEmployees();
+            FetchAllCurrentEmployees();
             return removeEmployee.GetName();
         }
         public string UpdateEmployee(Employee updateEmployee)
@@ -168,7 +167,7 @@ namespace KoWorkers
                 }
                 catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl\n" + e.Message); }
             }
-            FetchAllEmployees();
+            FetchAllCurrentEmployees();
             return updateEmployee.GetName();
         }
 

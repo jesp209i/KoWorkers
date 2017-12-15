@@ -13,6 +13,8 @@ namespace KoWorkers
         public string LastName { get; set; }
         public int PinCode { get; set; }
         public int TelephoneNo { get; set; }
+
+        public DateTime EmploymentEndDate { get; set; }
         private int openShift = -1;
 
         public Employee(string newFirstName, string newLastName,int newPinCode, int newTelephoneNo)
@@ -58,6 +60,16 @@ namespace KoWorkers
         public int GetOpenShift()
         {
             return openShift;
+        }
+
+        public DateTime GetEndDateTime()
+        {
+            return EmploymentEndDate;
+        }
+
+        public void SetDateTime(DateTime dateTime)
+        {
+            EmploymentEndDate = dateTime;
         }
     }
 }
