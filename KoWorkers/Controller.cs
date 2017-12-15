@@ -63,7 +63,7 @@ namespace KoWorkers
             {
                 foreach (Employee employee in employeeRepo.employees)
                 {
-                    list.Add(employee.EmployeeId + ". " + employee.GetName() + " Tlf: " + employee.GetTelephoneNO());
+                    list.Add(employee.EmployeeId + ". " + employee.GetName() + " Tlf: " + employee.GetTelephoneNO() );
                     
                 }
             }

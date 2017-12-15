@@ -50,7 +50,7 @@ namespace KoWorkerGui
 
         private void RemoveEmployees_ListBox_SelectionChanced(object sender, SelectionChangedEventArgs e)
         {
-            ShowSelected_Label.Content = ep.employees[RemoveEmployees_ListBox.SelectedIndex].FirstName;
+            //ShowSelected_Label.Content = ep.employees[RemoveEmployees_ListBox.SelectedIndex].FirstName;
         }
     }
 }

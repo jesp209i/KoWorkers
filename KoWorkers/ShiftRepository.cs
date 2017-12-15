@@ -62,6 +62,7 @@ namespace KoWorkers
                         while (reader.Read())
                         {
                             shift = int.Parse(reader["ShiftID"].ToString());
+                            
                          
                         }
                     }
