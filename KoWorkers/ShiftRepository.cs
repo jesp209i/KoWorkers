@@ -24,6 +24,24 @@ namespace KoWorkers
             DateTime time = DateTime.Now;
             return time;
         }
+        public void EndShift(int shiftID)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+
+                    SqlCommand cmd1 = new SqlCommand("SpEndShift", con);
+                    cmd1.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd1.Parameters.Add(new SqlParameter("@ShiftID", shiftID));
+                    cmd1.Parameters.Add(new SqlParameter("@EndDate", GetTime()));
+                    cmd1.ExecuteNonQuery();
+                }
+                catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl\n" + e.Message); }
+            }
+        }   
+        
         public int AddShift(int EmployeeID)
         {
             int shift = -1;
