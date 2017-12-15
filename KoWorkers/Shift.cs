@@ -20,5 +20,6 @@ namespace KoWorkers
             StartTime = newStartTime;
             EndTime = newEndTime;
         }
+        
     }
 }

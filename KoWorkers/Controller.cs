@@ -9,11 +9,11 @@ namespace KoWorkers
     public class Controller
     {
         public EmployeeRepository employeeRepo;
-        public TimesheetRepository timesheetRepo;
+      
         public Controller()
         {
             employeeRepo = new EmployeeRepository();
-            timesheetRepo = new TimesheetRepository();
+           
         }
 
         public string AddEmployee(string firstName, string lastName, int pinCode, int telephoneNo)
@@ -37,20 +37,18 @@ namespace KoWorkers
         public Employee CheckInByPin(int pin)
         {
             Employee employee = employeeRepo.GetEmployeeByPin(pin);
-            Timesheet timesheet = null;
+
             if (employee != null && employee.GetOpenShift() == -1)
             {
-               timesheet = timesheetRepo.GetEmployeeTimesheet(employee.EmployeeId);
-                if (timesheetRepo.GetEmployeeTimesheet(employee.EmployeeId) == null)
-                {
-                    timesheet = timesheetRepo.AddTimesheet(employee);
-                }
                 ShiftRepository shiftRepository = new ShiftRepository();
-                int shiftID = shiftRepository.AddShift(timesheet.TimesheetID);
+                int shiftID = shiftRepository.AddShift(employee.EmployeeId);
                 employee.SetOpenShift(shiftID);
-
             }
-            return employee;
+            else if (employee != null && employee.GetOpenShift() != -1)
+            { }
+            else if (employee != null)
+            { }
+                return employee;
             
             
             
