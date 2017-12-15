@@ -30,13 +30,14 @@ namespace KoWorkerGui
             
             foreach (Employee employee in ep.employees)
             {
+                string prettyEmployeeString = employee.GetName() + " id: " + employee.EmployeeId + ". Shift: "  + employee.GetOpenShift() + " PIN: " + employee.PinCode;
                 if (employee.GetOpenShift() == -1)
                 {
-                    EmployeesCheckOutListBox.Items.Add(employee.EmployeeId + ". " + employee.GetName() + " Tlf: " + employee.GetTelephoneNO() + " " + employee.GetOpenShift());
+                    EmployeesCheckOutListBox.Items.Add(prettyEmployeeString);
                 }
                 else
                 {
-                    EmployeesCheckInListBox.Items.Add(employee.EmployeeId + ". " + employee.GetName() + " Tlf: " + employee.GetTelephoneNO() + " " + employee.GetOpenShift());
+                    EmployeesCheckInListBox.Items.Add(prettyEmployeeString);
                 }
                 
 

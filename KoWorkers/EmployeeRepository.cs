@@ -88,11 +88,6 @@ namespace KoWorkers
                     con.Open();
                     SqlCommand employeesHasOpenShift = new SqlCommand("SpHasOpenShift", con);
                     employeesHasOpenShift.CommandType = CommandType.StoredProcedure;
-                    DateTime date = DateTime.Now;
-                    int getYear = date.Year;
-                    int getMonth = date.Month;
-                    employeesHasOpenShift.Parameters.Add(new SqlParameter("@TimeSheetYear", getYear));
-                    employeesHasOpenShift.Parameters.Add(new SqlParameter("@TimeSheetMonth", getMonth));
                     SqlDataReader reader = employeesHasOpenShift.ExecuteReader();
                     if (reader.HasRows)
                     {
