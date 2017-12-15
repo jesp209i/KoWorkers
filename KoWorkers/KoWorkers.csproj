@@ -50,8 +50,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shift.cs" />
     <Compile Include="ShiftRepository.cs" />
-    <Compile Include="Timesheet.cs" />
-    <Compile Include="TimesheetRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
