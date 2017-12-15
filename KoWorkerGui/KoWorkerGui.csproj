@@ -77,14 +77,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddEmployee_Page.xaml.cs">
-      <DependentUpon>AddEmployee_Page.xaml</DependentUpon>
-    </Compile>
     <Compile Include="CheckInAndOut_Page.xaml.cs">
       <DependentUpon>CheckInAndOut_Page.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CheckIn_Window.xaml.cs">
-      <DependentUpon>CheckIn_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="CoWorker_page.xaml.cs">
       <DependentUpon>CoWorker_page.xaml</DependentUpon>
@@ -92,22 +86,12 @@
     <Compile Include="RemoveEmployee_page.xaml.cs">
       <DependentUpon>RemoveEmployee_page.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RemoveEmployee_Window.xaml.cs">
-      <DependentUpon>RemoveEmployee_Window.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ShowInformation_page.xaml.cs">
-      <DependentUpon>ShowInformation_page.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ShowInformation_Window.xaml.cs">
       <DependentUpon>ShowInformation_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="Welcome_page.xaml.cs">
       <DependentUpon>Welcome_page.xaml</DependentUpon>
     </Compile>
-    <Page Include="AddEmployee_Page.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="AddEmployee_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -116,15 +100,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CheckIn_Window.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="CoWorker_page.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Coworker_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -139,22 +115,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Coworker_Window.xaml.cs">
-      <DependentUpon>Coworker_Window.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="RemoveEmployee_page.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="RemoveEmployee_Window.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ShowInformation_page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

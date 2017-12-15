@@ -35,10 +35,7 @@ namespace KoWorkerGui
 
         private void TjekInd_Ud_Button_Click(object sender, RoutedEventArgs e)
         {
-            CheckIn_Window CheckIn_Window = new CheckIn_Window();
-            App.Current.MainWindow = CheckIn_Window;
-            
-            CheckIn_Window.Show();
+            this.NavigationService.Navigate(new Uri("CheckInAndOut_page.xaml", UriKind.Relative));
         }
     }
 }

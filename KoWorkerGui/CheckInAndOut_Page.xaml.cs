@@ -45,10 +45,7 @@ namespace KoWorkerGui
         }
         private void Back_Button_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow Main = new MainWindow();
-            App.Current.MainWindow = Main;
-
-            Main.Show();
+            this.NavigationService.Navigate(new Uri("Welcome_page.xaml", UriKind.Relative));
         }
 
         private void GetEmployee_Button_Click(object sender, RoutedEventArgs e)
@@ -66,7 +63,7 @@ namespace KoWorkerGui
 
         private void ShowInfo_Button_Click(object sender, RoutedEventArgs e)
         {
-            Employee showEmplo = ep.employees[EmployeesCheckInListBox.SelectedIndex];
+            Employee showEmplo = ep.employees[EmployeesCheckOutListBox.SelectedIndex];
             ShowInformation_Window showInformation_Window = new ShowInformation_Window();
             showInformation_Window.FirstName_Button.Text = showEmplo.FirstName;
             showInformation_Window.LastName_Button.Text = showEmplo.LastName;
@@ -75,7 +72,10 @@ namespace KoWorkerGui
             showInformation_Window.Show();
         }
 
+        private void EmployeesCheckOutListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
+        }
     }
 }
 

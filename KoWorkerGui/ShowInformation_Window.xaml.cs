@@ -26,10 +26,9 @@ namespace KoWorkerGui
 
         private void Back_Button_Click(object sender, RoutedEventArgs e)
         {
-            CheckIn_Window Main = new CheckIn_Window();
-            App.Current.MainWindow = Main;
+            
             this.Close();
-            Main.Show();
+            
         }
     }
 }

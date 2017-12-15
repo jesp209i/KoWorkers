@@ -28,15 +28,12 @@ namespace KoWorkerGui
             InitializeComponent();
             ep = new EmployeeRepository();
             C = new Controller();
-            foreach (Employee employee in ep.employees)
-            {
-                RemoveEmployees_ListBox.Items.Add(employee.EmployeeId + ". " + employee.GetName() + " Tlf: " + employee.GetTelephoneNO());
-            }
+           
 
-            //foreach (string employee in C.EmployeeListToGui())
-            //{
-            //    RemoveEmployees_ListBox.Items.Add(employee + "penis");
-            //}
+            foreach (string employee in C.EmployeeListToGui())
+            {
+                RemoveEmployees_ListBox.Items.Add(employee);
+            }
         }
         private void RemoveEmployee_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -48,6 +45,7 @@ namespace KoWorkerGui
         private void Back_Button_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("CoWorker_page.xaml", UriKind.Relative));
+            RemoveEmployees_ListBox.Items.Clear();
         }
 
         private void RemoveEmployees_ListBox_SelectionChanced(object sender, SelectionChangedEventArgs e)

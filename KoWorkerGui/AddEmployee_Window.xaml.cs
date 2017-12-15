@@ -36,10 +36,9 @@ namespace KoWorkerGui
 
         private void Back_Button_Click(object sender, RoutedEventArgs e)
         {
-            Coworker_Window coworker_Window = new Coworker_Window();
-            App.Current.MainWindow = coworker_Window;
+          
             this.Close();
-            coworker_Window.Show();
+            
         }
 
         private void AddEmployee_Button_Click(object sender, RoutedEventArgs e)
