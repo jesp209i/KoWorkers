@@ -45,7 +45,11 @@ namespace KoWorkers
                 employee.SetOpenShift(shiftID);
             }
             else if (employee != null && employee.GetOpenShift() != -1)
-            { }
+            {
+                ShiftRepository shiftRepository = new ShiftRepository();
+                shiftRepository.EndShift(employee.GetOpenShift());
+                employee.SetOpenShift(-1);
+            }
             else if (employee != null)
             { }
                 return employee;

@@ -58,6 +58,7 @@ namespace KoWorkers
                     con.Open();
                     SqlCommand fetchAllWorkers = new SqlCommand("SpAllEmployees", con);
                     fetchAllWorkers.CommandType = CommandType.StoredProcedure;
+                    fetchAllWorkers.Parameters.Add(new SqlParameter("@CurrentDate", DateTime.Now.Date.ToString("d")));
                     SqlDataReader reader = fetchAllWorkers.ExecuteReader();
                     if (reader.HasRows)
                     {
