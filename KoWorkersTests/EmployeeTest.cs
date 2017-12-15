@@ -74,24 +74,20 @@ namespace KoWorkersTests
         //    personRepo.employees.Add(newPerson);
         //    Assert.AreEqual("Lars Rasmussen", personRepo.ListAllEmployees());
         //}
-        [TestMethod]
-        public void ShouldShowDateYear()
-        {
-            TimesheetRepository timesheetRepo = new TimesheetRepository();         
-            Assert.AreEqual(2017, timesheetRepo.GetTimesheetYear());
-        }
-
-        [TestMethod]
-        public void ShouldShowDateMonth()
-        {
-            TimesheetRepository timesheetRepo = new TimesheetRepository();
-            Assert.AreEqual(12, timesheetRepo.GetTimesheetMonth());
-        }
+      
         [TestMethod]
         public void ShouldShowDateHMS()
         {
             ShiftRepository shiftRepository = new ShiftRepository();
             Assert.AreEqual(DateTime.Now, shiftRepository.GetTime());
+        }
+
+        [TestMethod]
+        public void ShouldShowateHMS()
+        {
+            EmployeeRepository shiftRepository = new EmployeeRepository();
+            Controller c = new Controller();
+            Assert.AreEqual("hej", c.EmployeeListToGui());
         }
 
     }

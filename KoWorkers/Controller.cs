@@ -53,8 +53,20 @@ namespace KoWorkers
             
             
         }
-        
-       
+        public List<string> EmployeeListToGui()
+        {
+            List<string> list = new List<string>();
+            {
+                foreach (Employee employee in employeeRepo.employees)
+                {
+                    list.Add(employee.ToString());
+                    
+                }
+            }
+            return list;
+        }
+
+
 
     }
 }

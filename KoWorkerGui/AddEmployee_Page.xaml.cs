@@ -16,17 +16,13 @@ using System.Windows.Shapes;
 namespace KoWorkerGui
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AddEmployee_Page.xaml
     /// </summary>
-    /// 
-    using KoWorkers;
-    public partial class MainWindow : Window
+    public partial class AddEmployee_Page : Page
     {
-        public MainWindow()
+        public AddEmployee_Page()
         {
             InitializeComponent();
-            mainFrame.Navigate(new Welcome_page());
         }
-
     }
 }

@@ -5,11 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KoWorkerGui"
         mc:Ignorable="d"
-        Title="KoWorkers" Height="350" Width="525">
-    <Grid>
-        <Label x:Name="Welcome_Label" Content="Velkommen til KoWorkers" HorizontalAlignment="Left" Height="24" Margin="169,10,0,0" VerticalAlignment="Top" Width="274"/>
-        <Button x:Name="Admin_Button" Content="Medarbejderadministration" HorizontalAlignment="Left" Height="38" Margin="145,75,0,0" VerticalAlignment="Top" Width="183" BorderBrush="#FFD6CFCF" Background="White" Click="Admin_Button_Click"/>
-        <Button x:Name="TjekInd_Ud_Button" Content="Tjek In / Ud" HorizontalAlignment="Left" Height="38" Margin="145,118,0,0" VerticalAlignment="Top" Width="183" BorderBrush="#FFD6CFCF" Background="White" Click="TjekInd_Ud_Button_Click" />
-
-    </Grid>
+        Title="KoWorkers" Height="600" Width="600">
+    <DockPanel>
+        <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden"/>
+    </DockPanel>
 </Window>

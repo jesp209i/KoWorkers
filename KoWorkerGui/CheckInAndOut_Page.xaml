@@ -1,0 +1,23 @@
+﻿<Page x:Class="KoWorkerGui.CheckInAndOut_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:KoWorkerGui"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="600"
+      Title="CheckInAndOut_Page">
+
+    <Grid>
+        <Button x:Name="Back_Button" Content="Tilbage" HorizontalAlignment="Left" Margin="507,538,0,0" VerticalAlignment="Top" Width="75" Click="Back_Button_Click"/>
+        <PasswordBox x:Name="PinCode_PassBox" HorizontalAlignment="Left" Height="26" Margin="202,49,0,0" VerticalAlignment="Top" Width="128"/>
+        <Button x:Name="GetEmployee_Button" Content="Indtast Pin" HorizontalAlignment="Left" Height="26" Margin="357,49,0,0" VerticalAlignment="Top" Width="75" Click="GetEmployee_Button_Click"/>
+        <ListBox x:Name="EmployeesCheckOutListBox" HorizontalAlignment="Left" Height="165" Margin="22,348,0,0" VerticalAlignment="Top" Width="545"/>
+        <ListBox x:Name="EmployeesCheckInListBox" HorizontalAlignment="Left" Height="180" Margin="22,120,0,0" VerticalAlignment="Top" Width="545"/>
+        <Label x:Name="CheckedIn_Label" Content="Tjekket Ind" HorizontalAlignment="Left" Margin="243,89,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="CheckedOut_Label" Content="Tjekket Ud" HorizontalAlignment="Left" Margin="243,317,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ShowInfo_Button" Content="Vis Info" HorizontalAlignment="Left" Height="22" Margin="22,538,0,0" VerticalAlignment="Top" Width="100" Click="ShowInfo_Button_Click"/>
+
+
+    </Grid>
+</Page>
