@@ -35,7 +35,7 @@ namespace KoWorkers
                     SqlCommand cmd1 = new SqlCommand("SpEndShift", con);
                     cmd1.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd1.Parameters.Add(new SqlParameter("@ShiftID", shiftID));
-                    cmd1.Parameters.Add(new SqlParameter("@EndDate", GetTime()));
+                    cmd1.Parameters.Add(new SqlParameter("@EndTime", GetTime().ToShortTimeString()));
                     cmd1.ExecuteNonQuery();
                 }
                 catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl\n" + e.Message); }

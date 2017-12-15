@@ -34,8 +34,9 @@ namespace KoWorkers
             return employeeRepo.UpdateEmployee(updateEmployee);
         }
 
-        public Employee CheckInByPin(int pin)
+        public string CheckInByPin(int pin)
         {
+            string message = "";
             Employee employee = employeeRepo.GetEmployeeByPin(pin);
 
             if (employee != null && employee.GetOpenShift() == -1)
@@ -43,19 +44,20 @@ namespace KoWorkers
                 ShiftRepository shiftRepository = new ShiftRepository();
                 int shiftID = shiftRepository.AddShift(employee.EmployeeId);
                 employee.SetOpenShift(shiftID);
+                message += employee.GetName() + " er tjekket ind";
             }
             else if (employee != null && employee.GetOpenShift() != -1)
             {
                 ShiftRepository shiftRepository = new ShiftRepository();
                 shiftRepository.EndShift(employee.GetOpenShift());
                 employee.SetOpenShift(-1);
+                message += employee.GetName() + " blev tjekket ud";
             }
-            else if (employee != null)
-            { }
-                return employee;
-            
-            
-            
+            else if (employee == null)
+            {
+                message += "Du har tastet en forkert PIN-kode";
+            }
+            return message;
         }
         public List<string> EmployeeListToGui()
         {

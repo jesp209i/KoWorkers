@@ -52,7 +52,7 @@ namespace KoWorkerGui
         private void GetEmployee_Button_Click(object sender, RoutedEventArgs e)
         {
             int pin = int.Parse(PinCode_PassBox.Password);
-            C.CheckInByPin(pin);
+            MessageBox.Show(C.CheckInByPin(pin), "KoWorkers");
 
 
         }
