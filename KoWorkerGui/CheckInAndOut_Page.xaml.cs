@@ -51,10 +51,22 @@ namespace KoWorkerGui
 
         private void GetEmployee_Button_Click(object sender, RoutedEventArgs e)
         {
+            string message = "";
             int pin = int.Parse(PinCode_PassBox.Password);
-            MessageBox.Show(C.CheckInByPin(pin), "KoWorkers");
-
-
+            Employee employee = C.CheckInByPin(pin);
+            if (employee.GetOpenShift() == -1)
+            {
+                message = employee.GetName() + " blev tjekket ud.";
+            }
+            if (employee.GetOpenShift() > -1)
+            {
+                message = employee.GetName() + " er tjekket ind.";
+            }
+            if (employee == null)
+            {
+                message = "PIN-koden er forkert";
+            }
+            MessageBox.Show(message, "KoWorkers");
         }
 
         private void EmployeeListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
