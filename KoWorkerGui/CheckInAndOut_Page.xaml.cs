@@ -29,19 +29,13 @@ namespace KoWorkerGui
             C = new Controller();
             ep = new EmployeeRepository();
 
-            foreach (Employee employee in ep.employees)
+            foreach (string employee in C.EmployeeListToCheckInToGui())
             {
-                string prettyEmployeeString = employee.GetName() + " id: " + employee.EmployeeId + ". Shift: " + employee.GetOpenShift() + " PIN: " + employee.PinCode;
-                if (employee.GetOpenShift() == -1)
-                {
-                    EmployeesCheckOutListBox.Items.Add(prettyEmployeeString);
-                }
-                else
-                {
-                    EmployeesCheckInListBox.Items.Add(prettyEmployeeString);
-                }
-
-
+                EmployeesCheckInListBox.Items.Add(employee);
+            }
+            foreach (string employee in C.EmployeeListToCheckOutToGui())
+            {
+                EmployeesCheckOutListBox.Items.Add(employee);
             }
         }
         private void Back_Button_Click(object sender, RoutedEventArgs e)
@@ -67,6 +61,14 @@ namespace KoWorkerGui
                 message = "PIN-koden er forkert";
             }
             MessageBox.Show(message, "KoWorkers");
+            foreach (string employees in C.EmployeeListToCheckInToGui())
+            {
+                EmployeesCheckInListBox.Items.Add(employees);
+            }
+            foreach (string employees in C.EmployeeListToCheckOutToGui())
+            {
+                EmployeesCheckOutListBox.Items.Add(employees);
+            }
         }
 
         private void EmployeeListView_SelectionChanged(object sender, SelectionChangedEventArgs e)

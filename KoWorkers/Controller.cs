@@ -66,6 +66,38 @@ namespace KoWorkers
             }
             return list;
         }
+        public List<string> EmployeeListToCheckOutToGui()
+        {
+            {
+                List<string> list = new List<string>();
+                {
+                    foreach (Employee employee in employeeRepo.employees)
+                    {
+                        if (employee.GetOpenShift() == -1)
+                        {
+                            list.Add(employee.GetName() + " id: " + employee.EmployeeId + ". Shift: " + employee.GetOpenShift() + " PIN: " + employee.PinCode);
+                        }
+                    }
+                }
+                return list;
+            }
+        }
+        public List<string> EmployeeListToCheckInToGui()
+        {
+            {
+                List<string> list = new List<string>();
+                {
+                    foreach (Employee employee in employeeRepo.employees)
+                    {
+                        if (employee.GetOpenShift() != -1)
+                        {
+                            list.Add(employee.GetName() + " id: " + employee.EmployeeId + ". Shift: " + employee.GetOpenShift() + " PIN: " + employee.PinCode);
+                        }
+                    }
+                }
+                return list;
+            }
+        }
 
 
 
