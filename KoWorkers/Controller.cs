@@ -98,8 +98,23 @@ namespace KoWorkers
                 return list;
             }
         }
-
-
-
+        public string ShowCheckInOutMessageInGui(int pin)
+        {
+            string message = "";
+            Employee employee = CheckInByPin(pin);
+            if (employee.GetOpenShift() == -1)
+            {
+                message = employee.GetName() + " blev tjekket ud.";
+            }
+            if (employee.GetOpenShift() > -1)
+            {
+                message = employee.GetName() + " er tjekket ind.";
+            }
+            if (employee == null)
+            {
+                message = "PIN-koden er forkert";
+            }
+            return message;
+        }
     }
 }

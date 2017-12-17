@@ -47,20 +47,10 @@ namespace KoWorkerGui
         {
             string message = "";
             int pin = int.Parse(PinCode_PassBox.Password);
-            Employee employee = C.CheckInByPin(pin);
-            if (employee.GetOpenShift() == -1)
-            {
-                message = employee.GetName() + " blev tjekket ud.";
-            }
-            if (employee.GetOpenShift() > -1)
-            {
-                message = employee.GetName() + " er tjekket ind.";
-            }
-            if (employee == null)
-            {
-                message = "PIN-koden er forkert";
-            }
+            message = C.ShowCheckInOutMessageInGui(pin);       
             MessageBox.Show(message, "KoWorkers");
+            EmployeesCheckInListBox.Items.Clear();
+            EmployeesCheckOutListBox.Items.Clear();
             foreach (string employees in C.EmployeeListToCheckInToGui())
             {
                 EmployeesCheckInListBox.Items.Add(employees);
