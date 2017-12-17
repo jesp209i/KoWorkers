@@ -43,8 +43,6 @@ namespace KoWorkers
                 ShiftRepository shiftRepository = new ShiftRepository();
                 int shiftID = shiftRepository.AddShift(employee.EmployeeId);
                 employee.SetOpenShift(shiftID);
-                employee.GetOpenShift();
-                
             }
             else if (employee != null && employee.GetOpenShift() != -1)
             {

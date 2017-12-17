@@ -53,28 +53,6 @@ namespace KoWorkerGui
         {
             int pin = int.Parse(PinCode_PassBox.Password);
             C.CheckInByPin(pin);
-            EmployeesCheckInListBox.Items.Clear();
-            EmployeesCheckOutListBox.Items.Clear();
-            EmployeeRepository eep = new EmployeeRepository();
-            foreach (Employee employee in eep.employees)
-            {
-                string prettyEmployeeString = employee.GetName() + " id: " + employee.EmployeeId + ". Shift: " + employee.GetOpenShift() + " PIN: " + employee.PinCode;
-                if (employee.GetOpenShift() == -1)
-                {
-                    EmployeesCheckOutListBox.Items.Add(prettyEmployeeString);
-                }
-                else
-                {
-                    EmployeesCheckInListBox.Items.Add(prettyEmployeeString);
-                }
-
-
-            }
-            EmployeesCheckInListBox.Items.Refresh();
-           
-            
-
-
 
 
         }
@@ -99,14 +77,6 @@ namespace KoWorkerGui
         {
 
         }
-
-        private void EmployeesCheckInListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-          
-            
-        }
-
-      
     }
 }
 
