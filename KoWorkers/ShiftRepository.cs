@@ -9,9 +9,19 @@ namespace KoWorkers
 {
     public class ShiftRepository
     {
+        private static ShiftRepository instance = null;
         private static string connectionString =
   "server = EALSQL1.eal.local; database = DB2017_C02; user Id=USER_C02; Password=SesamLukOp_02;";
         public List<Shift> shifts = new List<Shift>();
+
+        public static ShiftRepository GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new ShiftRepository();
+            }
+            return instance;
+        }
 
         public DateTime GetShiftDate()
         {
@@ -35,7 +45,7 @@ namespace KoWorkers
                     SqlCommand cmd1 = new SqlCommand("SpEndShift", con);
                     cmd1.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd1.Parameters.Add(new SqlParameter("@ShiftID", shiftID));
-                    cmd1.Parameters.Add(new SqlParameter("@EndDate", GetTime()));
+                    cmd1.Parameters.Add(new SqlParameter("@EndTime", GetTime().ToShortTimeString()));
                     cmd1.ExecuteNonQuery();
                 }
                 catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl\n" + e.Message); }

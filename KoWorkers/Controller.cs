@@ -37,25 +37,22 @@ namespace KoWorkers
         public Employee CheckInByPin(int pin)
         {
             Employee employee = employeeRepo.GetEmployeeByPin(pin);
+            ShiftRepository sr = ShiftRepository.GetInstance();
+            int shiftID = -1;
+            if (employee != null)
+            {
+                if (employee.GetOpenShift() == -1)
+                {
+                    shiftID = sr.AddShift(employee.EmployeeId);
+                }
+                else
+                { 
+                    sr.EndShift(employee.GetOpenShift());
+                }  
+            }
+            employee.SetOpenShift(shiftID);
 
-            if (employee != null && employee.GetOpenShift() == -1)
-            {
-                ShiftRepository shiftRepository = new ShiftRepository();
-                int shiftID = shiftRepository.AddShift(employee.EmployeeId);
-                employee.SetOpenShift(shiftID);
-            }
-            else if (employee != null && employee.GetOpenShift() != -1)
-            {
-                ShiftRepository shiftRepository = new ShiftRepository();
-                shiftRepository.EndShift(employee.GetOpenShift());
-                employee.SetOpenShift(-1);
-            }
-            else if (employee != null)
-            { }
-                return employee;
-            
-            
-            
+            return employee;
         }
         public List<string> EmployeeListToGui()
         {
