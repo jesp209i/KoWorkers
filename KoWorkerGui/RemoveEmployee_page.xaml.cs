@@ -21,12 +21,10 @@ namespace KoWorkerGui
     /// </summary>
     public partial class RemoveEmployee_page : Page
     {
-        EmployeeRepository ep;
         Controller C;
         public RemoveEmployee_page()
         {
             InitializeComponent();
-            ep = new EmployeeRepository();
             C = new Controller();
            
 
