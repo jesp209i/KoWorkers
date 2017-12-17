@@ -54,6 +54,19 @@ namespace KoWorkers
 
             return employee;
         }
+
+        public void RemoveEmployeeToGui(int idx)
+        {
+            List<Employee> list = new List<Employee>();
+            {
+                foreach (Employee employee in employeeRepo.employees)
+                { 
+                        list.Add(employee);       
+                }
+            }
+            RemoveEmployee(list[idx]);  
+        }
+
         public List<string> EmployeeListToGui()
         {
             List<string> list = new List<string>();

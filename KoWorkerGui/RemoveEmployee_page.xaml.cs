@@ -37,9 +37,8 @@ namespace KoWorkerGui
         }
         private void RemoveEmployee_Button_Click(object sender, RoutedEventArgs e)
         {
-            Employee removeEmplo = ep.employees[RemoveEmployees_ListBox.SelectedIndex];
-            C.RemoveEmployee(removeEmplo);
-
+            int idx = RemoveEmployees_ListBox.SelectedIndex;
+            C.RemoveEmployeeToGui(idx);
         }
 
         private void Back_Button_Click(object sender, RoutedEventArgs e)

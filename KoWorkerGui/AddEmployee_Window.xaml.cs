@@ -20,13 +20,11 @@ namespace KoWorkerGui
     /// </summary>
     public partial class AddEmployee_Window : Window
     {
-        Controller C;
-        EmployeeRepository ep;
+        Controller C;     
         public AddEmployee_Window()
         {
             InitializeComponent();
-            C = new Controller();
-            ep = new EmployeeRepository();
+            C = new Controller();    
         }
 
         private void TelephoneNo_TextBox_Copy1_TextChanged(object sender, TextChangedEventArgs e)
