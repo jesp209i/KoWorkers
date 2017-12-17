@@ -82,6 +82,47 @@ namespace KoWorkers
                 return list;
             }
         }
+
+        public string ShowSelectedEmployeeTelephoneNO(int idx)
+        {
+            string telephoneNO = "";
+            List<Employee> list = MakeEmployeeListToGui();
+            telephoneNO = list[idx].TelephoneNo.ToString();
+            return telephoneNO;
+        }
+
+        public string ShowSelectedEmployeeLastName(int idx)
+        {
+            string lastName = "";
+            List<Employee> list = MakeEmployeeListToGui();
+            lastName = list[idx].LastName;
+            return lastName;
+        }
+
+        public string ShowSelectedEmployeeFirstName(int idx)
+        {
+            string firstName = "";
+           List<Employee> list = MakeEmployeeListToGui();
+            firstName = list[idx].FirstName;
+            return firstName;
+        }
+
+        public List<Employee> MakeEmployeeListToGui()
+        {
+            {
+                List<Employee> list = new List<Employee>();
+                {
+                    foreach (Employee employee in employeeRepo.employees)
+                    {
+                        if (employee.GetOpenShift() != -1)
+                        {
+                            list.Add(employee);
+                        }
+                    }
+                }
+                return list;
+            }
+        }
         public List<string> EmployeeListToCheckInToGui()
         {
             {

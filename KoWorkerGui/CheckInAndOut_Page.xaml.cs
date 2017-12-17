@@ -22,13 +22,10 @@ namespace KoWorkerGui
     public partial class CheckInAndOut_Page : Page
     {
         Controller C;
-        EmployeeRepository ep;
         public CheckInAndOut_Page()
         {
             InitializeComponent();
             C = new Controller();
-            ep = new EmployeeRepository();
-
             foreach (string employee in C.EmployeeListToCheckInToGui())
             {
                 EmployeesCheckInListBox.Items.Add(employee);
@@ -68,11 +65,11 @@ namespace KoWorkerGui
 
         private void ShowInfo_Button_Click(object sender, RoutedEventArgs e)
         {
-            Employee showEmplo = ep.employees[EmployeesCheckOutListBox.SelectedIndex];
+            int idx = EmployeesCheckInListBox.SelectedIndex;
             ShowInformation_Window showInformation_Window = new ShowInformation_Window();
-            showInformation_Window.FirstName_Button.Text = showEmplo.FirstName;
-            showInformation_Window.LastName_Button.Text = showEmplo.LastName;
-            showInformation_Window.TelephoneNo_Button.Text = showEmplo.GetTelephoneNO().ToString();
+            showInformation_Window.FirstName_Button.Text = C.ShowSelectedEmployeeFirstName(idx);
+            showInformation_Window.LastName_Button.Text = C.ShowSelectedEmployeeLastName(idx);
+            showInformation_Window.TelephoneNo_Button.Text = C.ShowSelectedEmployeeTelephoneNO(idx);
             App.Current.MainWindow = showInformation_Window;
             showInformation_Window.Show();
         }
