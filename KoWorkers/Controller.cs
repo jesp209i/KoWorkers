@@ -48,9 +48,10 @@ namespace KoWorkers
                 else
                 { 
                     sr.EndShift(employee.GetOpenShift());
-                }  
+                }
+                employee.SetOpenShift(shiftID);
             }
-            employee.SetOpenShift(shiftID);
+            
 
             return employee;
         }
