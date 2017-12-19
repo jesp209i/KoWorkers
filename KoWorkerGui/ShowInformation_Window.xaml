@@ -22,6 +22,8 @@
         <Label x:Name="EndTimeText_label" Content="Sluttid" HorizontalAlignment="Left" Height="34" Margin="235,72,0,0" VerticalAlignment="Top" Width="117"/>
         <Label x:Name="LastShift_Label" Content="Seneste Vagt" HorizontalAlignment="Left" Height="34" Margin="315,10,0,0" VerticalAlignment="Top" Width="117"/>
         <Label x:Name="StartTime_label" Content="Seneste Vagt" HorizontalAlignment="Left" Height="34" Margin="677,271,-352,0" VerticalAlignment="Top" Width="117"/>
+        <Label x:Name="Starttime_label" Content="Starttid" HorizontalAlignment="Left" Height="34" Margin="315,38,0,0" VerticalAlignment="Top" Width="117"/>
+        <Label x:Name="Endtime_labe" Content="Sluttid" HorizontalAlignment="Left" Height="34" Margin="315,72,0,0" VerticalAlignment="Top" Width="117"/>
 
     </Grid>
 </Window>
