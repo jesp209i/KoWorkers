@@ -77,7 +77,7 @@ namespace KoWorkers
             int totalHours = 0;
             List<Employee> list = GetAllEmployees();
             int empID = list[idx].EmployeeId;
-            totalHours = CalculateWorkHours(empID, DateTime.Now);
+            totalHours = CalculateWorkHours(empID, DateTime.Now)/60;
             return totalHours;
         }
 
