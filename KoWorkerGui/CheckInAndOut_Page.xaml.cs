@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using KoWorkers;
+using System.Data;
 
 namespace KoWorkerGui
 {
@@ -26,30 +27,7 @@ namespace KoWorkerGui
         {
             InitializeComponent();
             C = new Controller();
-            foreach (string employee in C.EmployeeListToCheckInToGui())
-            {
-                EmployeesCheckInListBox.Items.Add(employee);
-            }
-            foreach (string employee in C.EmployeeListToCheckOutToGui())
-            {
-                EmployeesCheckOutListBox.Items.Add(employee);
-            }
-            EmployeeRepository ep = new EmployeeRepository();
-            foreach (Employee employee in C.MakeEmployeeListProgressBar())
-            {
-               CheckedInOut_ListView.Items.Add(new Employee(employee.FirstName, employee.LastName, employee.PinCode, employee.TelephoneNo) { FirstName = employee.FirstName, PinCode = employee.GetOpenShift() });
-            }
-           
-
-            for(int i = 0; i < C.toGui().Length; i++)
-            {
-                Console.WriteLine(C.toGui()[i, 0]);
-            }
-            foreach ( string employee in C.toGui())
-            {
-                Console.WriteLine(employee);
-                //CheckedInOut_ListView.Items.Add(employee{ FirstName = employee.FirstName, PinCode = employee.GetOpenShift()  })
-            }
+            CheckedInOut_ListView.ItemsSource = C.MakeEmployeeListProgressBar();
 
         }
         private void Back_Button_Click(object sender, RoutedEventArgs e)
@@ -63,37 +41,17 @@ namespace KoWorkerGui
             int pin = int.Parse(PinCode_PassBox.Password);
             message = C.ShowCheckInOutMessageInGui(pin);       
             MessageBox.Show(message, "KoWorkers");
-            EmployeesCheckInListBox.Items.Clear();
-            EmployeesCheckOutListBox.Items.Clear();
-            foreach (string employees in C.EmployeeListToCheckInToGui())
-            {
-                EmployeesCheckInListBox.Items.Add(employees);
-            }
-            foreach (string employees in C.EmployeeListToCheckOutToGui())
-            {
-                EmployeesCheckOutListBox.Items.Add(employees);
-            }
+            CheckedInOut_ListView.Items.Refresh();
         }
-
-        private void EmployeeListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void ShowInfo_Button_Click(object sender, RoutedEventArgs e)
         {
-            int idx = EmployeesCheckInListBox.SelectedIndex;
+            int idx = CheckedInOut_ListView.SelectedIndex;          
             ShowInformation_Window showInformation_Window = new ShowInformation_Window();
             showInformation_Window.FirstName_Button.Text = C.ShowSelectedEmployeeFirstName(idx);
             showInformation_Window.LastName_Button.Text = C.ShowSelectedEmployeeLastName(idx);
             showInformation_Window.TelephoneNo_Button.Text = C.ShowSelectedEmployeeTelephoneNO(idx);
             App.Current.MainWindow = showInformation_Window;
             showInformation_Window.Show();
-        }
-
-        private void EmployeesCheckOutListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }
