@@ -12,12 +12,26 @@
         <Button x:Name="Back_Button" Content="Tilbage" HorizontalAlignment="Stretch" Margin="507,538,0,0" VerticalAlignment="Top" Width="75" Click="Back_Button_Click"/>
         <PasswordBox x:Name="PinCode_PassBox" HorizontalAlignment="Left" Height="26" Margin="202,49,0,0" VerticalAlignment="Top" Width="128"/>
         <Button x:Name="GetEmployee_Button" Content="Indtast Pin" HorizontalAlignment="Left" Height="26" Margin="357,49,0,0" VerticalAlignment="Top" Width="75" Click="GetEmployee_Button_Click"/>
-        <ListBox x:Name="EmployeesCheckOutListBox" HorizontalAlignment="Left" Height="165" Margin="36,348,0,0" VerticalAlignment="Top" Width="545" SelectionChanged="EmployeesCheckOutListBox_SelectionChanged"> 
+        <ListBox x:Name="EmployeesCheckOutListBox" HorizontalAlignment="Left" Height="165" Margin="36,348,0,0" VerticalAlignment="Top" Width="294" SelectionChanged="EmployeesCheckOutListBox_SelectionChanged"> 
         </ListBox>
         <Label x:Name="CheckedIn_Label" Content="Tjekket Ind" HorizontalAlignment="Left" Margin="243,89,0,0" VerticalAlignment="Top"/>
         <Label x:Name="CheckedOut_Label" Content="Tjekket Ud" HorizontalAlignment="Left" Margin="243,317,0,0" VerticalAlignment="Top"/>
         <Button x:Name="ShowInfo_Button" Content="Vis Info" HorizontalAlignment="Left" Height="22" Margin="22,538,0,0" VerticalAlignment="Top" Width="100" Click="ShowInfo_Button_Click"/>
         <ListBox x:Name="EmployeesCheckInListBox" HorizontalAlignment="Left" Height="165" Margin="36,129,0,0" VerticalAlignment="Top" Width="545" />
+        <ListView x:Name="CheckedInOut_ListView" HorizontalAlignment="Left" Height="165" Margin="335,348,0,0" VerticalAlignment="Top" Width="246">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="140" Header="Id" DisplayMemberBinding="{Binding FirstName}"/>
+                    <GridViewColumn Width="140" Header="Progress">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <ProgressBar Height="10" Width="50" Maximum="0" Minimum="-1" Value="{Binding PinCode}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn> 
+                </GridView>
+            </ListView.View>
+        </ListView>
 
 
     </Grid>

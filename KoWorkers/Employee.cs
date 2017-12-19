@@ -13,6 +13,7 @@ namespace KoWorkers
         public string LastName { get; set; }
         public int PinCode { get; set; }
         public int TelephoneNo { get; set; }
+        public int OpenShift { get; set; }
 
         public DateTime EmploymentEndDate { get; set; }
         private int openShift = -1;
@@ -55,11 +56,11 @@ namespace KoWorkers
         }
         public void SetOpenShift (int shiftId)
         {
-            openShift = shiftId;
+            OpenShift = shiftId;
         }
         public int GetOpenShift()
         {
-            return openShift;
+            return OpenShift;
         }
 
         public DateTime GetEndDateTime()

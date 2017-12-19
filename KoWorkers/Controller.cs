@@ -136,6 +136,21 @@ namespace KoWorkers
                 return list;
             }
         }
+        public List<Employee> MakeEmployeeListProgressBar()
+        {
+            {
+                List<Employee> list = new List<Employee>();
+                {
+                    foreach (Employee employee in employeeRepo.employees)
+                    {
+                        
+                            list.Add(employee);
+                        
+                    }
+                }
+                return list;
+            }
+        }
         public List<string> EmployeeListToCheckInToGui()
         {
             {
@@ -170,5 +185,22 @@ namespace KoWorkers
             }
             return message;
         }
+        public string[,] toGui()
+        {
+            
+            string[,] arraytoGui = new string[MakeEmployeeListProgressBar().Count, 2];
+            for(int i =0; i < MakeEmployeeListProgressBar().Count; i++) 
+            {
+                arraytoGui[i, 0] = MakeEmployeeListProgressBar()[i].GetName();
+                arraytoGui[i, 1] = MakeEmployeeListProgressBar()[i].GetOpenShift().ToString();
+                //for (int j = 0; j < MakeEmployeeListProgressBar().Count; j++)
+                //{
+
+                //    arraytoGui[i, 1] = MakeEmployeeListProgressBar()[i].GetOpenShift().ToString();
+
+                //}
+            }
+            return arraytoGui;
+                }
     }
 }

@@ -34,6 +34,23 @@ namespace KoWorkerGui
             {
                 EmployeesCheckOutListBox.Items.Add(employee);
             }
+            EmployeeRepository ep = new EmployeeRepository();
+            foreach (Employee employee in C.MakeEmployeeListProgressBar())
+            {
+               CheckedInOut_ListView.Items.Add(new Employee(employee.FirstName, employee.LastName, employee.PinCode, employee.TelephoneNo) { FirstName = employee.FirstName, PinCode = employee.GetOpenShift() });
+            }
+           
+
+            for(int i = 0; i < C.toGui().Length; i++)
+            {
+                Console.WriteLine(C.toGui()[i, 0]);
+            }
+            foreach ( string employee in C.toGui())
+            {
+                Console.WriteLine(employee);
+                //CheckedInOut_ListView.Items.Add(employee{ FirstName = employee.FirstName, PinCode = employee.GetOpenShift()  })
+            }
+
         }
         private void Back_Button_Click(object sender, RoutedEventArgs e)
         {
