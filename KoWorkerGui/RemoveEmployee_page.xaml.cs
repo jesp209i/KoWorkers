@@ -26,12 +26,8 @@ namespace KoWorkerGui
         {
             InitializeComponent();
             C = new Controller();
-           
-
-            foreach (string employee in C.EmployeeListToGui())
-            {
-                RemoveEmployees_ListBox.Items.Add(employee);
-            }
+            RemoveEmployees_ListBox.Items.Clear();
+            RemoveEmployees_ListBox.ItemsSource = C.GetAllEmployees();
         }
         private void RemoveEmployee_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -42,7 +38,6 @@ namespace KoWorkerGui
         private void Back_Button_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("CoWorker_page.xaml", UriKind.Relative));
-            RemoveEmployees_ListBox.Items.Clear();
         }
 
         private void RemoveEmployees_ListBox_SelectionChanced(object sender, SelectionChangedEventArgs e)

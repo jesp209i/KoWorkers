@@ -27,7 +27,7 @@ namespace KoWorkerGui
         {
             InitializeComponent();
             C = new Controller();
-            CheckedInOut_ListView.ItemsSource = C.MakeEmployeeListProgressBar();
+            CheckedInOut_ListView.ItemsSource = C.GetAllEmployees();
 
         }
         private void Back_Button_Click(object sender, RoutedEventArgs e)
