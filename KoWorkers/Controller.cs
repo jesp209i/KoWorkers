@@ -113,6 +113,16 @@ namespace KoWorkers
         }
         public int CalculateWorkHours(int employeeId, DateTime endDate)
         {
+            /*
+             Til Lars!
+             Det er denne metode du skal gå ud fra.
+             Den returnerer det samlede antal minutter der er arbejdet en måned tilbage fra skæringsdato d. 27 hver måned.
+             Metoden er fleksibel, så du skal bare give den et "tilfældigt" valid DateTime, så finder den selv ud af hvilken måned.
+
+            Jesper Madsen har Pinkode 9998 og har været flittig på arbejde 7 dage hver måned siden september :)
+             
+             */
+
             int thisMonth = endDate.Month;
             int thisDay = endDate.Day;
             int thisYear = endDate.Year;
