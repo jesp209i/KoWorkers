@@ -45,12 +45,14 @@ namespace KoWorkerGui
         }
         private void ShowInfo_Button_Click(object sender, RoutedEventArgs e)
         {
+            DateTime dateTime = new DateTime(2017, 10, 10); 
             int idx = CheckedInOut_ListView.SelectedIndex;          
             ShowInformation_Window showInformation_Window = new ShowInformation_Window();
             showInformation_Window.FirstName_Label.Content = C.ShowSelectedEmployeeFirstName(idx);
             showInformation_Window.LastName_Label.Content = C.ShowSelectedEmployeeLastName(idx);
             showInformation_Window.TelephoneNo_Label.Content = C.ShowSelectedEmployeeTelephoneNO(idx);
             //showInformation_Window.LastShift_Label.Content = C.ShowSelectedEmployeeCurrentShift(idx);
+            showInformation_Window.TotalHours_Label.Content = C.ShowSelectedEmployeeCalculatedHours(idx);
             App.Current.MainWindow = showInformation_Window;
             showInformation_Window.Show();
         }
