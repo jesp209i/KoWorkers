@@ -16,7 +16,7 @@
         <Label x:Name="Phone_label" Content="Telefonnummer" HorizontalAlignment="Left" Height="34" Margin="0,77,0,0" VerticalAlignment="Top" Width="117"/>
         <Label x:Name="Phone_label_Copy" Content="Efternavn" HorizontalAlignment="Left" Height="34" Margin="0,43,0,0" VerticalAlignment="Top" Width="117"/>
         <Label x:Name="FName_Label" Content="Fornavn" HorizontalAlignment="Left" Height="34" Margin="0,10,0,0" VerticalAlignment="Top" Width="117"/>
-        <ComboBox HorizontalAlignment="Left" Height="20" Margin="10,199,0,0" VerticalAlignment="Top" Width="106"/>
+        <ComboBox x:Name="MonthComboBox" HorizontalAlignment="Left" Height="20" Margin="77,199,0,0" VerticalAlignment="Top" Width="106" SelectionChanged="MonthComboBox_SelectionChanged"/>
         <Label x:Name="LastshiftText_Label" Content="Seneste Vagt" HorizontalAlignment="Left" Height="34" Margin="235,10,0,0" VerticalAlignment="Top" Width="117"/>
         <Label x:Name="StarttimeText_Label" Content="Starttid" HorizontalAlignment="Left" Height="34" Margin="235,38,0,0" VerticalAlignment="Top" Width="117"/>
         <Label x:Name="EndTimeText_label" Content="Sluttid" HorizontalAlignment="Left" Height="34" Margin="235,72,0,0" VerticalAlignment="Top" Width="117"/>
@@ -24,6 +24,7 @@
         <Label x:Name="StartTime_label" Content="Seneste Vagt" HorizontalAlignment="Left" Height="34" Margin="677,271,-352,0" VerticalAlignment="Top" Width="117"/>
         <Label x:Name="Starttime_label" Content="Starttid" HorizontalAlignment="Left" Height="34" Margin="315,38,0,0" VerticalAlignment="Top" Width="117"/>
         <Label x:Name="Endtime_labe" Content="Sluttid" HorizontalAlignment="Left" Height="34" Margin="315,72,0,0" VerticalAlignment="Top" Width="117"/>
+        <ComboBox x:Name="YearComboBox" HorizontalAlignment="Left" Height="20" Margin="4,199,0,0" VerticalAlignment="Top" Width="68" SelectionChanged="YearComboBox_SelectionChanged"/>
 
     </Grid>
 </Window>

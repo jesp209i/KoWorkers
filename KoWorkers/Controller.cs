@@ -72,12 +72,17 @@ namespace KoWorkers
             return telephoneNO;
         }
 
-        public int ShowSelectedEmployeeCalculatedHours(int idx)
+        public int ShowSelectedEmployeeCalculatedHours(int idx,int month,int year)
         {
             int totalHours = 0;
             List<Employee> list = GetAllEmployees();
             int empID = list[idx].EmployeeId;
-            totalHours = CalculateWorkHours(empID, DateTime.Now)/60;
+            if (month == -1 && year == -1)
+            { month = 10;
+                year = 2017;
+            }
+            DateTime dt = new DateTime(year, month, 10);
+            totalHours = CalculateWorkHours(empID, dt)/60;
             return totalHours;
         }
 
