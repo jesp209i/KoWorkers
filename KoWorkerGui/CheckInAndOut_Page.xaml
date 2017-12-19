@@ -21,7 +21,7 @@
                     <GridViewColumn Width="140" Header="Tjek Ind Status">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <ProgressBar Height="10" Width="50" Maximum="0" Minimum="-1" Value="{Binding OpenShift}"/>
+                                <ProgressBar Height="10" Width="140" Maximum="0" Minimum="-1" Value="{Binding OpenShift}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

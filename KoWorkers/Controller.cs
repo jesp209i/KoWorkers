@@ -13,7 +13,6 @@ namespace KoWorkers
         public Controller()
         {
             employeeRepo = new EmployeeRepository();
-           
         }
 
         public string AddEmployee(string firstName, string lastName, int pinCode, int telephoneNo)
@@ -51,8 +50,6 @@ namespace KoWorkers
                 }
                 employee.SetOpenShift(shiftID);
             }
-            
-
             return employee;
         }
 
@@ -67,23 +64,10 @@ namespace KoWorkers
             }
             RemoveEmployee(list[idx]);  
         }
-
-        public List<string> EmployeeListToGui()
-        {
-            List<string> list = new List<string>();
-            {
-                foreach (Employee employee in employeeRepo.employees)
-                {
-                    list.Add(employee.EmployeeId + ". " + employee.GetName() + " Tlf: " + employee.GetTelephoneNO() );
-                    
-                }
-            }
-            return list;
-        }
         public string ShowSelectedEmployeeTelephoneNO(int idx)
         {
             string telephoneNO = "";
-            List<Employee> list = MakeEmployeeListProgressBar();
+            List<Employee> list = GetAllEmployees();
             telephoneNO = list[idx].TelephoneNo.ToString();
             return telephoneNO;
         }
@@ -91,7 +75,7 @@ namespace KoWorkers
         public string ShowSelectedEmployeeLastName(int idx)
         {
             string lastName = "";
-            List<Employee> list = MakeEmployeeListProgressBar();
+            List<Employee> list = GetAllEmployees();
             lastName = list[idx].LastName;
             return lastName;
         }
@@ -99,12 +83,12 @@ namespace KoWorkers
         public string ShowSelectedEmployeeFirstName(int idx)
         {
             string firstName = "";
-           List<Employee> list = MakeEmployeeListProgressBar();
+           List<Employee> list = GetAllEmployees();
             firstName = list[idx].FirstName;
             return firstName;
         }
 
-        public List<Employee> MakeEmployeeListProgressBar()
+        public List<Employee> GetAllEmployees()
         {
                 return employeeRepo.employees;
         }

@@ -15,10 +15,7 @@ namespace KoWorkers
         public int TelephoneNo { get; set; }
         public int OpenShift { get; set; }
         public string FullName { get; set; }
-
         public DateTime EmploymentEndDate { get; set; }
-        private int openShift = -1;
-
         public Employee(string newFirstName, string newLastName,int newPinCode, int newTelephoneNo)
         {
             TelephoneNo = newTelephoneNo;
@@ -43,17 +40,6 @@ namespace KoWorkers
         {
             return FirstName + " " + LastName;
         }
-        public void SetName(string setFirstName, string setLastName)
-        {
-            FirstName = setFirstName;
-            LastName = setLastName;
-
-        }
-        public void SetPinCode(int setPinCode)
-        {
-            PinCode = setPinCode;
-        }
-
         public int GetTelephoneNO()
         {
             return TelephoneNo;
@@ -75,6 +61,16 @@ namespace KoWorkers
         public void SetDateTime(DateTime dateTime)
         {
             EmploymentEndDate = dateTime;
+        }
+        public void SetName(string setFirstName, string setLastName)
+        {
+            FirstName = setFirstName;
+            LastName = setLastName;
+
+        }
+        public void SetPinCode(int setPinCode)
+        {
+            PinCode = setPinCode;
         }
     }
 }
