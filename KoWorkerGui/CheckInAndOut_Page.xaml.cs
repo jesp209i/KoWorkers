@@ -50,7 +50,7 @@ namespace KoWorkerGui
             showInformation_Window.FirstName_Label.Content = C.ShowSelectedEmployeeFirstName(idx);
             showInformation_Window.LastName_Label.Content = C.ShowSelectedEmployeeLastName(idx);
             showInformation_Window.TelephoneNo_Label.Content = C.ShowSelectedEmployeeTelephoneNO(idx);
-            showInformation_Window.LastShift_Label.Content = C.ShowSelectedEmployeeCurrentShift(idx);
+            //showInformation_Window.LastShift_Label.Content = C.ShowSelectedEmployeeCurrentShift(idx);
             App.Current.MainWindow = showInformation_Window;
             showInformation_Window.Show();
         }

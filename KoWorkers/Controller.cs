@@ -111,6 +111,28 @@ namespace KoWorkers
             }
             return message;
         }
+        public int CalculateWorkHours(int employeeId, DateTime endDate)
+        {
+            int thisMonth = endDate.Month;
+            int thisDay = endDate.Day;
+            int thisYear = endDate.Year;
+            // cutday 27. each month
+            int cutday = 27;
+            if (thisDay > cutday)
+            {
+                thisMonth += 1;
+                if (thisMonth > 12)
+                {
+                    thisMonth -= 12;
+                    thisYear += 1;
+                }
+            }
+            thisDay = cutday;
+            DateTime newEndDate = DateTime.Parse(thisDay + "-" + thisMonth + "-" + thisYear + " 23:59:59");
+
+            int numberOfMinutes = TimesheetLogic.GetInstance().CalculateWorkHours(employeeId, newEndDate);
+            return numberOfMinutes;
+        }
 
     }
 }

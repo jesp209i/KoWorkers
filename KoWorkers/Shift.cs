@@ -8,8 +8,8 @@ namespace KoWorkers
 {
     public class Shift
     {
+        public int ShiftID { get; set; }
         public int EmployeeID { get; set; }
-        public DateTime ShiftDate { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         private int _totalNumberOfMinutes;
@@ -31,10 +31,16 @@ namespace KoWorkers
                     return _totalNumberOfMinutes;
             } }
 
-        public Shift (int newEmployeeID, DateTime newShiftDate, DateTime newStartTime, DateTime newEndTime)
+        public Shift (int newEmployeeID, DateTime newStartTime, DateTime newEndTime)
         {
             EmployeeID = newEmployeeID;
-            ShiftDate = newShiftDate;
+            StartTime = newStartTime;
+            EndTime = newEndTime;
+        }
+        public Shift(int newshiftID, int newEmployeeID, DateTime newStartTime, DateTime newEndTime)
+        {
+            ShiftID = newshiftID;
+            EmployeeID = newEmployeeID;
             StartTime = newStartTime;
             EndTime = newEndTime;
         }

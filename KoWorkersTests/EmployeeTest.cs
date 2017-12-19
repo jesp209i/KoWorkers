@@ -74,12 +74,12 @@ namespace KoWorkersTests
         //    personRepo.employees.Add(newPerson);
         //    Assert.AreEqual("Lars Rasmussen", personRepo.ListAllEmployees());
         //}
-        [TestMethod]
-        public void ShouldShowDateHMS()
-        {
-            ShiftRepository shiftRepository = new ShiftRepository();
-            Assert.AreEqual(DateTime.Now, shiftRepository.GetTime());
-        }
+        //[TestMethod]
+        //public void ShouldShowDateHMS()
+        //{
+
+        //    Assert.AreEqual(DateTime.Now, ShiftRepository.GetInstance().GetTime());
+        //}
 
     }
 }

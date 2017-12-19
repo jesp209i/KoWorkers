@@ -160,7 +160,7 @@ namespace KoWorkers
         public Employee GetEmployeeByPin(int pin)
         {
             Employee employee = null;
-            
+
             for (int i = 0; i < employees.Count(); i++)
             {
                 if (employees[i].PinCode == pin)
@@ -170,12 +170,6 @@ namespace KoWorkers
             }
             return employee;
         }
-        /*
-        TODO:
-
-        Stored Procedures der mangler implementereing:
-        SpEmployeeById
-         */
     }
 }
 
