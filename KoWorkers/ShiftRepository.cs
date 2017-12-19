@@ -23,6 +23,19 @@ namespace KoWorkers
             return instance;
         }
 
+        public List<Shift> GetShifts(int employeeId,DateTime endDate)
+        {
+            List<Shift> employeeShiftsForPeriod = new List<Shift>();
+            foreach (Shift shift in shifts)
+            {
+                if(shift.EmployeeID == employeeId && shift.ShiftDate <= endDate)
+                {
+                    employeeShiftsForPeriod.Add(shift);
+                }
+            }
+            return employeeShiftsForPeriod;
+        }
+
         public DateTime GetShiftDate()
         {
             DateTime time = DateTime.Now;
