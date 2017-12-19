@@ -80,27 +80,10 @@ namespace KoWorkers
             }
             return list;
         }
-        public List<string> EmployeeListToCheckOutToGui()
-        {
-            {
-                List<string> list = new List<string>();
-                {
-                    foreach (Employee employee in employeeRepo.employees)
-                    {
-                        if (employee.GetOpenShift() == -1)
-                        {
-                            list.Add(employee.GetName() + " id: " + employee.EmployeeId + ". Shift: " + employee.GetOpenShift() + " PIN: " + employee.PinCode);
-                        }
-                    }
-                }
-                return list;
-            }
-        }
-
         public string ShowSelectedEmployeeTelephoneNO(int idx)
         {
             string telephoneNO = "";
-            List<Employee> list = MakeEmployeeListToGui();
+            List<Employee> list = MakeEmployeeListProgressBar();
             telephoneNO = list[idx].TelephoneNo.ToString();
             return telephoneNO;
         }
@@ -108,7 +91,7 @@ namespace KoWorkers
         public string ShowSelectedEmployeeLastName(int idx)
         {
             string lastName = "";
-            List<Employee> list = MakeEmployeeListToGui();
+            List<Employee> list = MakeEmployeeListProgressBar();
             lastName = list[idx].LastName;
             return lastName;
         }
@@ -116,43 +99,16 @@ namespace KoWorkers
         public string ShowSelectedEmployeeFirstName(int idx)
         {
             string firstName = "";
-           List<Employee> list = MakeEmployeeListToGui();
+           List<Employee> list = MakeEmployeeListProgressBar();
             firstName = list[idx].FirstName;
             return firstName;
         }
 
-        public List<Employee> MakeEmployeeListToGui()
+        public List<Employee> MakeEmployeeListProgressBar()
         {
-            {
-                List<Employee> list = new List<Employee>();
-                {
-                    foreach (Employee employee in employeeRepo.employees)
-                    {
-                        if (employee.GetOpenShift() != -1)
-                        {
-                            list.Add(employee);
-                        }
-                    }
-                }
-                return list;
-            }
+                return employeeRepo.employees;
         }
-        public List<string> EmployeeListToCheckInToGui()
-        {
-            {
-                List<string> list = new List<string>();
-                {
-                    foreach (Employee employee in employeeRepo.employees)
-                    {
-                        if (employee.GetOpenShift() != -1)
-                        {
-                            list.Add(employee.GetName() + " id: " + employee.EmployeeId + ". Shift: " + employee.GetOpenShift() + " PIN: " + employee.PinCode);
-                        }
-                    }
-                }
-                return list;
-            }
-        }
+   
         public string ShowCheckInOutMessageInGui(int pin)
         {
             string message = "";
@@ -171,5 +127,6 @@ namespace KoWorkers
             }
             return message;
         }
+
     }
 }
