@@ -5,12 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KoWorkerGui"
         mc:Ignorable="d"
-        Title="KoWorker" Height="300" Width="300">
+        Title="KoWorker" Height="450" Width="450">
     <Grid>
-        <TextBox x:Name="FirstName_Button" HorizontalAlignment="Left" Height="34" Margin="32,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152"/>
-        <TextBox x:Name="LastName_Button" HorizontalAlignment="Left" Height="34" Margin="32,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152"/>
-        <TextBox x:Name="TelephoneNo_Button" HorizontalAlignment="Left" Height="34" Margin="32,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152"/>
         <Button x:Name="Back_Button" Content="Tilbage" HorizontalAlignment="Left" Height="25" Margin="199,235,0,0" VerticalAlignment="Top" Width="65" Click="Back_Button_Click"/>
+        <Label x:Name="FirstName_Label" Content="Label" HorizontalAlignment="Left" Height="34" Margin="134,10,0,0" VerticalAlignment="Top" Width="183"/>
+        <Label x:Name="LastName_Label" Content="Label" HorizontalAlignment="Left" Height="34" Margin="134,43,0,0" VerticalAlignment="Top" Width="183"/>
+        <Label x:Name="TelephoneNo_Label" Content="Label" HorizontalAlignment="Left" Height="34" Margin="134,77,0,0" VerticalAlignment="Top" Width="183"/>
+        <Label x:Name="Hours_label" Content="Timer denne måned" HorizontalAlignment="Left" Height="34" Margin="0,165,0,0" VerticalAlignment="Top" Width="117"/>
+        <Label x:Name="TotalHours_Label" Content="Label" HorizontalAlignment="Left" Height="34" Margin="122,165,0,0" VerticalAlignment="Top" Width="71"/>
+        <Label x:Name="Phone_label" Content="Telefonnummer" HorizontalAlignment="Left" Height="34" Margin="0,77,0,0" VerticalAlignment="Top" Width="117"/>
+        <Label x:Name="Phone_label_Copy" Content="Efternavn" HorizontalAlignment="Left" Height="34" Margin="0,43,0,0" VerticalAlignment="Top" Width="117"/>
+        <Label x:Name="FName_Label" Content="Fornavn" HorizontalAlignment="Left" Height="34" Margin="0,10,0,0" VerticalAlignment="Top" Width="117"/>
+        <ComboBox HorizontalAlignment="Left" Height="20" Margin="10,199,0,0" VerticalAlignment="Top" Width="106"/>
+        <Label x:Name="LastshiftText_Label" Content="Seneste Vagt" HorizontalAlignment="Left" Height="34" Margin="235,10,0,0" VerticalAlignment="Top" Width="117"/>
+        <Label x:Name="StarttimeText_Label" Content="Starttid" HorizontalAlignment="Left" Height="34" Margin="235,38,0,0" VerticalAlignment="Top" Width="117"/>
+        <Label x:Name="EndTimeText_label" Content="Sluttid" HorizontalAlignment="Left" Height="34" Margin="235,72,0,0" VerticalAlignment="Top" Width="117"/>
+        <Label x:Name="LastShift_Label" Content="Seneste Vagt" HorizontalAlignment="Left" Height="34" Margin="315,10,0,0" VerticalAlignment="Top" Width="117"/>
+        <Label x:Name="StartTime_label" Content="Seneste Vagt" HorizontalAlignment="Left" Height="34" Margin="677,271,-352,0" VerticalAlignment="Top" Width="117"/>
 
     </Grid>
 </Window>

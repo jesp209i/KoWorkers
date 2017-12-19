@@ -47,9 +47,9 @@ namespace KoWorkerGui
         {
             int idx = CheckedInOut_ListView.SelectedIndex;          
             ShowInformation_Window showInformation_Window = new ShowInformation_Window();
-            showInformation_Window.FirstName_Button.Text = C.ShowSelectedEmployeeFirstName(idx);
-            showInformation_Window.LastName_Button.Text = C.ShowSelectedEmployeeLastName(idx);
-            showInformation_Window.TelephoneNo_Button.Text = C.ShowSelectedEmployeeTelephoneNO(idx);
+            showInformation_Window.FirstName_Label.Content = C.ShowSelectedEmployeeFirstName(idx);
+            showInformation_Window.LastName_Label.Content = C.ShowSelectedEmployeeLastName(idx);
+            showInformation_Window.TelephoneNo_Label.Content = C.ShowSelectedEmployeeTelephoneNO(idx);
             App.Current.MainWindow = showInformation_Window;
             showInformation_Window.Show();
         }
