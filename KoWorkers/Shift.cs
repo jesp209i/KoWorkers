@@ -20,7 +20,8 @@ namespace KoWorkers
                 if (EndTime != null && EndTime > StartTime)
                 {
                     TimeSpan shiftTimespan = EndTime.Subtract(StartTime);
-                    _totalNumberOfMinutes = shiftTimespan.Minutes;
+
+                    _totalNumberOfMinutes = (shiftTimespan.Hours*60) + shiftTimespan.Minutes;
                     if (_totalNumberOfMinutes % 30 < 0.5){
                         _totalNumberOfMinutes -= _totalNumberOfMinutes % 30;
                     } else {
