@@ -22,11 +22,11 @@ namespace KoWorkers
                     TimeSpan shiftTimespan = EndTime.Subtract(StartTime);
 
                     _totalNumberOfMinutes = (shiftTimespan.Hours*60) + shiftTimespan.Minutes;
-                    if (_totalNumberOfMinutes % 30 < 0.5){
-                        _totalNumberOfMinutes -= _totalNumberOfMinutes % 30;
-                    } else {
-                        _totalNumberOfMinutes += 30-(_totalNumberOfMinutes % 30);
-                    }
+                    //if (_totalNumberOfMinutes % 30 < 0.5){
+                    //    _totalNumberOfMinutes -= _totalNumberOfMinutes % 30;
+                    //} else {
+                    //    _totalNumberOfMinutes += 30-(_totalNumberOfMinutes % 30);
+                    //}
 
                 }
                     return _totalNumberOfMinutes;
