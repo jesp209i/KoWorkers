@@ -119,7 +119,7 @@ namespace KoWorkers
              Den returnerer det samlede antal minutter der er arbejdet en måned tilbage fra skæringsdato d. 27 hver måned.
              Metoden er fleksibel, så du skal bare give den et "tilfældigt" valid DateTime, så finder den selv ud af hvilken måned.
 
-            Jesper Madsen har Pinkode 9998 og har været flittig på arbejde 7 dage hver måned siden september :)
+            EmployeeId 45 , Jesper Madsen har Pinkode 9998 og har været flittig på arbejde 7 dage hver måned siden september :)
              
              */
 
