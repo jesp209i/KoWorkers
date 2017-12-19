@@ -40,15 +40,15 @@ namespace KoWorkers
             int shiftID = -1;
             if (employee != null)
             {
-                if (employee.GetOpenShift() == -1)
+                if (employee.OpenShift == -1)
                 {
                     shiftID = sr.AddShift(employee.EmployeeId);
                 }
                 else
                 { 
-                    sr.EndShift(employee.GetOpenShift());
+                    sr.EndShift(employee.OpenShift);
                 }
-                employee.SetOpenShift(shiftID);
+                employee.OpenShift = shiftID;
             }
             return employee;
         }
@@ -97,13 +97,13 @@ namespace KoWorkers
         {
             string message = "";
             Employee employee = CheckInByPin(pin);
-            if (employee.GetOpenShift() == -1)
+            if (employee.OpenShift == -1)
             {
-                message = employee.GetName() + " blev tjekket ud.";
+                message = employee.FullName + " blev tjekket ud.";
             }
-            if (employee.GetOpenShift() > -1)
+            if (employee.OpenShift > -1)
             {
-                message = employee.GetName() + " er tjekket ind.";
+                message = employee.FullName + " er tjekket ind.";
             }
             if (employee == null)
             {

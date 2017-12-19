@@ -38,16 +38,6 @@ namespace KoWorkers
             }
             return employee;
         }
-        public string ListAllEmployees()
-        {
-            string person = "";
-                for (int i = 0; i < employees.Count; i++)
-                            {
-                person += employees[i].EmployeeId + ". " + employees[i].GetName() + " Tlf: " + employees[i].GetTelephoneNO() +"\n";
-                }
-                        return person;
-        }
-
         public void FetchAllCurrentEmployees()
         {
             employees.Clear(); // nulstiller listen inden den bliver hentet igen
@@ -94,7 +84,7 @@ namespace KoWorkers
                         while (reader.Read())
                         {
                             Employee editEmployeeOpenShiftStatus = GetEmployeeFromList(int.Parse(reader["EmployeeID"].ToString()));
-                            editEmployeeOpenShiftStatus.SetOpenShift(int.Parse(reader["OpenShift"].ToString()));
+                            editEmployeeOpenShiftStatus.OpenShift = int.Parse(reader["OpenShift"].ToString());
                         }
                     }
                 }
@@ -103,7 +93,7 @@ namespace KoWorkers
         }
         public string AddEmployee(Employee newEmployee)
         {
-            string message = newEmployee.GetName() + " er tilføjet";
+            string message = newEmployee.FullName + " er tilføjet";
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 try
@@ -142,7 +132,7 @@ namespace KoWorkers
                 catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl\n" + e.Message); }
             }
             FetchAllCurrentEmployees();
-            return removeEmployee.GetName();
+            return removeEmployee.FullName;
         }
         public string UpdateEmployee(Employee updateEmployee)
         {
@@ -164,7 +154,7 @@ namespace KoWorkers
                 catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl\n" + e.Message); }
             }
             FetchAllCurrentEmployees();
-            return updateEmployee.GetName();
+            return updateEmployee.FullName;
         }
 
         public Employee GetEmployeeByPin(int pin)
