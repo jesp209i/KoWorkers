@@ -72,6 +72,15 @@ namespace KoWorkers
             return telephoneNO;
         }
 
+        public int ShowSelectedEmployeeCalculatedHours(int idx)
+        {
+            int totalHours = 0;
+            List<Employee> list = GetAllEmployees();
+            int empID = list[idx].EmployeeId;
+            totalHours = CalculateWorkHours(empID, DateTime.Now);
+            return totalHours;
+        }
+
         public string ShowSelectedEmployeeLastName(int idx)
         {
             string lastName = "";
