@@ -87,7 +87,7 @@ namespace KoWorkerGui
             {
                 year = int.Parse(YearComboBox.SelectedItem.ToString());
             }
-            if (month == -1 )
+            if (month == 0)
             {
                 month = DateTime.Now.Month;         
             }

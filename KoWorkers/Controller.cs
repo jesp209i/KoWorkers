@@ -53,6 +53,14 @@ namespace KoWorkers
             return employee;
         }
 
+        public string ShowSelectedEmployeePinCode(int idx)
+        {
+            string pinCode = "";
+            List<Employee> list = GetAllEmployees();
+            pinCode = list[idx].PinCode.ToString();
+            return pinCode;
+        }
+
         public void RemoveEmployeeToGui(int idx)
         {
             List<Employee> list = new List<Employee>();
@@ -63,6 +71,17 @@ namespace KoWorkers
                 }
             }
             RemoveEmployee(list[idx]);  
+        }
+        public void UpdateEmployeeToGui(int idx)
+        {
+            List<Employee> list = new List<Employee>();
+            {
+                foreach (Employee employee in employeeRepo.employees)
+                {
+                    list.Add(employee);
+                }
+            }
+            UpdateEmployee(list[idx]);
         }
         public string ShowSelectedEmployeeTelephoneNO(int idx)
         {

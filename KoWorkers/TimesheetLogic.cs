@@ -24,8 +24,10 @@ namespace KoWorkers
             foreach (Shift shift in shiftsSelectedMonth)
             {
                 totalAmountOfMinutes += shift.TotalNumberOfMinutes;
+                
             }
             return totalAmountOfMinutes;
         }
+        
     }
 }

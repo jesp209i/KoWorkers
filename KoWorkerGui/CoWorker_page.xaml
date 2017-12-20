@@ -11,7 +11,7 @@
     <Grid>
         <Button x:Name="AddEmployee_Button" Content="Tilføj Medarbejder" HorizontalAlignment="Left" Height="43" Margin="69,26,0,0" VerticalAlignment="Top" Width="131" Click="AddEmployee_Click"/>
         <Button x:Name="RemoveEmployee_Button" Content="Fjern Medarbejder" HorizontalAlignment="Left" Height="43" Margin="69,69,0,0" VerticalAlignment="Top" Width="131" Click="RemoveEmployee_Button_Click"/>
-        <Button x:Name="UpdateEmployee" Content="Opdater Medarbejder" HorizontalAlignment="Left" Height="43" Margin="69,112,0,0" VerticalAlignment="Top" Width="131"/>
+        <Button x:Name="UpdateEmployee" Content="Opdater Medarbejder" HorizontalAlignment="Left" Height="43" Margin="69,112,0,0" VerticalAlignment="Top" Width="131" Click="UpdateEmployee_Click"/>
         <Button x:Name="Back_Button" Content="Tilbage" HorizontalAlignment="Left" Margin="195,238,0,0" VerticalAlignment="Top" Width="75" Click="Back_Button_Click"/>
 
     </Grid>

@@ -42,10 +42,11 @@ namespace KoWorkerGui
         private void RemoveEmployee_Button_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("RemoveEmployee_page.xaml", UriKind.Relative));
-            
-           
+        }
 
-
+        private void UpdateEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("UpdateEmployee_page.xaml", UriKind.Relative));
         }
     }
 }

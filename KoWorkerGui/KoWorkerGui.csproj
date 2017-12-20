@@ -89,6 +89,12 @@
     <Compile Include="ShowInformation_Window.xaml.cs">
       <DependentUpon>ShowInformation_Window.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UpdateEmployee_Page.xaml.cs">
+      <DependentUpon>UpdateEmployee_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateEmployee_Window.xaml.cs">
+      <DependentUpon>UpdateEmployee_Window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Welcome_page.xaml.cs">
       <DependentUpon>Welcome_page.xaml</DependentUpon>
     </Compile>
@@ -124,6 +130,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ShowInformation_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdateEmployee_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdateEmployee_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
