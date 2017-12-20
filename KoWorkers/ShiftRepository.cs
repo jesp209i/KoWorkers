@@ -93,6 +93,7 @@ namespace KoWorkers
                 }
                 catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl\n" + e.Message); }
             }
+            FetchAllShifts();
         }   
         
         public int AddShift(int employeeID)
@@ -118,7 +119,9 @@ namespace KoWorkers
                     }
                 }
                 catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl\n" + e.Message); }
-            } return shift;
+            } 
+            FetchAllShifts();
+            return shift;
         }
     }
 }
