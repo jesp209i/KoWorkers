@@ -21,7 +21,10 @@ namespace KoWorkers
                 {
                     TimeSpan shiftTimespan = EndTime.Subtract(StartTime);
 
-                    _totalNumberOfMinutes = (shiftTimespan.Hours*60) + shiftTimespan.Minutes;
+                    _totalNumberOfMinutes = (int)shiftTimespan.TotalMinutes;
+                    
+                    // beregning af halve timer skal forbedres
+                    //
                     //if (_totalNumberOfMinutes % 30 < 0.5){
                     //    _totalNumberOfMinutes -= _totalNumberOfMinutes % 30;
                     //} else {

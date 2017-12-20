@@ -21,19 +21,19 @@ namespace KoWorkerGui
     /// </summary>
     public partial class UpdateEmployee_Page : Page
     {
-        Controller C;
+        Controller controller;
         public UpdateEmployee_Page()
-        { C = new Controller();
-
+        {
+            controller = Controller.GetInstance();
             InitializeComponent();
             UpdateEmployees_ListBox.Items.Clear();
-            UpdateEmployees_ListBox.ItemsSource = C.GetAllEmployees();
+            UpdateEmployees_ListBox.ItemsSource = controller.GetAllEmployees();
         }
         private void UpdateEmployee_Button_Click(object sender, RoutedEventArgs e)
         {
             int idx = UpdateEmployees_ListBox.SelectedIndex;           
             UpdateEmployee_Window updateEmployee_Window = new UpdateEmployee_Window();
-           updateEmployee_Window.ShowSelectedEmployee(idx);
+            updateEmployee_Window.ShowSelectedEmployee(idx);
             App.Current.MainWindow = updateEmployee_Window;
             updateEmployee_Window.Show();
          

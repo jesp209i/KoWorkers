@@ -12,10 +12,14 @@ namespace KoWorkers
     {
         private static string connectionString =
     "server = EALSQL1.eal.local; database = DB2017_C02; user Id=USER_C02; Password=SesamLukOp_02;";
-        public List<Employee> employees = new List<Employee>();
+        private List<Employee> employees = new List<Employee>();
         public EmployeeRepository()
         {
             FetchAllCurrentEmployees(); // Henter Employees fra DB og laver en liste
+        }
+        public List<Employee> GetEmployees()
+        {
+            return employees;
         }
         public int Count() // for testing
         {

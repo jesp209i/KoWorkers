@@ -8,49 +8,36 @@ namespace KoWorkers
 {
     public class Controller
     {
-        public EmployeeRepository employeeRepo;
-      
-        public Controller()
+        private EmployeeRepository employeeRepo;
+        private static Controller instance = null;
+        private Controller()
         {
             employeeRepo = new EmployeeRepository();
-            
         }
-        public string NewFirstName = "Bo";
-        public string LastName = "";
-        public int TelephoneNo = 0;
-        public int PinCode = 0;
-
+        public static Controller GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new Controller();
+            }
+            return instance;
+        }
         public string AddEmployee(string firstName, string lastName, int pinCode, int telephoneNo)
         {
             Employee newEmployee = new Employee(firstName, lastName, pinCode, telephoneNo);
             return employeeRepo.AddEmployee(newEmployee);
         }
-        public Employee GetEmployee(int employeeId)
-        {
-            return employeeRepo.GetEmployeeFromList(employeeId);
-        }
         public string RemoveEmployee(Employee removeEmployee)
         {
             return employeeRepo.RemoveEmployee(removeEmployee);
         }
-        public void SetNewFirstName(string name)
-        {
-            string NewFirstName = name;
-        }
-
-            public string UpdateEmployee (Employee updateEmployee)
-        {
-             
+        public string UpdateEmployee (Employee updateEmployee)
+        {    
             return employeeRepo.UpdateEmployee(updateEmployee);
         }
-
-       
-           
-            
-        
-
-        public Employee CheckInByPin(int pin)
+        public string CheckInOrOutByPin(int pin)
         {
+            string message = "";
             Employee employee = employeeRepo.GetEmployeeByPin(pin);
             ShiftRepository sr = ShiftRepository.GetInstance();
             int shiftID = -1;
@@ -59,19 +46,23 @@ namespace KoWorkers
                 if (employee.OpenShift == -1)
                 {
                     shiftID = sr.AddShift(employee.EmployeeId);
+                    message = employee.FullName + " blev tjekket ud.";
                 }
                 else
                 { 
                     sr.EndShift(employee.OpenShift);
+                    message = employee.FullName + " er tjekket ind.";
                 }
                 employee.OpenShift = shiftID;
+            } else
+            {
+                message = "PIN-koden er forkert";
             }
-            return employee;
+            return message;
         }
-
         public void UpdateEmployeeToGuiFirstName(int idx, string firstName, string lastName, int telephoneNo, int pinCode)
         {
-            List<Employee> list = employeeRepo.employees;
+            List<Employee> list = GetAllEmployees();
             list[idx].FirstName = firstName;
             list[idx].LastName = lastName;
             list[idx].TelephoneNo = telephoneNo;
@@ -87,30 +78,10 @@ namespace KoWorkers
             pinCode = list[idx].PinCode.ToString();
             return pinCode;
         }
-
         public void RemoveEmployeeToGui(int idx)
         {
-            List<Employee> list = new List<Employee>();
-            {
-                foreach (Employee employee in employeeRepo.employees)
-                { 
-                        list.Add(employee);       
-                }
-            }
+            List<Employee> list = GetAllEmployees();
             RemoveEmployee(list[idx]);  
-        }
-        public void UpdateEmployeeToGuiFirstName(int idx,string name)
-        {
-            List<Employee> list = new List<Employee>();
-            {
-                foreach (Employee employee in employeeRepo.employees)
-                {
-                    list.Add(employee);
-                }
-            }
-            list[idx].FirstName = name;
-            UpdateEmployee(list[idx]);
-            GetAllEmployees();
         }
         public string ShowSelectedEmployeeTelephoneNO(int idx)
         {
@@ -122,6 +93,9 @@ namespace KoWorkers
 
         public int ShowSelectedEmployeeCalculatedHours(int idx,int month,int year)
         {
+            //
+            // hvad blev der af halve timer?
+            //
             int totalHours = 0;
             List<Employee> list = GetAllEmployees();
             int empID = list[idx].EmployeeId;
@@ -152,26 +126,7 @@ namespace KoWorkers
 
         public List<Employee> GetAllEmployees()
         {
-                return employeeRepo.employees;
-        }
-   
-        public string ShowCheckInOutMessageInGui(int pin)
-        {
-            string message = "";
-            Employee employee = CheckInByPin(pin);
-            if (employee.OpenShift == -1)
-            {
-                message = employee.FullName + " blev tjekket ud.";
-            }
-            if (employee.OpenShift > -1)
-            {
-                message = employee.FullName + " er tjekket ind.";
-            }
-            if (employee == null)
-            {
-                message = "PIN-koden er forkert";
-            }
-            return message;
+                return employeeRepo.GetEmployees();
         }
         public int CalculateWorkHours(int employeeId, DateTime endDate)
         {

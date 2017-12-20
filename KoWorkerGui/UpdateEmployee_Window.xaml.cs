@@ -21,10 +21,10 @@ namespace KoWorkerGui
     /// </summary>
     public partial class UpdateEmployee_Window : Window
     {
-        Controller C;
+        Controller control;
         public UpdateEmployee_Window()
         {
-            C = new Controller();
+            control = Controller.GetInstance();
             InitializeComponent();
             
             
@@ -43,10 +43,10 @@ namespace KoWorkerGui
         public void ShowSelectedEmployee(int idx)
         {
 
-            FirstName_TextBox.Text = C.ShowSelectedEmployeeFirstName(idx);
-            LastName_TextBox.Text = C.ShowSelectedEmployeeLastName(idx);  
-            TelephoneNo_TextBox.Text = C.ShowSelectedEmployeeTelephoneNO(idx);
-            PinCode_TextBox.Text = C.ShowSelectedEmployeePinCode(idx);
+            FirstName_TextBox.Text = control.ShowSelectedEmployeeFirstName(idx);
+            LastName_TextBox.Text = control.ShowSelectedEmployeeLastName(idx);  
+            TelephoneNo_TextBox.Text = control.ShowSelectedEmployeeTelephoneNO(idx);
+            PinCode_TextBox.Text = control.ShowSelectedEmployeePinCode(idx);
             Idx = idx;
         }
 
@@ -56,7 +56,7 @@ namespace KoWorkerGui
             string lastName = LastName_TextBox.Text;
             int telephoneNo = int.Parse(TelephoneNo_TextBox.Text);
             int pinCode = int.Parse(PinCode_TextBox.Text);
-            C.UpdateEmployeeToGuiFirstName(Idx, firstName,lastName,telephoneNo,pinCode);
+            control.UpdateEmployeeToGuiFirstName(Idx, firstName,lastName,telephoneNo,pinCode);
 
         }
         

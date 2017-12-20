@@ -20,11 +20,11 @@ namespace KoWorkerGui
     /// </summary>
     public partial class AddEmployee_Window : Window
     {
-        Controller C;     
+        Controller control;     
         public AddEmployee_Window()
         {
             InitializeComponent();
-            C = new Controller();    
+            control = Controller.GetInstance();
         }
 
         private void TelephoneNo_TextBox_Copy1_TextChanged(object sender, TextChangedEventArgs e)
@@ -45,7 +45,7 @@ namespace KoWorkerGui
             string lastName = LastName_TextBox.Text;
             int pinCode = int.Parse(PinCode_TextBox.Text);
             int TelephoneNo = int.Parse(TelephoneNo_TextBox.Text);
-            C.AddEmployee(firstName, lastName, pinCode, TelephoneNo);
+            control.AddEmployee(firstName, lastName, pinCode, TelephoneNo);
         }
     }
 }
