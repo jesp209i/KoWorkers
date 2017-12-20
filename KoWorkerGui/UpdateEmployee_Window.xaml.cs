@@ -29,6 +29,7 @@ namespace KoWorkerGui
             
             
         }
+        int Idx { get; set; }
 
         private void FirstName_TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -46,16 +47,27 @@ namespace KoWorkerGui
             LastName_TextBox.Text = C.ShowSelectedEmployeeLastName(idx);  
             TelephoneNo_TextBox.Text = C.ShowSelectedEmployeeTelephoneNO(idx);
             PinCode_TextBox.Text = C.ShowSelectedEmployeePinCode(idx);
+            Idx = idx;
         }
 
         private void UpdateEmployee_Button_Click(object sender, RoutedEventArgs e)
         {
+            string firstName = FirstName_TextBox.Text;
+            string lastName = LastName_TextBox.Text;
+            int telephoneNo = int.Parse(TelephoneNo_TextBox.Text);
+            int pinCode = int.Parse(PinCode_TextBox.Text);
+            C.UpdateEmployeeToGuiFirstName(Idx, firstName,lastName,telephoneNo,pinCode);
 
         }
+        
 
         private void Back_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            
+            this.Close();
+            
+       
+           
         }
     }
 }

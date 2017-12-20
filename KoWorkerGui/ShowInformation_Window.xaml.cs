@@ -50,15 +50,6 @@ namespace KoWorkerGui
         {
             showCalculatedHours();   
         }
-        public void SetIndexNumber(int idx)
-        {
-            Idx = idx;
-        }
-
-        public int GetIdx()
-        {
-            return Idx;
-        }
         public void ShowSelectedEmployee(int idx)
         {
             int month = MonthComboBox.SelectedIndex;

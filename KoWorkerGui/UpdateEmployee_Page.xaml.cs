@@ -31,19 +31,31 @@ namespace KoWorkerGui
         }
         private void UpdateEmployee_Button_Click(object sender, RoutedEventArgs e)
         {
-            int idx = UpdateEmployees_ListBox.SelectedIndex;
-            C.UpdateEmployeeToGui(idx);
+            int idx = UpdateEmployees_ListBox.SelectedIndex;           
             UpdateEmployee_Window updateEmployee_Window = new UpdateEmployee_Window();
            updateEmployee_Window.ShowSelectedEmployee(idx);
             App.Current.MainWindow = updateEmployee_Window;
             updateEmployee_Window.Show();
+         
         }
 
         private void Back_Button_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("CoWorker_page.xaml", UriKind.Relative));
         }
-       
+
+        private void UpdateEmployees_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateEmployees_ListBox.Items.Refresh();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+         
+        }
+    
+            
+      
     }
 
 }

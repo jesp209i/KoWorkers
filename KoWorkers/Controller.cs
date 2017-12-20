@@ -13,7 +13,12 @@ namespace KoWorkers
         public Controller()
         {
             employeeRepo = new EmployeeRepository();
+            
         }
+        public string NewFirstName = "Bo";
+        public string LastName = "";
+        public int TelephoneNo = 0;
+        public int PinCode = 0;
 
         public string AddEmployee(string firstName, string lastName, int pinCode, int telephoneNo)
         {
@@ -28,10 +33,21 @@ namespace KoWorkers
         {
             return employeeRepo.RemoveEmployee(removeEmployee);
         }
-        public string UpdateEmployee (Employee updateEmployee)
+        public void SetNewFirstName(string name)
         {
+            string NewFirstName = name;
+        }
+
+            public string UpdateEmployee (Employee updateEmployee)
+        {
+             
             return employeeRepo.UpdateEmployee(updateEmployee);
         }
+
+       
+           
+            
+        
 
         public Employee CheckInByPin(int pin)
         {
@@ -53,6 +69,23 @@ namespace KoWorkers
             return employee;
         }
 
+        public void UpdateEmployeeToGuiFirstName(int idx, string firstName, string lastName, int telephoneNo, int pinCode)
+        {
+            List<Employee> list = new List<Employee>();
+            {
+                foreach (Employee employee in employeeRepo.employees)
+                {
+                    list.Add(employee);
+                }
+            }
+            list[idx].FirstName = firstName;
+            list[idx].LastName = lastName;
+            list[idx].TelephoneNo = telephoneNo;
+            list[idx].PinCode = pinCode;
+            UpdateEmployee(list[idx]);
+        }
+
+
         public string ShowSelectedEmployeePinCode(int idx)
         {
             string pinCode = "";
@@ -72,7 +105,7 @@ namespace KoWorkers
             }
             RemoveEmployee(list[idx]);  
         }
-        public void UpdateEmployeeToGui(int idx)
+        public void UpdateEmployeeToGuiFirstName(int idx,string name)
         {
             List<Employee> list = new List<Employee>();
             {
@@ -81,7 +114,9 @@ namespace KoWorkers
                     list.Add(employee);
                 }
             }
+            list[idx].FirstName = name;
             UpdateEmployee(list[idx]);
+            GetAllEmployees();
         }
         public string ShowSelectedEmployeeTelephoneNO(int idx)
         {
