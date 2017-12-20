@@ -147,6 +147,8 @@ namespace KoWorkers
                     updatesEmployee.CommandType = CommandType.StoredProcedure;
                     updatesEmployee.Parameters.Add(new SqlParameter("@LastName", updateEmployee.LastName));
                     updatesEmployee.Parameters.Add(new SqlParameter("@FirstName", updateEmployee.FirstName));
+                    updatesEmployee.Parameters.Add(new SqlParameter("@TelephoneNo", updateEmployee.TelephoneNo));
+                    updatesEmployee.Parameters.Add(new SqlParameter("@Pin", updateEmployee.PinCode));
                     updatesEmployee.Parameters.Add(new SqlParameter("@EmployeeId", updateEmployee.EmployeeId));
 
                     updatesEmployee.ExecuteNonQuery();

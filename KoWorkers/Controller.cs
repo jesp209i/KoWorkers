@@ -71,13 +71,7 @@ namespace KoWorkers
 
         public void UpdateEmployeeToGuiFirstName(int idx, string firstName, string lastName, int telephoneNo, int pinCode)
         {
-            List<Employee> list = new List<Employee>();
-            {
-                foreach (Employee employee in employeeRepo.employees)
-                {
-                    list.Add(employee);
-                }
-            }
+            List<Employee> list = employeeRepo.employees;
             list[idx].FirstName = firstName;
             list[idx].LastName = lastName;
             list[idx].TelephoneNo = telephoneNo;
@@ -181,16 +175,6 @@ namespace KoWorkers
         }
         public int CalculateWorkHours(int employeeId, DateTime endDate)
         {
-            /*
-             Til Lars!
-             Det er denne metode du skal gå ud fra.
-             Den returnerer det samlede antal minutter der er arbejdet en måned tilbage fra skæringsdato d. 27 hver måned.
-             Metoden er fleksibel, så du skal bare give den et "tilfældigt" valid DateTime, så finder den selv ud af hvilken måned.
-
-            EmployeeId 45 , Jesper Madsen har Pinkode 9998 og har været flittig på arbejde 7 dage hver måned siden september :)
-             
-             */
-
             int thisMonth = endDate.Month;
             int thisDay = endDate.Day;
             int thisYear = endDate.Year;
