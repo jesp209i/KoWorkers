@@ -22,12 +22,12 @@ namespace KoWorkerGui
     /// </summary>
     public partial class CheckInAndOut_Page : Page
     {
-        Controller C;
+        Controller control;
         public CheckInAndOut_Page()
         {
             InitializeComponent();
-            C = new Controller();
-            CheckedInOut_ListView.ItemsSource = C.GetAllEmployees();
+            control = Controller.GetInstance();
+            CheckedInOut_ListView.ItemsSource = control.GetAllEmployees();
         }
         private void Back_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -38,7 +38,7 @@ namespace KoWorkerGui
         {
             string message = "";
             int pin = int.Parse(PinCode_PassBox.Password);
-            message = C.ShowCheckInOutMessageInGui(pin);       
+            message = control.CheckInOrOutByPin(pin);       
             MessageBox.Show(message, "KoWorkers");
             CheckedInOut_ListView.Items.Refresh();
         }

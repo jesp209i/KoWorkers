@@ -9,16 +9,14 @@ namespace KoWorkers
 {
     public class ShiftRepository
     {
-        private static ShiftRepository instance = null;
         private static string connectionString =
   "server = EALSQL1.eal.local; database = DB2017_C02; user Id=USER_C02; Password=SesamLukOp_02;";
-        public List<Shift> shifts = new List<Shift>();
+        private List<Shift> shifts = new List<Shift>();
 
-        private ShiftRepository() 
+        public ShiftRepository() 
         {
             FetchAllShifts();
         }
-
         private void FetchAllShifts()
         {
             shifts.Clear();
@@ -55,16 +53,6 @@ namespace KoWorkers
         {
             return DateTime.Now;
         }
-
-        public static ShiftRepository GetInstance()
-        {
-            if (instance == null)
-            {
-                instance = new ShiftRepository();
-            }
-            return instance;
-        }
-
         public List<Shift> GetShifts(int employeeId,DateTime endDate)
         {
             DateTime beginDate = endDate.AddMonths(-1);
@@ -95,9 +83,10 @@ namespace KoWorkers
                 }
                 catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl\n" + e.Message); }
             }
+            FetchAllShifts();
         }   
         
-        public int AddShift(int EmployeeID)
+        public int AddShift(int employeeID)
         {
             int shift = -1;
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -109,7 +98,7 @@ namespace KoWorkers
                     SqlCommand cmd1 = new SqlCommand("SpNewShift", con);
                     cmd1.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd1.Parameters.Add(new SqlParameter("@StartTime", GetNow()));
-                    cmd1.Parameters.Add(new SqlParameter("@EmployeeID", EmployeeID));
+                    cmd1.Parameters.Add(new SqlParameter("@EmployeeID", employeeID));
                     SqlDataReader reader = cmd1.ExecuteReader();
                     if (reader.HasRows)
                     {
@@ -120,7 +109,9 @@ namespace KoWorkers
                     }
                 }
                 catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl\n" + e.Message); }
-            } return shift;
+            } 
+            FetchAllShifts();
+            return shift;
         }
     }
 }

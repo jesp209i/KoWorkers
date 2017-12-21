@@ -8,76 +8,63 @@ namespace KoWorkers
 {
     public class Controller
     {
-        public EmployeeRepository employeeRepo;
-      
-        public Controller()
+        private EmployeeRepository employeeRepo;
+        private TimesheetLogic timesheetLogic;
+        private static Controller instance = null;
+        private Controller()
         {
             employeeRepo = new EmployeeRepository();
-            
+            timesheetLogic = new TimesheetLogic();
         }
-        public string NewFirstName = "Bo";
-        public string LastName = "";
-        public int TelephoneNo = 0;
-        public int PinCode = 0;
-
+        public static Controller GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new Controller();
+            }
+            return instance;
+        }
         public string AddEmployee(string firstName, string lastName, int pinCode, int telephoneNo)
         {
             Employee newEmployee = new Employee(firstName, lastName, pinCode, telephoneNo);
             return employeeRepo.AddEmployee(newEmployee);
         }
-        public Employee GetEmployee(int employeeId)
-        {
-            return employeeRepo.GetEmployeeFromList(employeeId);
-        }
         public string RemoveEmployee(Employee removeEmployee)
         {
             return employeeRepo.RemoveEmployee(removeEmployee);
         }
-        public void SetNewFirstName(string name)
-        {
-            string NewFirstName = name;
-        }
-
-            public string UpdateEmployee (Employee updateEmployee)
-        {
-             
+        public string UpdateEmployee (Employee updateEmployee)
+        {    
             return employeeRepo.UpdateEmployee(updateEmployee);
         }
-
-       
-           
-            
-        
-
-        public Employee CheckInByPin(int pin)
+        public string CheckInOrOutByPin(int pin)
         {
+            string message = "";
             Employee employee = employeeRepo.GetEmployeeByPin(pin);
-            ShiftRepository sr = ShiftRepository.GetInstance();
+            ShiftRepository sr = new ShiftRepository();
             int shiftID = -1;
             if (employee != null)
             {
                 if (employee.OpenShift == -1)
                 {
                     shiftID = sr.AddShift(employee.EmployeeId);
+                    message = employee.FullName + " blev tjekket ud.";
                 }
                 else
                 { 
                     sr.EndShift(employee.OpenShift);
+                    message = employee.FullName + " er tjekket ind.";
                 }
                 employee.OpenShift = shiftID;
+            } else
+            {
+                message = "PIN-koden er forkert";
             }
-            return employee;
+            return message;
         }
-
         public void UpdateEmployeeToGuiFirstName(int idx, string firstName, string lastName, int telephoneNo, int pinCode)
         {
-            List<Employee> list = new List<Employee>();
-            {
-                foreach (Employee employee in employeeRepo.employees)
-                {
-                    list.Add(employee);
-                }
-            }
+            List<Employee> list = GetAllEmployees();
             list[idx].FirstName = firstName;
             list[idx].LastName = lastName;
             list[idx].TelephoneNo = telephoneNo;
@@ -93,30 +80,10 @@ namespace KoWorkers
             pinCode = list[idx].PinCode.ToString();
             return pinCode;
         }
-
         public void RemoveEmployeeToGui(int idx)
         {
-            List<Employee> list = new List<Employee>();
-            {
-                foreach (Employee employee in employeeRepo.employees)
-                { 
-                        list.Add(employee);       
-                }
-            }
+            List<Employee> list = GetAllEmployees();
             RemoveEmployee(list[idx]);  
-        }
-        public void UpdateEmployeeToGuiFirstName(int idx,string name)
-        {
-            List<Employee> list = new List<Employee>();
-            {
-                foreach (Employee employee in employeeRepo.employees)
-                {
-                    list.Add(employee);
-                }
-            }
-            list[idx].FirstName = name;
-            UpdateEmployee(list[idx]);
-            GetAllEmployees();
         }
         public string ShowSelectedEmployeeTelephoneNO(int idx)
         {
@@ -128,6 +95,9 @@ namespace KoWorkers
 
         public int ShowSelectedEmployeeCalculatedHours(int idx,int month,int year)
         {
+            //
+            // hvad blev der af halve timer?
+            //
             int totalHours = 0;
             List<Employee> list = GetAllEmployees();
             int empID = list[idx].EmployeeId;
@@ -158,39 +128,10 @@ namespace KoWorkers
 
         public List<Employee> GetAllEmployees()
         {
-                return employeeRepo.employees;
-        }
-   
-        public string ShowCheckInOutMessageInGui(int pin)
-        {
-            string message = "";
-            Employee employee = CheckInByPin(pin);
-            if (employee.OpenShift == -1)
-            {
-                message = employee.FullName + " blev tjekket ud.";
-            }
-            if (employee.OpenShift > -1)
-            {
-                message = employee.FullName + " er tjekket ind.";
-            }
-            if (employee == null)
-            {
-                message = "PIN-koden er forkert";
-            }
-            return message;
+                return employeeRepo.GetEmployees();
         }
         public int CalculateWorkHours(int employeeId, DateTime endDate)
         {
-            /*
-             Til Lars!
-             Det er denne metode du skal gå ud fra.
-             Den returnerer det samlede antal minutter der er arbejdet en måned tilbage fra skæringsdato d. 27 hver måned.
-             Metoden er fleksibel, så du skal bare give den et "tilfældigt" valid DateTime, så finder den selv ud af hvilken måned.
-
-            EmployeeId 45 , Jesper Madsen har Pinkode 9998 og har været flittig på arbejde 7 dage hver måned siden september :)
-             
-             */
-
             int thisMonth = endDate.Month;
             int thisDay = endDate.Day;
             int thisYear = endDate.Year;
@@ -208,7 +149,7 @@ namespace KoWorkers
             thisDay = cutday;
             DateTime newEndDate = DateTime.Parse(thisDay + "-" + thisMonth + "-" + thisYear + " 23:59:59");
 
-            int numberOfMinutes = TimesheetLogic.GetInstance().CalculateWorkHours(employeeId, newEndDate);
+            int numberOfMinutes = timesheetLogic.CalculateWorkHours(employeeId, newEndDate);
             return numberOfMinutes;
         }
 

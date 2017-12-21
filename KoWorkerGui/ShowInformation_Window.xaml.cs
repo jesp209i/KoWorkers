@@ -20,12 +20,12 @@ namespace KoWorkerGui
     /// </summary>
     public partial class ShowInformation_Window : Window
     {
-        Controller C;
+        Controller control;
         public ShowInformation_Window()
         {
             CheckInAndOut_Page check = new CheckInAndOut_Page();
             InitializeComponent();
-            C = new Controller();
+            control = Controller.GetInstance();
             FillComboBoxes();
         }
         int Idx { get; set; }
@@ -60,11 +60,11 @@ namespace KoWorkerGui
                 year = DateTime.Now.Year;
             }
             DateTime dateTime = new DateTime(year, month,20);
-            FirstName_Label.Content = C.ShowSelectedEmployeeFirstName(idx);
-            LastName_Label.Content = C.ShowSelectedEmployeeLastName(idx);
-            TelephoneNo_Label.Content = C.ShowSelectedEmployeeTelephoneNO(idx);
+            FirstName_Label.Content = control.ShowSelectedEmployeeFirstName(idx);
+            LastName_Label.Content = control.ShowSelectedEmployeeLastName(idx);
+            TelephoneNo_Label.Content = control.ShowSelectedEmployeeTelephoneNO(idx);
             //LastShift_Label.Content = C.ShowSelectedEmployeeCurrentShift(idx);
-            TotalHours_Label.Content = C.ShowSelectedEmployeeCalculatedHours(idx, month, year);
+            TotalHours_Label.Content = control.ShowSelectedEmployeeCalculatedHours(idx, month, year);
             Idx = idx;
         }
 
@@ -84,7 +84,7 @@ namespace KoWorkerGui
             }
             DateTime dateTime = new DateTime(year, month, 20);
 
-            TotalHours_Label.Content = C.ShowSelectedEmployeeCalculatedHours(Idx, month, year);
+            TotalHours_Label.Content = control.ShowSelectedEmployeeCalculatedHours(Idx, month, year);
         }
         private void YearComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

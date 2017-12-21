@@ -21,18 +21,18 @@ namespace KoWorkerGui
     /// </summary>
     public partial class RemoveEmployee_page : Page
     {
-        Controller C;
+        Controller control;
         public RemoveEmployee_page()
         {
             InitializeComponent();
-            C = new Controller();
+            control = Controller.GetInstance();
             RemoveEmployees_ListBox.Items.Clear();
-            RemoveEmployees_ListBox.ItemsSource = C.GetAllEmployees();
+            RemoveEmployees_ListBox.ItemsSource = control.GetAllEmployees();
         }
         private void RemoveEmployee_Button_Click(object sender, RoutedEventArgs e)
         {
             int idx = RemoveEmployees_ListBox.SelectedIndex;
-            C.RemoveEmployeeToGui(idx);
+            control.RemoveEmployeeToGui(idx);
         }
 
         private void Back_Button_Click(object sender, RoutedEventArgs e)

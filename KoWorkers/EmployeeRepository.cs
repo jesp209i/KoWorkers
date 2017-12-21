@@ -12,10 +12,14 @@ namespace KoWorkers
     {
         private static string connectionString =
     "server = EALSQL1.eal.local; database = DB2017_C02; user Id=USER_C02; Password=SesamLukOp_02;";
-        public List<Employee> employees = new List<Employee>();
+        private List<Employee> employees = new List<Employee>();
         public EmployeeRepository()
         {
             FetchAllCurrentEmployees(); // Henter Employees fra DB og laver en liste
+        }
+        public List<Employee> GetEmployees()
+        {
+            return employees;
         }
         public int Count() // for testing
         {
@@ -147,6 +151,8 @@ namespace KoWorkers
                     updatesEmployee.CommandType = CommandType.StoredProcedure;
                     updatesEmployee.Parameters.Add(new SqlParameter("@LastName", updateEmployee.LastName));
                     updatesEmployee.Parameters.Add(new SqlParameter("@FirstName", updateEmployee.FirstName));
+                    updatesEmployee.Parameters.Add(new SqlParameter("@TelephoneNo", updateEmployee.TelephoneNo));
+                    updatesEmployee.Parameters.Add(new SqlParameter("@Pin", updateEmployee.PinCode));
                     updatesEmployee.Parameters.Add(new SqlParameter("@EmployeeId", updateEmployee.EmployeeId));
 
                     updatesEmployee.ExecuteNonQuery();

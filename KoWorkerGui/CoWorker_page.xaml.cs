@@ -20,11 +20,11 @@ namespace KoWorkerGui
     /// </summary>
     public partial class CoWorker_page : Page
     {
-        Controller c;
+        Controller control;
         public CoWorker_page()
         {
             InitializeComponent();
-            c = new Controller();
+            control = Controller.GetInstance();
         }
 
         private void AddEmployee_Click(object sender, RoutedEventArgs e)
