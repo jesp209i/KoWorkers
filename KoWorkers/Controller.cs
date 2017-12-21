@@ -71,12 +71,18 @@ namespace KoWorkers
 
         public void UpdateEmployeeToGuiFirstName(int idx, string firstName, string lastName, int telephoneNo, int pinCode)
         {
-            employeeRepo.employees[idx].FirstName = firstName;
-            employeeRepo.employees[idx].LastName = lastName;
-            employeeRepo.employees[idx].TelephoneNo = telephoneNo;
-            employeeRepo.employees[idx].PinCode = pinCode;
-            
-            UpdateEmployee(employeeRepo.employees[idx]);
+            List<Employee> list = new List<Employee>();
+            {
+                foreach (Employee employee in employeeRepo.employees)
+                {
+                    list.Add(employee);
+                }
+            }
+            list[idx].FirstName = firstName;
+            list[idx].LastName = lastName;
+            list[idx].TelephoneNo = telephoneNo;
+            list[idx].PinCode = pinCode;
+            UpdateEmployee(list[idx]);
         }
 
 
@@ -98,6 +104,19 @@ namespace KoWorkers
                 }
             }
             RemoveEmployee(list[idx]);  
+        }
+        public void UpdateEmployeeToGuiFirstName(int idx,string name)
+        {
+            List<Employee> list = new List<Employee>();
+            {
+                foreach (Employee employee in employeeRepo.employees)
+                {
+                    list.Add(employee);
+                }
+            }
+            list[idx].FirstName = name;
+            UpdateEmployee(list[idx]);
+            GetAllEmployees();
         }
         public string ShowSelectedEmployeeTelephoneNO(int idx)
         {
