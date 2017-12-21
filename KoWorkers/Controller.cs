@@ -149,7 +149,7 @@ namespace KoWorkers
             thisDay = cutday;
             DateTime newEndDate = DateTime.Parse(thisDay + "-" + thisMonth + "-" + thisYear + " 23:59:59");
 
-            int numberOfMinutes = TimesheetLogic.GetInstance().CalculateWorkHours(employeeId, newEndDate);
+            int numberOfMinutes = timesheetLogic.CalculateWorkHours(employeeId, newEndDate);
             return numberOfMinutes;
         }
 
