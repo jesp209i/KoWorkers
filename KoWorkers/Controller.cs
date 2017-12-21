@@ -48,12 +48,12 @@ namespace KoWorkers
                 if (employee.OpenShift == -1)
                 {
                     shiftID = sr.AddShift(employee.EmployeeId);
-                    message = employee.FullName + " blev tjekket ud.";
+                    message = employee.FullName + " blev tjekket ind.";
                 }
                 else
                 { 
                     sr.EndShift(employee.OpenShift);
-                    message = employee.FullName + " er tjekket ind.";
+                    message = employee.FullName + " er tjekket ud.";
                 }
                 employee.OpenShift = shiftID;
             } else
