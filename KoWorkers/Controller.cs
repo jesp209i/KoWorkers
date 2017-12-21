@@ -9,10 +9,12 @@ namespace KoWorkers
     public class Controller
     {
         private EmployeeRepository employeeRepo;
+        private TimesheetLogic timesheetLogic;
         private static Controller instance = null;
         private Controller()
         {
             employeeRepo = new EmployeeRepository();
+            timesheetLogic = new TimesheetLogic();
         }
         public static Controller GetInstance()
         {
@@ -39,7 +41,7 @@ namespace KoWorkers
         {
             string message = "";
             Employee employee = employeeRepo.GetEmployeeByPin(pin);
-            ShiftRepository sr = ShiftRepository.GetInstance();
+            ShiftRepository sr = new ShiftRepository();
             int shiftID = -1;
             if (employee != null)
             {
