@@ -12,8 +12,16 @@ namespace KoWorkers
         private static string connectionString =
   "server = EALSQL1.eal.local; database = DB2017_C02; user Id=USER_C02; Password=SesamLukOp_02;";
         private List<Shift> shifts = new List<Shift>();
-
-        public ShiftRepository() 
+        private static ShiftRepository instance = null;
+        public static ShiftRepository GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new ShiftRepository();
+            }
+            return instance;
+        }
+        private ShiftRepository() 
         {
             FetchAllShifts();
         }
@@ -41,7 +49,8 @@ namespace KoWorkers
                             if (!DateTime.TryParse(reader["EndTime"].ToString(), out endTime)){
                                 endTime = startTime.AddYears(100);
                             }
-                            Shift newShift = new Shift(shiftId, employeeId, startTime, endTime);
+                            Employee employeeToShift = EmployeeRepository.GetInstance().GetEmployeeById(employeeId);
+                            Shift newShift = new Shift(shiftId, employeeToShift, startTime, endTime);
                             shifts.Add(newShift);
                         }
                     }
@@ -59,7 +68,7 @@ namespace KoWorkers
             List<Shift> employeeShiftsForPeriod = new List<Shift>();
             foreach (Shift shift in shifts)
             {
-                if(shift.EmployeeID == employeeId && shift.StartTime <= endDate && shift.StartTime > beginDate)
+                if(shift.Employee.EmployeeId == employeeId && shift.StartTime <= endDate && shift.StartTime > beginDate)
                 {
                     employeeShiftsForPeriod.Add(shift);
                 }
@@ -86,9 +95,10 @@ namespace KoWorkers
             FetchAllShifts();
         }   
         
-        public int AddShift(int employeeID)
+        public int AddShift(Employee employee)
         {
             int shift = -1;
+            Shift newShift = new Shift(employee, GetNow());
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 try
@@ -97,8 +107,8 @@ namespace KoWorkers
 
                     SqlCommand cmd1 = new SqlCommand("SpNewShift", con);
                     cmd1.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd1.Parameters.Add(new SqlParameter("@StartTime", GetNow()));
-                    cmd1.Parameters.Add(new SqlParameter("@EmployeeID", employeeID));
+                    cmd1.Parameters.Add(new SqlParameter("@StartTime", newShift.StartTime));
+                    cmd1.Parameters.Add(new SqlParameter("@EmployeeID", newShift.Employee.EmployeeId));
                     SqlDataReader reader = cmd1.ExecuteReader();
                     if (reader.HasRows)
                     {
@@ -108,7 +118,9 @@ namespace KoWorkers
                         }
                     }
                 }
-                catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl\n" + e.Message); }
+                catch (SqlException e) {
+                    Console.WriteLine("Muuuuligvis en fejl\n" + e.Message);
+                }
             } 
             FetchAllShifts();
             return shift;

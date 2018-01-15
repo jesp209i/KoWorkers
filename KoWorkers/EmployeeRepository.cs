@@ -13,7 +13,16 @@ namespace KoWorkers
         private static string connectionString =
     "server = EALSQL1.eal.local; database = DB2017_C02; user Id=USER_C02; Password=SesamLukOp_02;";
         private List<Employee> employees = new List<Employee>();
-        public EmployeeRepository()
+        private static EmployeeRepository instance = null;
+        public static EmployeeRepository GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new EmployeeRepository();
+            }
+            return instance;
+        }
+        private EmployeeRepository()
         {
             FetchAllCurrentEmployees(); // Henter Employees fra DB og laver en liste
         }
@@ -128,7 +137,7 @@ namespace KoWorkers
 
                     SqlCommand removesEmployee = new SqlCommand("SpRemoveEmployee", con);
                     removesEmployee.CommandType = CommandType.StoredProcedure;
-                    removesEmployee.Parameters.Add(new SqlParameter("@EndDate", DateTime.Now));
+                    removesEmployee.Parameters.Add(new SqlParameter("@EndDate", DateTime.Now.AddDays(-1)));
                     removesEmployee.Parameters.Add(new SqlParameter("@EmployeeId", removeEmployee.EmployeeId));
 
                     removesEmployee.ExecuteNonQuery();
@@ -174,6 +183,17 @@ namespace KoWorkers
                     employee = employees[i];
                 }
             }
+            return employee;
+        }
+        public Employee GetEmployeeById(int idno)
+        {
+            Employee employee = null;
+            int i = 0;
+            do
+            {
+                employee = employees[i];
+                i++;
+            } while (employees[i].EmployeeId != idno);
             return employee;
         }
     }

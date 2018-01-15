@@ -13,7 +13,7 @@ namespace KoWorkers
         private static Controller instance = null;
         private Controller()
         {
-            employeeRepo = new EmployeeRepository();
+            employeeRepo = EmployeeRepository.GetInstance();
             timesheetLogic = new TimesheetLogic();
         }
         public static Controller GetInstance()
@@ -41,13 +41,13 @@ namespace KoWorkers
         {
             string message = "";
             Employee employee = employeeRepo.GetEmployeeByPin(pin);
-            ShiftRepository sr = new ShiftRepository();
+            ShiftRepository sr = ShiftRepository.GetInstance();
             int shiftID = -1;
             if (employee != null)
             {
                 if (employee.OpenShift == -1)
                 {
-                    shiftID = sr.AddShift(employee.EmployeeId);
+                    shiftID = sr.AddShift(employee);
                     message = employee.FullName + " blev tjekket ind.";
                 }
                 else

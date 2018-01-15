@@ -80,15 +80,13 @@ namespace KoWorkersTests
 
         //    Assert.AreEqual(DateTime.Now, ShiftRepository.GetInstance().GetTime());
         //}
-        [TestMethod]
-        public void ShowTotalMinutesInShift()
-        {
-            DateTime first = DateTime.Parse("19-12-2017 06:00:00");
-            DateTime second = DateTime.Parse("19-12-2017 13:33:00");
-            Shift testShift = new Shift(45, first, second);
-            TimeSpan ts = second.Subtract(first);
-            //Assert.AreEqual(ts, "hest");
-            Assert.AreEqual(480, testShift.TotalNumberOfMinutes);
-        }
+    //    [TestMethod]
+    //    public void ShowTotalMinutesInShift()
+    //    {
+    //        DateTime first = DateTime.Parse("19-12-2017 06:00:00");
+    //        DateTime second = DateTime.Parse("19-12-2017 13:33:00");
+    //        Shift testShift = new Shift(45, first, second);
+    //        Assert.AreEqual(480, testShift.TotalNumberOfMinutes);
+    //    }
     }
 }

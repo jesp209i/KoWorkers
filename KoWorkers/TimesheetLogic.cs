@@ -11,7 +11,7 @@ namespace KoWorkers
         public int CalculateWorkHours(int employeeId, DateTime endDate)
         {
             int totalAmountOfMinutes = 0;
-            ShiftRepository sr = new ShiftRepository();
+            ShiftRepository sr = ShiftRepository.GetInstance();
             List <Shift> shiftsSelectedMonth = sr.GetShifts(employeeId, endDate);
             foreach (Shift shift in shiftsSelectedMonth)
             {
