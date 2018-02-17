@@ -37,7 +37,7 @@ namespace KoWorkers
         {    
             return employeeRepo.UpdateEmployee(updateEmployee);
         }
-        public string CheckInOrOutByPin(int pin)
+        public string UpdateCheckInStatus(int pin)
         {
             string message = "";
             Employee employee = employeeRepo.GetEmployeeByPin(pin);

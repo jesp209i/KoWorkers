@@ -78,6 +78,8 @@ namespace KoWorkers
 
         public void EndShift(int shiftID)
         {
+            Shift endShift = GetShiftById(shiftID);
+            endShift.EndTime = GetNow();
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 try
@@ -86,15 +88,27 @@ namespace KoWorkers
 
                     SqlCommand cmd1 = new SqlCommand("SpEndShift", con);
                     cmd1.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd1.Parameters.Add(new SqlParameter("@ShiftID", shiftID));
-                    cmd1.Parameters.Add(new SqlParameter("@EndTime", GetNow()));
+                    cmd1.Parameters.Add(new SqlParameter("@ShiftID", endShift.ShiftID));
+                    cmd1.Parameters.Add(new SqlParameter("@EndTime", endShift.EndTime));
                     cmd1.ExecuteNonQuery();
                 }
                 catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl\n" + e.Message); }
             }
             FetchAllShifts();
-        }   
-        
+        }
+
+        private Shift GetShiftById(int shiftID)
+        {
+            Shift thisShift = null;
+            int i = 0;
+            do
+            {
+                thisShift = shifts[i];
+                i++;
+            } while (shifts[i].ShiftID != shiftID);
+            return thisShift;
+        }
+
         public int AddShift(Employee employee)
         {
             int shift = -1;
