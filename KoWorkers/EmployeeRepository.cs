@@ -175,15 +175,14 @@ namespace KoWorkers
         public Employee GetEmployeeByPin(int pin)
         {
             Employee employee = null;
-
-            for (int i = 0; i < employees.Count(); i++)
+            int i = 0;
+            do
             {
-                if (employees[i].PinCode == pin)
-                {
-                    employee = employees[i];
-                }
-            }
-            return employee;
+                employee = employees[i];
+                i++;
+            } while (employees[i].PinCode != pin);
+
+              return employee;
         }
         public Employee GetEmployeeById(int idno)
         {
