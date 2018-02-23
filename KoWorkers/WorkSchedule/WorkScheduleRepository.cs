@@ -26,5 +26,32 @@ namespace KoWorkers.WorkSchedule
         {
             return workSchedules;
         }
+        public WorkSchedule GetSchedule(int workYear, int workMonth)
+        {
+            WorkSchedule workSchedule = null;
+            int i = 0;
+            bool running = true;
+            do
+            {
+                if (i < workSchedules.Count)
+                {
+                    if (workSchedules[i].Year == workYear && workSchedules[i].Month == workMonth)
+                    {
+                        workSchedule = workSchedules[i];
+                        running = false;
+                    }
+                    i++;
+                } else
+                {
+                    running = false;
+                }
+
+            } while (running);
+            return workSchedule;
+        }
+        public void AddWorkSchedule(WorkSchedule newWorkSchedule)
+        {
+            workSchedules.Add(newWorkSchedule);
+        }
     }
 }

@@ -34,5 +34,22 @@ namespace KoWorkersTests
             testSchedule.AddShiftToSchedule(newShift);
             Assert.AreEqual(1, testSchedule.GetAllShifts().Count);
         }
+        [TestMethod]
+        public void CreateNewScheduleRepo()
+        {
+            WorkScheduleRepository wsp = WorkScheduleRepository.GetInstance();
+            WorkSchedule first = new WorkSchedule(2018, 3);
+            WorkSchedule second = new WorkSchedule(2018, 4);
+            WorkSchedule third = new WorkSchedule(2018, 5);
+            WorkSchedule fourth = new WorkSchedule(2018, 6);
+            wsp.AddWorkSchedule(first);
+            wsp.AddWorkSchedule(second);
+            wsp.AddWorkSchedule(third);
+            wsp.AddWorkSchedule(fourth);
+            Assert.AreEqual(4, wsp.GetWorkSchedules().Count);
+            Assert.AreEqual(5, wsp.GetSchedule(2018, 5).Month);
+            Assert.AreEqual(null, wsp.GetSchedule(2017, 1));
+
+        }
     }
 }
