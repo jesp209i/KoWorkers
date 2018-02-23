@@ -38,7 +38,7 @@ namespace KoWorkerGui
         {
             string message = "";
             int pin = int.Parse(PinCode_PassBox.Password);
-            message = control.CheckInOrOutByPin(pin);       
+            message = control.UpdateCheckInStatus(pin);       
             MessageBox.Show(message, "KoWorkers");
             CheckedInOut_ListView.Items.Refresh();
         }
