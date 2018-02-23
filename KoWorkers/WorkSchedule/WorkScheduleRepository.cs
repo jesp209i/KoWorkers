@@ -22,7 +22,7 @@ namespace KoWorkers.WorkSchedule
             }
             return instance;
         }
-        public List<WorkSchedule> GetWorkSchedules()
+        public List<WorkSchedule> GetAllWorkSchedules()
         {
             return workSchedules;
         }

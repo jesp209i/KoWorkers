@@ -30,6 +30,7 @@ namespace KoWorkersTests
             WorkScheduleShift newShift = new WorkScheduleShift(testEmployee, thisMoment, thisMoment.AddHours(2));
             WorkSchedule testSchedule = new WorkSchedule(2018, 3);
             Assert.AreEqual(2018, testSchedule.Year);
+            Assert.AreEqual(3, testSchedule.Month);
             Assert.AreEqual(0, testSchedule.GetAllShifts().Count);
             testSchedule.AddShiftToSchedule(newShift);
             Assert.AreEqual(1, testSchedule.GetAllShifts().Count);
@@ -46,7 +47,7 @@ namespace KoWorkersTests
             wsp.AddWorkSchedule(second);
             wsp.AddWorkSchedule(third);
             wsp.AddWorkSchedule(fourth);
-            Assert.AreEqual(4, wsp.GetWorkSchedules().Count);
+            Assert.AreEqual(4, wsp.GetAllWorkSchedules().Count);
             Assert.AreEqual(5, wsp.GetSchedule(2018, 5).Month);
             Assert.AreEqual(null, wsp.GetSchedule(2017, 1));
 
