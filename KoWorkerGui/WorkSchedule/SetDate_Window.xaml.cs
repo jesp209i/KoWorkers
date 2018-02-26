@@ -38,8 +38,16 @@ namespace KoWorkerGui.WorkSchedule
 
         private void Set_Button_Click(object sender, RoutedEventArgs e)
         {
+            int month = SetMonth_ComboBox.SelectedIndex;
+            int year = SetYear_ComboBox.SelectedIndex;
+
             main.NavigationService.Navigate(new Uri("WorkSchedule/AddWorkSchedule_page.xaml", UriKind.Relative));
             this.Close();
+        }
+
+        private void SetMonth_ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
