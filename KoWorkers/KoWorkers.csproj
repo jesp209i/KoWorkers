@@ -53,6 +53,7 @@
     <Compile Include="WorkSchedule\WorkSchedule.cs" />
     <Compile Include="WorkSchedule\WorkScheduleRepository.cs" />
     <Compile Include="WorkSchedule\WorkScheduleShift.cs" />
+    <Compile Include="WorkSchedule\WorkScheduleViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
