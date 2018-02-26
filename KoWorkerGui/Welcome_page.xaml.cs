@@ -37,5 +37,10 @@ namespace KoWorkerGui
         {
             this.NavigationService.Navigate(new Uri("CheckInAndOut_page.xaml", UriKind.Relative));
         }
+
+        private void WorkSchedule_Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("WorkSchedule_page.xaml", UriKind.Relative));
+        }
     }
 }

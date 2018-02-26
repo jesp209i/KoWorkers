@@ -77,6 +77,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddWorkSchedule_Page.xaml.cs">
+      <DependentUpon>AddWorkSchedule_Page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CheckInAndOut_Page.xaml.cs">
       <DependentUpon>CheckInAndOut_Page.xaml</DependentUpon>
     </Compile>
@@ -85,6 +88,9 @@
     </Compile>
     <Compile Include="RemoveEmployee_page.xaml.cs">
       <DependentUpon>RemoveEmployee_page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SetDate_Window.xaml.cs">
+      <DependentUpon>SetDate_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="ShowInformation_Window.xaml.cs">
       <DependentUpon>ShowInformation_Window.xaml</DependentUpon>
@@ -98,7 +104,14 @@
     <Compile Include="Welcome_page.xaml.cs">
       <DependentUpon>Welcome_page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WorkSchedule_Page.xaml.cs">
+      <DependentUpon>WorkSchedule_Page.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddEmployee_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddWorkSchedule_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -129,6 +142,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SetDate_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ShowInformation_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -142,6 +159,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Welcome_page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WorkSchedule_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
