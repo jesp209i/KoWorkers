@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using KoWorkers;
 namespace KoWorkerGui.WorkSchedule
 {
     /// <summary>
@@ -20,9 +20,11 @@ namespace KoWorkerGui.WorkSchedule
     public partial class SetDate_Window : Window
     {
         WorkSchedule_Page main;
+        Controller control; 
         public SetDate_Window(WorkSchedule_Page workSchedule_Page)
         {
             main = workSchedule_Page;
+            control = Controller.GetInstance();
             InitializeComponent();
             FillComboBoxes();
         }
@@ -41,6 +43,7 @@ namespace KoWorkerGui.WorkSchedule
             int month = SetMonth_ComboBox.SelectedIndex;
             int year = SetYear_ComboBox.SelectedIndex;
 
+            control.AddNewScheduleToGui(year, month);
             main.NavigationService.Navigate(new Uri("WorkSchedule/AddWorkSchedule_page.xaml", UriKind.Relative));
             this.Close();
         }

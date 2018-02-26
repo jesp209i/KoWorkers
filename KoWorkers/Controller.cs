@@ -153,5 +153,10 @@ namespace KoWorkers
             return numberOfMinutes;
         }
 
+        public void AddNewScheduleToGui(int year, int month)
+        {
+            WorkSchedule.WorkSchedule workSchedule = new WorkSchedule.WorkSchedule(year, month); 
+        }
+
     }
 }
