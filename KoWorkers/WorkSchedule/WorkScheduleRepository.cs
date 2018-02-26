@@ -57,30 +57,5 @@ namespace KoWorkers.WorkSchedule
         {
             workSchedules.Add(newWorkSchedule);
         }
-        public void AddWorkScheduleShift(WorkScheduleShift workScheduleShift)
-        {
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    con.Open();
-                    SqlCommand Addworkschedule = new SqlCommand("Sp_AddWorkScheduleShift", con);
-                    Addworkschedule.CommandType = CommandType.StoredProcedure;
-                    Addworkschedule.Parameters.Add(new SqlParameter("@EmployeeId", workScheduleShift.Employee.EmployeeId));
-                    Addworkschedule.Parameters.Add(new SqlParameter("@StartTime", workScheduleShift.StartTime));
-                    Addworkschedule.Parameters.Add(new SqlParameter("@EndTime", workScheduleShift.EndTime));
-                    SqlDataReader reader = Addworkschedule.ExecuteReader();
-                    if (reader.HasRows)
-                    {
-                        while(reader.Read())
-                        {
-                            workScheduleShift.ShiftID = int.Parse(reader["ShiftID"].ToString());
-                        }
-                    }
-                }
-                catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl\n" + e.Message); }
-            }
-            GetAllWorkSchedulesShifts();
-        }
     }
 }
