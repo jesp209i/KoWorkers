@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace KoWorkers.WorkSchedule
 {
     public class WorkScheduleRepository
     {
+        private static string connectionString =
+    "server = EALSQL1.eal.local; database = DB2017_C02; user Id=USER_C02; Password=SesamLukOp_02;";
         private static WorkScheduleRepository instance = null;
         private List<WorkSchedule> workSchedules;
         private WorkScheduleRepository()
@@ -52,6 +56,31 @@ namespace KoWorkers.WorkSchedule
         public void AddWorkSchedule(WorkSchedule newWorkSchedule)
         {
             workSchedules.Add(newWorkSchedule);
+        }
+        public void AddWorkScheduleShift(WorkScheduleShift workScheduleShift)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand Addworkschedule = new SqlCommand("Sp_AddWorkScheduleShift", con);
+                    Addworkschedule.CommandType = CommandType.StoredProcedure;
+                    Addworkschedule.Parameters.Add(new SqlParameter("@EmployeeId", workScheduleShift.Employee.EmployeeId));
+                    Addworkschedule.Parameters.Add(new SqlParameter("@StartTime", workScheduleShift.StartTime));
+                    Addworkschedule.Parameters.Add(new SqlParameter("@EndTime", workScheduleShift.EndTime));
+                    SqlDataReader reader = Addworkschedule.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while(reader.Read())
+                        {
+                            workScheduleShift.ShiftID = int.Parse(reader["ShiftID"].ToString());
+                        }
+                    }
+                }
+                catch (SqlException e) { Console.WriteLine("Muuuuligvis en fejl\n" + e.Message); }
+            }
+            GetAllWorkSchedulesShifts();
         }
     }
 }
