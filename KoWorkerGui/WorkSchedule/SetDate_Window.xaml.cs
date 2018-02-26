@@ -52,9 +52,6 @@ namespace KoWorkerGui.WorkSchedule
             this.Close();
         }
 
-        private void SetMonth_ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+     
     }
 }

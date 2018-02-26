@@ -11,7 +11,7 @@
             <ColumnDefinition Width="209*"/>
             <ColumnDefinition Width="13*"/>
         </Grid.ColumnDefinitions>
-        <ComboBox x:Name="SetMonth_ComboBox" HorizontalAlignment="Left" Height="22" Margin="15,19,0,-41" VerticalAlignment="Top" Width="89" SelectionChanged="SetMonth_ComboBox_SelectionChanged"/>
+        <ComboBox x:Name="SetMonth_ComboBox" HorizontalAlignment="Left" Height="22" Margin="15,19,0,-41" VerticalAlignment="Top" Width="89" />
         <ComboBox x:Name="SetYear_ComboBox" HorizontalAlignment="Left" Height="22" Margin="125,19,0,-41" VerticalAlignment="Top" Width="89"/>
         <Button x:Name="Set_Button" Content="Sæt" HorizontalAlignment="Left" Height="20" Margin="183,46,0,-66" VerticalAlignment="Top" Width="92" Click="Set_Button_Click"/>
 

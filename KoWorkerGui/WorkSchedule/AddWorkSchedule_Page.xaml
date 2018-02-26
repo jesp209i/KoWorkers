@@ -4,15 +4,22 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:KoWorkerGui"
+      
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="600"
       Title="AddWorkSchedule_Page">
 
     <Grid>
-        <Button x:Name="SetMonthAndYear_Button" Content="Vælg Tidsperiode" HorizontalAlignment="Left" VerticalAlignment="Top" Width="136" Margin="10,49,0,0" Click="SetMonthAndYear_Button_Click"/>
-        <DataGrid x:Name="AddWorkSchedule_datagrid" HorizontalAlignment="Left" Height="446" Margin="10,91,0,0" VerticalAlignment="Top" Width="580" AutoGenerateColumns="False">
+        <DataGrid  x:Name="AddWorkSchedule_datagrid" HorizontalAlignment="Left" Height="446" Margin="10,91,0,0" VerticalAlignment="Top" Width="580" AutoGenerateColumns="False">
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <EventSetter Event="MouseDoubleClick" Handler="Cell_DoubleClick"/>
+                </Style>
+            </DataGrid.CellStyle>
             <DataGrid.Columns>
-                <DataGridTextColumn Header=" Medarbejder" Binding="{Binding FullName}" />
+                <DataGridTextColumn  Header=" Medarbejder" Binding="{Binding FullName}" />
+                <DataGridTextColumn  Header=" Mandag" Binding="{Binding FullName, Mode=OneWay}" />
+                
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="Create_button" Content="Opret" HorizontalAlignment="Left" Height="29" Margin="402,542,0,0" VerticalAlignment="Top" Width="143"/>
