@@ -8,9 +8,13 @@ namespace KoWorkers.WorkSchedule
 {
     public class WorkScheduleShift : Shift
     {
-        public WorkScheduleShift(Employee employee, DateTime startTime, DateTime endTime) : base(employee, startTime)
+        public WorkScheduleShift(Employee employee, DateTime startTime, DateTime endTime)
+            : base(employee, startTime)
         {
             EndTime = endTime;
         }
+        public WorkScheduleShift(int shiftId,Employee employee, DateTime startTime, DateTime endTime)
+            : base(shiftId, employee, startTime, endTime)
+        { }
     }
 }
