@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using KoWorkers;
-namespace KoWorkerGui
+namespace KoWorkerGui.KoWorkerAdmin
 {
     /// <summary>
     /// Interaction logic for CoWorker_page.xaml
@@ -41,12 +41,12 @@ namespace KoWorkerGui
 
         private void RemoveEmployee_Button_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("RemoveEmployee_page.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(new Uri("KoWorkerAdmin/RemoveEmployee_page.xaml", UriKind.Relative));
         }
 
         private void UpdateEmployee_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("UpdateEmployee_page.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(new Uri("KoWorkerAdmin/UpdateEmployee_page.xaml", UriKind.Relative));
         }
     }
 }

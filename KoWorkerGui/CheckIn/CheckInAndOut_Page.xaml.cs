@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using KoWorkers;
 using System.Data;
 
-namespace KoWorkerGui
+namespace KoWorkerGui.CheckIn
 {
     /// <summary>
     /// Interaction logic for CheckInAndOut_Page.xaml

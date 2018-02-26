@@ -12,28 +12,25 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using KoWorkers;
 
-namespace KoWorkerGui
+namespace KoWorkerGui.WorkSchedule
 {
     /// <summary>
-    /// Interaction logic for AddWorkSchedule_Page.xaml
+    /// Interaction logic for WorkSchedule_Page.xaml
     /// </summary>
-    public partial class AddWorkSchedule_Page : Page
+    public partial class WorkSchedule_Page : Page
     {
-        Controller control;
-        public AddWorkSchedule_Page()
+        public WorkSchedule_Page()
         {
-            control = Controller.GetInstance();
             InitializeComponent();
-            AddWorkSchedule_datagrid.ItemsSource = control.GetAllEmployees();
         }
 
-        private void SetMonthAndYear_Button_Click(object sender, RoutedEventArgs e)
+        private void CreateWorkschedule_Button_Click(object sender, RoutedEventArgs e)
         {
-            SetDate_Window sdw = new SetDate_Window();
+            //this.NavigationService.Navigate(new Uri("AddWorkSchedule_page.xaml", UriKind.Relative));
+            SetDate_Window sdw = new SetDate_Window(this);
             App.Current.MainWindow = sdw;
-           sdw.Show();
+            sdw.Show();
         }
     }
 }

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using KoWorkers;
 
-namespace KoWorkerGui
+namespace KoWorkerGui.KoWorkerAdmin
 {
     /// <summary>
     /// Interaction logic for AddEmployee_Window.xaml
@@ -46,6 +46,7 @@ namespace KoWorkerGui
             int pinCode = int.Parse(PinCode_TextBox.Text);
             int TelephoneNo = int.Parse(TelephoneNo_TextBox.Text);
             control.AddEmployee(firstName, lastName, pinCode, TelephoneNo);
+            
         }
     }
 }
