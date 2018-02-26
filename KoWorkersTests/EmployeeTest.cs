@@ -7,12 +7,13 @@ namespace KoWorkersTests
     [TestClass]
     public class EmployeeTest
     {
-        //[TestMethod]
-        //public void ShouldCreateAnEmployee()
-        //{
-        //    Employee newPerson = new Employee("Lars", "Rasmussen");
-        //    Assert.AreEqual("Lars Rasmussen", newPerson.GetName());
-        //}
+        [TestMethod]
+        public void TestGetEmployeeId()
+        {
+            int id = 46;
+            Employee thorbjorn = EmployeeRepository.GetInstance().GetEmployeeById(id);
+            Assert.AreEqual("Thorbjørn Boss", thorbjorn.FullName);
+        }
         //[TestMethod]
         //public void ShouldRenameAnEmployee()
         //{
@@ -80,13 +81,13 @@ namespace KoWorkersTests
 
         //    Assert.AreEqual(DateTime.Now, ShiftRepository.GetInstance().GetTime());
         //}
-    //    [TestMethod]
-    //    public void ShowTotalMinutesInShift()
-    //    {
-    //        DateTime first = DateTime.Parse("19-12-2017 06:00:00");
-    //        DateTime second = DateTime.Parse("19-12-2017 13:33:00");
-    //        Shift testShift = new Shift(45, first, second);
-    //        Assert.AreEqual(480, testShift.TotalNumberOfMinutes);
-    //    }
+        //    [TestMethod]
+        //    public void ShowTotalMinutesInShift()
+        //    {
+        //        DateTime first = DateTime.Parse("19-12-2017 06:00:00");
+        //        DateTime second = DateTime.Parse("19-12-2017 13:33:00");
+        //        Shift testShift = new Shift(45, first, second);
+        //        Assert.AreEqual(480, testShift.TotalNumberOfMinutes);
+        //    }
     }
 }

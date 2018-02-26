@@ -187,12 +187,13 @@ namespace KoWorkers
         public Employee GetEmployeeById(int idno)
         {
             Employee employee = null;
-            int i = 0;
-            do
+            foreach (Employee current in employees)
             {
-                employee = employees[i];
-                i++;
-            } while (employees[i].EmployeeId != idno);
+                if (current.EmployeeId == idno)
+                {
+                    employee = current;
+                }
+            }
             return employee;
         }
     }
