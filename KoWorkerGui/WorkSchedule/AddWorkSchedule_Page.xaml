@@ -1,4 +1,4 @@
-﻿<Page x:Class="KoWorkerGui.AddWorkSchedule_Page"
+﻿<Page x:Class="KoWorkerGui.WorkSchedule.AddWorkSchedule_Page"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -10,7 +10,11 @@
 
     <Grid>
         <Button x:Name="SetMonthAndYear_Button" Content="Vælg Tidsperiode" HorizontalAlignment="Left" VerticalAlignment="Top" Width="136" Margin="10,49,0,0" Click="SetMonthAndYear_Button_Click"/>
-        <DataGrid x:Name="AddWorkSchedule_datagrid" HorizontalAlignment="Left" Height="446" Margin="10,91,0,0" VerticalAlignment="Top" Width="580"/>
+        <DataGrid x:Name="AddWorkSchedule_datagrid" HorizontalAlignment="Left" Height="446" Margin="10,91,0,0" VerticalAlignment="Top" Width="580" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header=" Medarbejder" Binding="{Binding FullName}" />
+            </DataGrid.Columns>
+        </DataGrid>
         <Button x:Name="Create_button" Content="Opret" HorizontalAlignment="Left" Height="29" Margin="402,542,0,0" VerticalAlignment="Top" Width="143"/>
         <Button x:Name="Back_Button" Content="Tilbage" HorizontalAlignment="Left" Height="29" Margin="242,542,0,0" VerticalAlignment="Top" Width="143"/>
 

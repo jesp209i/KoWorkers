@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using KoWorkers;
 
-namespace KoWorkerGui
+namespace KoWorkerGui.CheckIn
 {
     /// <summary>
     /// Interaction logic for ShowInformation_Window.xaml

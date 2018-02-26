@@ -23,24 +23,26 @@ namespace KoWorkerGui
         public Welcome_page()
         {
             InitializeComponent();
+           
         }
 
         private void Admin_Button_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("CoWorker_page.xaml", UriKind.Relative));
-            
+            this.NavigationService.Navigate(new Uri("KoWorkerAdmin/CoWorker_page.xaml", UriKind.Relative));
+           
+
 
 
         }
 
         private void TjekInd_Ud_Button_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("CheckInAndOut_page.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(new Uri("CheckIn/CheckInAndOut_page.xaml", UriKind.Relative));
         }
-
+        
         private void WorkSchedule_Button_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("WorkSchedule_page.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(new Uri("WorkSchedule/WorkSchedule_page.xaml", UriKind.Relative));
         }
     }
 }

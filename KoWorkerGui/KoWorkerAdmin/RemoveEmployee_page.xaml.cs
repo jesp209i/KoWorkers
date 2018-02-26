@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using KoWorkers;
 
-namespace KoWorkerGui
+namespace KoWorkerGui.KoWorkerAdmin
 {
     /// <summary>
     /// Interaction logic for RemoveEmployee_page.xaml
@@ -37,7 +37,7 @@ namespace KoWorkerGui
 
         private void Back_Button_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("CoWorker_page.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(new Uri("KoWorkerAdmin/CoWorker_page.xaml", UriKind.Relative));
         }
 
         private void RemoveEmployees_ListBox_SelectionChanced(object sender, SelectionChangedEventArgs e)

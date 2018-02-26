@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using KoWorkers;
 
-namespace KoWorkerGui
+namespace KoWorkerGui.KoWorkerAdmin
 {
     
     /// <summary>
