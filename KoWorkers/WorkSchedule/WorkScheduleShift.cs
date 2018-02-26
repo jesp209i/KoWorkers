@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace KoWorkers.WorkSchedule
+{
+    public class WorkScheduleShift : Shift
+    {
+        public WorkScheduleShift(Employee employee, DateTime startTime, DateTime endTime) : base(employee, startTime)
+        {
+            EndTime = endTime;
+        }
+    }
+}

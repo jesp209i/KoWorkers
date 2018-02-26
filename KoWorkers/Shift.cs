@@ -40,11 +40,9 @@ namespace KoWorkers
             Employee = newEmployee;
             StartTime = newStartTime;
         }
-        public Shift(int newshiftID, Employee newEmployee, DateTime newStartTime, DateTime newEndTime)
+        public Shift(int newshiftID, Employee newEmployee, DateTime newStartTime, DateTime newEndTime) : this (newEmployee, newStartTime)
         {
             ShiftID = newshiftID;
-            Employee = newEmployee;
-            StartTime = newStartTime;
             EndTime = newEndTime;
         }
     }
