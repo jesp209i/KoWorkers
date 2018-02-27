@@ -21,12 +21,20 @@ namespace KoWorkerGui.KoWorkerAdmin
     public partial class CoWorker_page : Page
     {
         Controller control;
-        public CoWorker_page()
+        private static CoWorker_page instance = null;
+        private CoWorker_page()
         {
             InitializeComponent();
             control = Controller.GetInstance();
         }
-
+        public static CoWorker_page GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new CoWorker_page();
+            }
+            return instance;
+        }
         private void AddEmployee_Click(object sender, RoutedEventArgs e)
         {
             AddEmployee_Window addEmployee = new AddEmployee_Window();

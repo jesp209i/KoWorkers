@@ -23,11 +23,20 @@ namespace KoWorkerGui.CheckIn
     public partial class CheckInAndOut_Page : Page
     {
         Controller control;
-        public CheckInAndOut_Page()
+        private static CheckInAndOut_Page instance = null;
+        private CheckInAndOut_Page()
         {
             InitializeComponent();
             control = Controller.GetInstance();
             CheckedInOut_ListView.ItemsSource = control.GetAllEmployees();
+        }
+        public static CheckInAndOut_Page GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new CheckInAndOut_Page();
+            }
+            return instance;
         }
         private void Back_Button_Click(object sender, RoutedEventArgs e)
         {

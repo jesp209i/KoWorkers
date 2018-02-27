@@ -25,8 +25,23 @@ namespace KoWorkerGui
         public MainWindow()
         {
             InitializeComponent();
-            mainFrame.Navigate(new Welcome_page());
+            mainFrame.Navigate(CheckIn.CheckInAndOut_Page.GetInstance());
         }
-
+        private void MnuCheckIn_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Navigate(CheckIn.CheckInAndOut_Page.GetInstance());
+        }
+        private void MnuWorkPlan_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Navigate(WorkSchedule.WorkSchedule_Page.GetInstance());
+        }
+        private void MnuExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+        private void MnuWorkerAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Navigate(KoWorkerAdmin.CoWorker_page.GetInstance());
+        }
     }
 }

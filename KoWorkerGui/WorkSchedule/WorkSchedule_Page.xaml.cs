@@ -20,9 +20,18 @@ namespace KoWorkerGui.WorkSchedule
     /// </summary>
     public partial class WorkSchedule_Page : Page
     {
-        public WorkSchedule_Page()
+        private static WorkSchedule_Page instance = null;
+        private WorkSchedule_Page()
         {
             InitializeComponent();
+        }
+        public static WorkSchedule_Page GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new WorkSchedule_Page();
+            }
+            return instance;
         }
 
         private void CreateWorkschedule_Button_Click(object sender, RoutedEventArgs e)

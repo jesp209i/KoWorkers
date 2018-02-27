@@ -7,6 +7,18 @@
         mc:Ignorable="d"
         Title="KoWorkers" Height="600" Width="600">
     <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Exit" Click="MnuExit_Click"/>
+            </MenuItem>
+            <MenuItem Header="Tjek ind og ud">
+                <MenuItem Header="Tjek ind og ud" Click="MnuCheckIn_Click"/>
+            </MenuItem>
+            <MenuItem Header="Administration">
+                <MenuItem Header="Medarbejderadministration" Click="MnuWorkerAdmin_Click"/>
+                <MenuItem Header="Arbejdsplaner" Click="MnuWorkPlan_Click"/>
+            </MenuItem>
+        </Menu>
         <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden"/>
     </DockPanel>
 </Window>

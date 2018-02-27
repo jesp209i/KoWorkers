@@ -23,7 +23,7 @@ namespace KoWorkerGui.CheckIn
         Controller control;
         public ShowInformation_Window()
         {
-            CheckInAndOut_Page check = new CheckInAndOut_Page();
+            CheckInAndOut_Page check = CheckInAndOut_Page.GetInstance();
             InitializeComponent();
             control = Controller.GetInstance();
             FillComboBoxes();
