@@ -12,6 +12,7 @@
         <DataGrid HorizontalAlignment="Left" Height="430" Margin="10,108,0,0" VerticalAlignment="Top" Width="580"/>
         <ComboBox x:Name="Workschedule_Combobox" HorizontalAlignment="Left" Height="23" Margin="22,44,0,0" VerticalAlignment="Top" Width="135"/>
         <Button x:Name="CreateWorkschedule_Button" Content="Opret Arbejdsplan" HorizontalAlignment="Left" Height="23" Margin="183,44,0,0" VerticalAlignment="Top" Width="247" Click="CreateWorkschedule_Button_Click"/>
+        <Button x:Name="Back_Button" Content="Tilbage" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="465,45,0,0" Click="Back_Button_Click"/>
 
     </Grid>
 </Page>
