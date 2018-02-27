@@ -8,9 +8,9 @@
         Title="KoWorker" Height="450" Width="450">
     <Grid>
         <Button x:Name="Back_Button" Content="Tilbage" HorizontalAlignment="Left" Height="25" Margin="199,235,0,0" VerticalAlignment="Top" Width="65" Click="Back_Button_Click"/>
-        <Label x:Name="FirstName_Label" Content="Label" HorizontalAlignment="Left" Height="34" Margin="134,10,0,0" VerticalAlignment="Top" Width="183"/>
-        <Label x:Name="LastName_Label" Content="Label" HorizontalAlignment="Left" Height="34" Margin="134,43,0,0" VerticalAlignment="Top" Width="183"/>
-        <Label x:Name="TelephoneNo_Label" Content="Label" HorizontalAlignment="Left" Height="34" Margin="134,77,0,0" VerticalAlignment="Top" Width="183"/>
+        <Label x:Name="FirstName_Label" Content="{Binding FirstName}" HorizontalAlignment="Left" Height="34" Margin="134,10,0,0" VerticalAlignment="Top" Width="183"/>
+        <Label x:Name="LastName_Label" Content="{Binding LastName}" HorizontalAlignment="Left" Height="34" Margin="134,43,0,0" VerticalAlignment="Top" Width="183"/>
+        <Label x:Name="TelephoneNo_Label" Content="{Binding TelephoneNo}" HorizontalAlignment="Left" Height="34" Margin="134,77,0,0" VerticalAlignment="Top" Width="183"/>
         <Label x:Name="Hours_label" Content="Timer denne måned" HorizontalAlignment="Left" Height="34" Margin="0,165,0,0" VerticalAlignment="Top" Width="117"/>
         <Label x:Name="TotalHours_Label" Content="Label" HorizontalAlignment="Left" Height="34" Margin="122,165,0,0" VerticalAlignment="Top" Width="71"/>
         <Label x:Name="Phone_label" Content="Telefonnummer" HorizontalAlignment="Left" Height="34" Margin="0,77,0,0" VerticalAlignment="Top" Width="117"/>

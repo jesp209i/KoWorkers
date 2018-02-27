@@ -10,10 +10,8 @@
 
     <Grid>
 
-            <Button x:Name="UpdateEmployee_Button" Content="Opdater" HorizontalAlignment="Left" Height="27" Margin="251,338,0,0" VerticalAlignment="Top" Width="70" Click="UpdateEmployee_Button_Click"/>
-            <Button x:Name="Back_Button" Content="Tilbage" HorizontalAlignment="Left" Height="27" Margin="321,338,0,0" VerticalAlignment="Top" Width="80" Click="Back_Button_Click"/>
-            <Label x:Name="ShowSelected_Label" Content="Label" HorizontalAlignment="Left" Margin="151,321,0,0" VerticalAlignment="Top" Width="95"/>
-        <ListBox x:Name="UpdateEmployees_ListBox" HorizontalAlignment="Left" Height="311" Margin="10,10,0,0" VerticalAlignment="Top" Width="476" SelectionChanged="UpdateEmployees_ListBox_SelectionChanged">
+            <Button x:Name="UpdateEmployee_Button" Content="Opdater" HorizontalAlignment="Left" Height="27" Margin="279,338,0,0" VerticalAlignment="Top" Width="70" Click="UpdateEmployee_Button_Click"/>
+        <ListBox x:Name="UpdateEmployees_ListBox" HorizontalAlignment="Left" Height="311" Margin="10,10,0,0" VerticalAlignment="Top" Width="476" ItemsSource="{Binding Employees}" SelectedItem="{Binding Path=CurrentEmployee}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -24,6 +22,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Content="Button" HorizontalAlignment="Left" Height="50" Margin="463,338,0,0" VerticalAlignment="Top" Width="76" Click="Button_Click"/>
+        <Button x:Name="AddEmployeeButton" Content="Tilføj medarbejder" HorizontalAlignment="Left" Margin="10,338,0,0" VerticalAlignment="Top" Width="112" Height="27" Click="AddEmployeeButton_Click"/>
+        <Button x:Name="RemoveEmployee_Button" Content="Fjern medarbejder" HorizontalAlignment="Left" Height="27" Margin="363,338,0,0" VerticalAlignment="Top" Width="123" Click="RemoveEmployee_Button_Click"/>
     </Grid>
 </Page>

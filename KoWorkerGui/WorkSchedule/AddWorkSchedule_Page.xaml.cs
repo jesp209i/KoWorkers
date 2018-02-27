@@ -28,7 +28,7 @@ namespace KoWorkerGui.WorkSchedule
         {
             control = Controller.GetInstance();
             InitializeComponent();
-            List<Employee> employeeList = control.GetAllEmployees();
+            List<Employee> employeeList = control.Employees;
             DataContext = employeeList;
             AddWorkSchedule_datagrid.ItemsSource = employeeList;
         }

@@ -11,10 +11,14 @@ namespace KoWorkers
         private EmployeeRepository employeeRepo;
         private TimesheetLogic timesheetLogic;
         private static Controller instance = null;
+        public List<Employee> Employees { get; set; }
+        public Employee CurrentEmployee { get; set; }
         private Controller()
         {
             employeeRepo = EmployeeRepository.GetInstance();
             timesheetLogic = new TimesheetLogic();
+            Employees = employeeRepo.Employees;
+            CurrentEmployee = Employees[0];
         }
         public static Controller GetInstance()
         {
@@ -62,44 +66,13 @@ namespace KoWorkers
             }
             return message;
         }
-        public void UpdateEmployeeToGuiFirstName(int idx, string firstName, string lastName, int telephoneNo, int pinCode)
-        {
-            List<Employee> list = GetAllEmployees();
-            list[idx].FirstName = firstName;
-            list[idx].LastName = lastName;
-            list[idx].TelephoneNo = telephoneNo;
-            list[idx].PinCode = pinCode;
-            UpdateEmployee(list[idx]);
-        }
-
-
-        public string ShowSelectedEmployeePinCode(int idx)
-        {
-            string pinCode = "";
-            List<Employee> list = GetAllEmployees();
-            pinCode = list[idx].PinCode.ToString();
-            return pinCode;
-        }
-        public void RemoveEmployeeToGui(int idx)
-        {
-            List<Employee> list = GetAllEmployees();
-            RemoveEmployee(list[idx]);  
-        }
-        public string ShowSelectedEmployeeTelephoneNO(int idx)
-        {
-            string telephoneNO = "";
-            List<Employee> list = GetAllEmployees();
-            telephoneNO = list[idx].TelephoneNo.ToString();
-            return telephoneNO;
-        }
-
         public int ShowSelectedEmployeeCalculatedHours(int idx,int month,int year)
         {
             //
             // hvad blev der af halve timer?
             //
             int totalHours = 0;
-            List<Employee> list = GetAllEmployees();
+            List<Employee> list = Employees;
             int empID = list[idx].EmployeeId;
             if (month == -1 && year == -1)
             { month = 10;
@@ -108,27 +81,6 @@ namespace KoWorkers
             DateTime dt = new DateTime(year, month, 10);
             totalHours = CalculateWorkHours(empID, dt)/60;
             return totalHours;
-        }
-
-        public string ShowSelectedEmployeeLastName(int idx)
-        {
-            string lastName = "";
-            List<Employee> list = GetAllEmployees();
-            lastName = list[idx].LastName;
-            return lastName;
-        }
-
-        public string ShowSelectedEmployeeFirstName(int idx)
-        {
-            string firstName = "";
-           List<Employee> list = GetAllEmployees();
-            firstName = list[idx].FirstName;
-            return firstName;
-        }
-
-        public List<Employee> GetAllEmployees()
-        {
-                return employeeRepo.GetEmployees();
         }
         public int CalculateWorkHours(int employeeId, DateTime endDate)
         {

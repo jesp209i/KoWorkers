@@ -22,52 +22,26 @@ namespace KoWorkerGui.KoWorkerAdmin
     public partial class UpdateEmployee_Window : Window
     {
         Controller control;
+        int idx;
         public UpdateEmployee_Window()
         {
             control = Controller.GetInstance();
             InitializeComponent();
-            
-            
+            idx = control.CurrentEmployee.EmployeeId;
         }
-        int Idx { get; set; }
-
-        private void FirstName_TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void LastName_TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-        public void ShowSelectedEmployee(int idx)
-        {
-
-            FirstName_TextBox.Text = control.ShowSelectedEmployeeFirstName(idx);
-            LastName_TextBox.Text = control.ShowSelectedEmployeeLastName(idx);  
-            TelephoneNo_TextBox.Text = control.ShowSelectedEmployeeTelephoneNO(idx);
-            PinCode_TextBox.Text = control.ShowSelectedEmployeePinCode(idx);
-            Idx = idx;
-        }
-
         private void UpdateEmployee_Button_Click(object sender, RoutedEventArgs e)
         {
-            string firstName = FirstName_TextBox.Text;
-            string lastName = LastName_TextBox.Text;
-            int telephoneNo = int.Parse(TelephoneNo_TextBox.Text);
-            int pinCode = int.Parse(PinCode_TextBox.Text);
-            control.UpdateEmployeeToGuiFirstName(Idx, firstName,lastName,telephoneNo,pinCode);
-
-        }
-        
-
-        private void Back_Button_Click(object sender, RoutedEventArgs e)
-        {
-            
+            control.CurrentEmployee.FirstName = FirstName_TextBox.Text;
+            control.CurrentEmployee.LastName = LastName_TextBox.Text;
+            control.CurrentEmployee.TelephoneNo = int.Parse(TelephoneNo_TextBox.Text);
+            control.CurrentEmployee.PinCode = int.Parse(PinCode_TextBox.Text);
+            control.UpdateEmployee(control.CurrentEmployee);
             this.Close();
-            
-       
-           
+        }
+
+        private void Abort_Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

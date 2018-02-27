@@ -26,19 +26,10 @@ namespace KoWorkerGui.KoWorkerAdmin
             InitializeComponent();
             control = Controller.GetInstance();
         }
-
-        private void TelephoneNo_TextBox_Copy1_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void Back_Button_Click(object sender, RoutedEventArgs e)
         {
-          
             this.Close();
-            
         }
-
         private void AddEmployee_Button_Click(object sender, RoutedEventArgs e)
         {
             string firstName = FirstName_TextBox.Text;
@@ -46,7 +37,7 @@ namespace KoWorkerGui.KoWorkerAdmin
             int pinCode = int.Parse(PinCode_TextBox.Text);
             int TelephoneNo = int.Parse(TelephoneNo_TextBox.Text);
             control.AddEmployee(firstName, lastName, pinCode, TelephoneNo);
-            
+            this.Close();
         }
     }
 }
