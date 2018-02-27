@@ -35,10 +35,6 @@ namespace KoWorkerGui.WorkSchedule
 
         private void Cell_DoubleClick(object sender, MouseButtonEventArgs e)
         {
-
-            AddShift_Window asw = new AddShift_Window();
-            App.Current.MainWindow = asw;
-            asw.Show();
         }
         private void SetMonthAndYear_Button_Click(object sender, RoutedEventArgs e)
         {
