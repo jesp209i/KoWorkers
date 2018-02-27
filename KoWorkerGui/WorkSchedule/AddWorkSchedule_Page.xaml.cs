@@ -46,5 +46,10 @@ namespace KoWorkerGui.WorkSchedule
            // App.Current.MainWindow = sdw;
            //sdw.Show();
         }
+
+        private void Back_Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("WorkSchedule_Page", UriKind.Relative));
+        }
     }
 }

@@ -41,5 +41,10 @@ namespace KoWorkerGui.WorkSchedule
             App.Current.MainWindow = sdw;
             sdw.Show();
         }
+
+        private void Back_Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("CheckIn/CheckInAndOut_Page.xaml", UriKind.Relative));
+        }
     }
 }

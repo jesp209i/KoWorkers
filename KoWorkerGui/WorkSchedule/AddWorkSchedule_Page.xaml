@@ -29,7 +29,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="Create_button" Content="Opret" HorizontalAlignment="Left" Height="29" Margin="402,542,0,0" VerticalAlignment="Top" Width="143"/>
-        <Button x:Name="Back_Button" Content="Tilbage" HorizontalAlignment="Left" Height="29" Margin="242,542,0,0" VerticalAlignment="Top" Width="143"/>
+        <Button x:Name="Back_Button" Content="Tilbage" HorizontalAlignment="Left" Height="29" Margin="242,542,0,0" VerticalAlignment="Top" Width="143" Click="Back_Button_Click"/>
         <ComboBox x:Name="PickWeek_ComboBox" HorizontalAlignment="Left" Margin="220,32,0,0" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
