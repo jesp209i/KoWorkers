@@ -22,34 +22,81 @@ namespace KoWorkerGui.WorkSchedule
     public partial class AddWorkSchedule_Page : Page
     {
         Controller control;
-       
-        
-        public AddWorkSchedule_Page()
-        {
-            control = Controller.GetInstance();
-            InitializeComponent();
-            List<Employee> employeeList = control.GetAllEmployees();
-            DataContext = employeeList;
-            AddWorkSchedule_datagrid.ItemsSource = employeeList;
-        }
 
-        private void Cell_DoubleClick(object sender, MouseButtonEventArgs e)
-        {
 
-            AddShift_Window asw = new AddShift_Window();
-            App.Current.MainWindow = asw;
-            asw.Show();
-        }
-        private void SetMonthAndYear_Button_Click(object sender, RoutedEventArgs e)
-        {
-           // SetDate_Window sdw = new SetDate_Window(this);
-           // App.Current.MainWindow = sdw;
-           //sdw.Show();
-        }
+        //public AddWorkSchedule_Page()
+        //{
+        //    control = Controller.GetInstance();
+        //    InitializeComponent();
+        //    List<Employee> employeeList = control.GetAllEmployees();
+        //    DataContext = employeeList;
+        //    AddWorkSchedule_datagrid.ItemsSource = employeeList;
+        //}
+
+        //private void Cell_DoubleClick(object sender, MouseButtonEventArgs e)
+        //{
+
+        //    AddShift_Window asw = new AddShift_Window();
+        //    App.Current.MainWindow = asw;
+        //    asw.Show();
+        //}
+        //private void SetMonthAndYear_Button_Click(object sender, RoutedEventArgs e)
+        //{
+        // SetDate_Window sdw = new SetDate_Window(this);
+        // App.Current.MainWindow = sdw;
+        //sdw.Show();
+        //}
 
         private void Back_Button_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("WorkSchedule_Page", UriKind.Relative));
         }
+
+        //private void Create_button_Click(object sender, RoutedEventArgs e)
+        //{
+
+        //}
+        public class ShiftSchedule
+        {
+            public string Name { get; set; }
+            public string Monday { get; set; }
+            public string Tuesday { get; set; }
+            public string Wednesday { get; set; }
+            public string Thursday { get; set; }
+            public string Friday { get; set; }
+            public string Saturday { get; set; }
+            public string Sunday { get; set; }
+        }
+
+        private void AddStuffB_Click(object sender, RoutedEventArgs e)
+        {
+            ShiftSchedule shiftSchedule = new ShiftSchedule();
+            shiftSchedule.Name = NameTB.Text;
+            shiftSchedule.Monday = MondayTB.Text;
+            shiftSchedule.Tuesday = TuesdayTB.Text;
+            shiftSchedule.Wednesday = WednesdayTB.Text;
+            shiftSchedule.Thursday = ThursdayTB.Text;
+            shiftSchedule.Friday = FridayTB.Text;
+            shiftSchedule.Saturday = SaturdayTB.Text;
+            shiftSchedule.Sunday = SundayTB.Text;
+
+            AddWorkSchedule_datagrid.Items.Add(shiftSchedule);
+        }
+
+        private void DeleteB_Click(object sender, RoutedEventArgs e)
+        {
+            ShiftSchedule shiftSchedule = new ShiftSchedule();
+            shiftSchedule.Name = NameTB.Text;
+            shiftSchedule.Monday = MondayTB.Text;
+            shiftSchedule.Tuesday = TuesdayTB.Text;
+            shiftSchedule.Wednesday = WednesdayTB.Text;
+            shiftSchedule.Thursday = ThursdayTB.Text;
+            shiftSchedule.Friday = FridayTB.Text;
+            shiftSchedule.Saturday = SaturdayTB.Text;
+            shiftSchedule.Sunday = SundayTB.Text;
+
+            AddWorkSchedule_datagrid.Items.Clear();
+        }
     }
 }
+

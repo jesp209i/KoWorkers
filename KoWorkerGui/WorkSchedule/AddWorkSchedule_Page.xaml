@@ -5,32 +5,34 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:KoWorkerGui"
       
-      mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="600"
-      Title="AddWorkSchedule_Page">
+      mc:Ignorable="d"
+      Title="AddWorkSchedule_Page" Height="590" Width="650">
 
     <Grid>
-        <DataGrid  x:Name="AddWorkSchedule_datagrid" HorizontalAlignment="Left" Height="446" Margin="10,91,0,0" VerticalAlignment="Top" Width="580" AutoGenerateColumns="False">
-            <DataGrid.CellStyle>
-                <Style TargetType="DataGridCell">
-                    <EventSetter Event="MouseDoubleClick" Handler="Cell_DoubleClick"/>
-                </Style>
-            </DataGrid.CellStyle>
+        <DataGrid  x:Name="AddWorkSchedule_datagrid" HorizontalAlignment="Left" Height="446" Margin="10,91,-50,0" VerticalAlignment="Top" Width="640" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn  Header=" Medarbejder" Binding="{Binding FullName}" />
-                <DataGridTextColumn  Header=" Mandag" Binding="{Binding FullName, Mode=OneWay}" />
-                <DataGridTextColumn  Header=" Tirsdag" Binding="{Binding FullName, Mode=OneWay}" />
-                <DataGridTextColumn  Header=" Onsdag" Binding="{Binding FullName, Mode=OneWay}" />
-                <DataGridTextColumn  Header=" Torsdag" Binding="{Binding FullName, Mode=OneWay}" />
-                <DataGridTextColumn  Header=" Fredag" Binding="{Binding FullName, Mode=OneWay}" />
-                <DataGridTextColumn  Header=" Lørdag" Binding="{Binding FullName, Mode=OneWay}" />
-                <DataGridTextColumn  Header=" Søndag" Binding="{Binding FullName, Mode=OneWay}" />
-                
+                <DataGridTextColumn  Header=" Medarbejder" Binding="{Binding Name}" />
+                <DataGridTextColumn  Header=" Mandag" Binding="{Binding Monday}" />
+                <DataGridTextColumn  Header=" Tirsdag" Binding="{Binding Tuesday}" />
+                <DataGridTextColumn  Header=" Onsdag" Binding="{Binding Wednesday}" />
+                <DataGridTextColumn  Header=" Torsdag" Binding="{Binding Thursday}" />
+                <DataGridTextColumn  Header=" Fredag" Binding="{Binding Friday}" />
+                <DataGridTextColumn  Header=" Lørdag" Binding="{Binding Saturday}" />
+                <DataGridTextColumn  Header=" Søndag" Binding="{Binding Sunday}" />
+
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="Create_button" Content="Opret" HorizontalAlignment="Left" Height="29" Margin="402,542,0,0" VerticalAlignment="Top" Width="143"/>
         <Button x:Name="Back_Button" Content="Tilbage" HorizontalAlignment="Left" Height="29" Margin="242,542,0,0" VerticalAlignment="Top" Width="143" Click="Back_Button_Click"/>
-        <ComboBox x:Name="PickWeek_ComboBox" HorizontalAlignment="Left" Margin="220,32,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="AddStuffB" Content="Tilføj" HorizontalAlignment="Left" Margin="505,405,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.133,-1.25" Click="AddStuffB_Click"/>
+        <TextBox x:Name="MondayTB" HorizontalAlignment="Left" Height="23" Margin="505,195,-25,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TuesdayTB" HorizontalAlignment="Left" Height="23" Margin="505,225,-25,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="WednesdayTB" HorizontalAlignment="Left" Height="23" Margin="505,255,-25,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="ThursdayTB" HorizontalAlignment="Left" Height="23" Margin="505,285,-25,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="FridayTB" HorizontalAlignment="Left" Height="23" Margin="505,315,-25,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="SaturdayTB" HorizontalAlignment="Left" Height="23" Margin="505,345,-25,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="SundayTB" HorizontalAlignment="Left" Height="23" Margin="505,375,-25,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="NameTB" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="505,165,-25,0"/>
+        <Button x:Name="DeleteB" Content="Slet alt" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="505,435,0,0"/>
 
     </Grid>
 </Page>
