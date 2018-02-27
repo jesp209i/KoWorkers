@@ -22,9 +22,9 @@
         <ListView Grid.Row="1" x:Name="CheckedInOut_ListView" HorizontalAlignment="Left" Height="200" Margin="10,10,10,0" VerticalAlignment="Top" Width="Auto" ItemsSource="{Binding Employees}" SelectedItem="{Binding Path=CurrentEmployee}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="140" Header="Id" DisplayMemberBinding="{Binding PinCode}"/>
+                    <GridViewColumn Width="60" Header="Id" DisplayMemberBinding="{Binding PinCode}"/>
                     <GridViewColumn Width="140" Header="Medarbejder" DisplayMemberBinding="{Binding FullName}"/>
-                    <GridViewColumn Width="140" Header="Tjek Ind Status">
+                    <GridViewColumn Width="60" Header="Status">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <ProgressBar Height="10" Width="140" Maximum="0" Minimum="-1" Value="{Binding OpenShift}"/>

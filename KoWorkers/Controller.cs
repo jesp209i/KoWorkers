@@ -66,23 +66,19 @@ namespace KoWorkers
             }
             return message;
         }
-        public int ShowSelectedEmployeeCalculatedHours(int idx,int month,int year)
+        public double ShowSelectedEmployeeCalculatedHours(int idx,int month,int year)
         {
-            //
-            // hvad blev der af halve timer?
-            //
-            int totalHours = 0;
-            List<Employee> list = Employees;
-            int empID = list[idx].EmployeeId;
+            double totalHours = 0;
+            int empID = CurrentEmployee.EmployeeId;
             if (month == -1 && year == -1)
-            { month = 10;
-                year = 2017;
+            { month = DateTime.Now.Month;
+                year = DateTime.Now.Year;
             }
             DateTime dt = new DateTime(year, month, 10);
-            totalHours = CalculateWorkHours(empID, dt)/60;
+            totalHours = CalculateWorkMinutes(empID, dt)/60;
             return totalHours;
         }
-        public int CalculateWorkHours(int employeeId, DateTime endDate)
+        public int CalculateWorkMinutes(int employeeId, DateTime endDate)
         {
             int thisMonth = endDate.Month;
             int thisDay = endDate.Day;

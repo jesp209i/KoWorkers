@@ -36,15 +36,9 @@ namespace KoWorkerGui.WorkSchedule
 
         private void CreateWorkschedule_Button_Click(object sender, RoutedEventArgs e)
         {
-            //this.NavigationService.Navigate(new Uri("AddWorkSchedule_page.xaml", UriKind.Relative));
             SetDate_Window sdw = new SetDate_Window(this);
             App.Current.MainWindow = sdw;
             sdw.Show();
-        }
-
-        private void Back_Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Navigate(new Uri("CheckIn/CheckInAndOut_Page.xaml", UriKind.Relative));
         }
     }
 }
