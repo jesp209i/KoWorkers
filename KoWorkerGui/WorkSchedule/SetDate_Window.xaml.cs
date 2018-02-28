@@ -28,6 +28,8 @@ namespace KoWorkerGui.WorkSchedule
             InitializeComponent();
             FillComboBoxes();
         }
+        private DateTime startTime;
+        public DateTime StartTime { get { return startTime; } set { startTime = value; } }
         private void FillComboBoxes()
         {
             string[] years = new string[] { "2018", "2017", "2016", "2015" };
@@ -53,10 +55,17 @@ namespace KoWorkerGui.WorkSchedule
                 year = int.Parse(SetYear_ComboBox.SelectedItem.ToString());
             }
 
+            startTime = new DateTime(year, month, 1);
+            main.StartTime = startTime;
+            main.EndTime = new DateTime(year, month, DateTime.DaysInMonth(year, month));
          
            
             control.AddNewScheduleToGui(year, month);
-            main.NavigationService.Navigate(new Uri("WorkSchedule/AddWorkSchedule_page.xaml", UriKind.Relative));
+            //main.NavigationService.Navigate(new Uri("WorkSchedule/AddWorkSchedule_page.xaml", UriKind.Relative));
+            main.Month_Label.Content = startTime.Month.ToString();
+            main.EndDay_label.Content = main.EndTime.Date.ToShortDateString();
+            main.Year_label.Content = main.StartTime.Year.ToString();
+            main.StartDay_label.Content = main.StartTime.Date.ToString();
             this.Close();
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,9 +33,20 @@ namespace KoWorkerGui.WorkSchedule
             DataContext = employeeList;
             AddWorkSchedule_datagrid.ItemsSource = employeeList;
         }
-
+        //public int WeekNumber
+        //{
+        //    get
+        //    {
+        //        DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
+        //        System.Globalization.Calendar cal = dfi.Calendar;
+        //        return cal.GetWeekOfYear(StartTime, dfi.CalendarWeekRule, dfi.FirstDayOfWeek);
+        //    }
+        //}
         private void Cell_DoubleClick(object sender, MouseButtonEventArgs e)
         {
+            AddShift_Window asw = new AddShift_Window();
+            App.Current.MainWindow = asw;
+            asw.Show();
         }
         private void SetMonthAndYear_Button_Click(object sender, RoutedEventArgs e)
         {
