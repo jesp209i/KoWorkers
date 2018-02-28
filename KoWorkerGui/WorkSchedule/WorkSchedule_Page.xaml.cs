@@ -23,6 +23,8 @@ namespace KoWorkerGui.WorkSchedule
     public partial class WorkSchedule_Page : Page
     {
         private static WorkSchedule_Page instance = null;
+        KoWorkers.WorkSchedule.ViewModel.WorkScheduleViewModel wsvm;
+        public List<KoWorkers.WorkSchedule.ViewModel.WorkScheduleViewModel.WorkScheduleShiftViewModel> viewList;
         private DateTime startTime;
         private DateTime endTime;
         public DateTime StartTime { get { return startTime; } set { startTime = value; } }
@@ -31,10 +33,16 @@ namespace KoWorkerGui.WorkSchedule
         private WorkSchedule_Page()
         {
             control = Controller.GetInstance();
+            wsvm = KoWorkers.WorkSchedule.ViewModel.WorkScheduleViewModel.GetInstance();
             InitializeComponent();
             List<Employee> employeeList = control.Employees;
-            DataContext = employeeList;
-            AddWorkSchedule_datagrid.ItemsSource = employeeList;
+           // DataContext = employeeList;
+
+             viewList = wsvm.ListForViewModel;
+            DataContext = viewList;
+            AddWorkSchedule_datagrid.ItemsSource = viewList;
+            
+            
             
         }
         public static WorkSchedule_Page GetInstance()
@@ -79,9 +87,15 @@ namespace KoWorkerGui.WorkSchedule
             DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
             System.Globalization.Calendar cal = dfi.Calendar;
             return cal.GetWeekOfYear(EndTime, dfi.CalendarWeekRule, dfi.FirstDayOfWeek);
+           
 
         }
 
+        private void PickWeek_ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int startdate = PickWeek_ComboBox.SelectedIndex + StartWeekNumber();
+        }
 
+       
     }
 }

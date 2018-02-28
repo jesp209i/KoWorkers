@@ -42,6 +42,7 @@ namespace KoWorkerGui.WorkSchedule
 
         private void FillWeekComboBox()
         {
+            main.PickWeek_ComboBox.Items.Clear();
             int EndWeek = main.EndWeekNumber();
             int StartWeek = main.StartWeekNumber();
             List<string> weeks = new List<string>();
@@ -74,6 +75,7 @@ namespace KoWorkerGui.WorkSchedule
             main.StartTime = startTime;
             main.EndTime = new DateTime(year, month, DateTime.DaysInMonth(year, month));   
             control.AddNewScheduleToGui(year, month);
+            main.Count_label.Content = main.viewList.Count;
             FillWeekComboBox();
             //main.NavigationService.Navigate(new Uri("WorkSchedule/AddWorkSchedule_page.xaml", UriKind.Relative));
             this.Close();
