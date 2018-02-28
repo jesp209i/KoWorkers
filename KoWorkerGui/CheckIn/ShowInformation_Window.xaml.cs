@@ -38,12 +38,12 @@ namespace KoWorkerGui.CheckIn
         }
         private void FillComboBoxes()
         {
-            string[] years = new string[] { "2017", "2016", "2015", "2014" };
+            string[] years = new string[] { "2018", "2017", "2016", "2015", "2014" };
             string[] months = new string[] { "Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli", "August", "September", "Oktober", "November", "December" };
-            foreach (string month in months)
-            { MonthComboBox.Items.Add(month); }
-            foreach (string year in years)
-            { YearComboBox.Items.Add(year); }
+            MonthComboBox.ItemsSource = months;
+            YearComboBox.ItemsSource = years;
+            MonthComboBox.SelectedValue = months[DateTime.Now.Month - 1];
+            YearComboBox.SelectedValue = years[0];
         }
 
         private void MonthComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -60,9 +60,6 @@ namespace KoWorkerGui.CheckIn
                 year = DateTime.Now.Year;
             }
             DateTime dateTime = new DateTime(year, month,20);
-            FirstName_Label.Content = control.ShowSelectedEmployeeFirstName(idx);
-            LastName_Label.Content = control.ShowSelectedEmployeeLastName(idx);
-            TelephoneNo_Label.Content = control.ShowSelectedEmployeeTelephoneNO(idx);
             //LastShift_Label.Content = C.ShowSelectedEmployeeCurrentShift(idx);
             TotalHours_Label.Content = control.ShowSelectedEmployeeCalculatedHours(idx, month, year);
             Idx = idx;

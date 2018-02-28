@@ -9,16 +9,22 @@
       Title="CheckInAndOut_Page">
 
     <Grid>
-        <Button x:Name="Back_Button" Content="Tilbage" HorizontalAlignment="Stretch" Margin="507,538,0,0" VerticalAlignment="Top" Width="75" Click="Back_Button_Click"/>
-        <PasswordBox x:Name="PinCode_PassBox" HorizontalAlignment="Left" Height="26" Margin="202,49,0,0" VerticalAlignment="Top" Width="128"/>
-        <Button x:Name="GetEmployee_Button" Content="Indtast Pin" HorizontalAlignment="Left" Height="26" Margin="357,49,0,0" VerticalAlignment="Top" Width="75" Click="GetEmployee_Button_Click"/>
-        <Button x:Name="ShowInfo_Button" Content="Vis Info" HorizontalAlignment="Left" Height="22" Margin="22,538,0,0" VerticalAlignment="Top" Width="100" Click="ShowInfo_Button_Click"/>
-        <ListView x:Name="CheckedInOut_ListView" HorizontalAlignment="Left" Height="397" Margin="22,112,0,0" VerticalAlignment="Top" Width="555">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="50" />
+
+        </Grid.RowDefinitions>
+        <WrapPanel Grid.Row="0">
+            <PasswordBox x:Name="PinCode_PassBox" HorizontalAlignment="Left" Height="26" Margin="20,20,0,0" VerticalAlignment="Top" Width="128"/>
+            <Button x:Name="GetEmployee_Button" Content="Indtast Pin" HorizontalAlignment="Left" Height="26" Margin="10,20,0,0" VerticalAlignment="Top" Width="75" Click="GetEmployee_Button_Click"/>
+        </WrapPanel>
+        <ListView Grid.Row="1" x:Name="CheckedInOut_ListView" HorizontalAlignment="Left" Height="200" Margin="10,10,10,0" VerticalAlignment="Top" Width="Auto" ItemsSource="{Binding Employees}" SelectedItem="{Binding Path=CurrentEmployee}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="140" Header="Id" DisplayMemberBinding="{Binding EmployeeId}"/>
+                    <GridViewColumn Width="60" Header="Id" DisplayMemberBinding="{Binding PinCode}"/>
                     <GridViewColumn Width="140" Header="Medarbejder" DisplayMemberBinding="{Binding FullName}"/>
-                    <GridViewColumn Width="140" Header="Tjek Ind Status">
+                    <GridViewColumn Width="60" Header="Status">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <ProgressBar Height="10" Width="140" Maximum="0" Minimum="-1" Value="{Binding OpenShift}"/>
@@ -28,7 +34,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
-
-
+        <Button Grid.Row="2" x:Name="ShowInfo_Button" Content="Vis Info" HorizontalAlignment="Left" Height="22" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Click="ShowInfo_Button_Click"/>
     </Grid>
 </Page>

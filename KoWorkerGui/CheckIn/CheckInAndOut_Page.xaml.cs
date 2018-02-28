@@ -22,13 +22,11 @@ namespace KoWorkerGui.CheckIn
     /// </summary>
     public partial class CheckInAndOut_Page : Page
     {
-        Controller control;
         private static CheckInAndOut_Page instance = null;
         private CheckInAndOut_Page()
         {
             InitializeComponent();
-            control = Controller.GetInstance();
-            CheckedInOut_ListView.ItemsSource = control.GetAllEmployees();
+            DataContext = Controller.GetInstance();
         }
         public static CheckInAndOut_Page GetInstance()
         {
@@ -38,24 +36,18 @@ namespace KoWorkerGui.CheckIn
             }
             return instance;
         }
-        private void Back_Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Navigate(new Uri("Welcome_page.xaml", UriKind.Relative));
-        }
-
         private void GetEmployee_Button_Click(object sender, RoutedEventArgs e)
         {
             string message = "";
             int pin = int.Parse(PinCode_PassBox.Password);
-            message = control.UpdateCheckInStatus(pin);       
+            message = Controller.GetInstance().UpdateCheckInStatus(pin);       
             MessageBox.Show(message, "KoWorkers");
             CheckedInOut_ListView.Items.Refresh();
         }
         private void ShowInfo_Button_Click(object sender, RoutedEventArgs e)
         {                   
             ShowInformation_Window showInformation_Window = new ShowInformation_Window();
-            int idx = CheckedInOut_ListView.SelectedIndex;
-            showInformation_Window.ShowSelectedEmployee(idx);
+            showInformation_Window.DataContext = Controller.GetInstance().CurrentEmployee;
             App.Current.MainWindow = showInformation_Window;
             showInformation_Window.Show();
         }

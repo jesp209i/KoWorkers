@@ -11,6 +11,7 @@ namespace KoWorkersTests
     {
         Employee testEmployee = new Employee("Niels", "Hansen", 1234, 12345678);
         DateTime thisMoment = new DateTime(2018,2,1,08,0,0);
+        DateTime otherMoment = new DateTime(2018, 2, 28, 08, 0, 0);
         
         [TestInitialize]
         public void Initialize()
@@ -62,7 +63,8 @@ namespace KoWorkersTests
             Calendar cal = DateTimeFormatInfo.CurrentInfo.Calendar;
             Assert.AreEqual("2018 03 01",firstday.ToString("yyyy MM dd"));
             Assert.AreEqual("2018 03 31", lastday.ToString("yyyy MM dd"));
-            Assert.AreEqual(9, cal.GetWeekOfYear(firstday, DateTimeFormatInfo.CurrentInfo.CalendarWeekRule, DateTimeFormatInfo.CurrentInfo.FirstDayOfWeek));
+            WorkScheduleShift newShift = new WorkScheduleShift(testEmployee, otherMoment, otherMoment.AddHours(2));
+            Assert.AreEqual(9, newShift.WeekNumber);
             Assert.AreEqual(10, cal.GetWeekOfYear(firstday.AddDays(7), DateTimeFormatInfo.CurrentInfo.CalendarWeekRule, DateTimeFormatInfo.CurrentInfo.FirstDayOfWeek));
             Assert.AreEqual(11, cal.GetWeekOfYear(firstday.AddDays(14), DateTimeFormatInfo.CurrentInfo.CalendarWeekRule, DateTimeFormatInfo.CurrentInfo.FirstDayOfWeek));
             Assert.AreEqual(12, cal.GetWeekOfYear(firstday.AddDays(21), DateTimeFormatInfo.CurrentInfo.CalendarWeekRule, DateTimeFormatInfo.CurrentInfo.FirstDayOfWeek));

@@ -22,40 +22,49 @@ namespace KoWorkerGui.KoWorkerAdmin
     public partial class UpdateEmployee_Page : Page
     {
         Controller controller;
-        public UpdateEmployee_Page()
+        private static UpdateEmployee_Page instance = null;
+        private UpdateEmployee_Page()
         {
             controller = Controller.GetInstance();
             InitializeComponent();
-            UpdateEmployees_ListBox.Items.Clear();
-            UpdateEmployees_ListBox.ItemsSource = controller.GetAllEmployees();
+            DataContext = controller;
+        }
+        public static UpdateEmployee_Page GetInstance()
+        {
+            if (instance== null)
+            {
+                instance = new UpdateEmployee_Page();
+            }
+            return instance;
         }
         private void UpdateEmployee_Button_Click(object sender, RoutedEventArgs e)
         {
             int idx = UpdateEmployees_ListBox.SelectedIndex;           
             UpdateEmployee_Window updateEmployee_Window = new UpdateEmployee_Window();
-            updateEmployee_Window.ShowSelectedEmployee(idx);
+            updateEmployee_Window.DataContext = controller.CurrentEmployee;
             App.Current.MainWindow = updateEmployee_Window;
             updateEmployee_Window.Show();
          
         }
-
-        private void Back_Button_Click(object sender, RoutedEventArgs e)
+        private void AddEmployeeButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("KoWorkerAdmin/CoWorker_page.xaml", UriKind.Relative));
+            AddEmployee_Window addEmployee = new AddEmployee_Window();
+            App.Current.MainWindow = addEmployee;
+            addEmployee.Show();
         }
-
-        private void UpdateEmployees_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void RemoveEmployee_Button_Click(object sender, RoutedEventArgs e)
         {
-            UpdateEmployees_ListBox.Items.Refresh();
+            MessageBoxResult result = MessageBox.Show("Er du sikker på at du vil fjerne: " + controller.CurrentEmployee.FullName + "?", "Bekræft venligst", MessageBoxButton.YesNo);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    controller.RemoveEmployee(controller.CurrentEmployee);
+                    break;
+                case MessageBoxResult.No:
+                    MessageBox.Show("Medarbejderen blev ikke fjernet", "KoWorker");
+                    break;
+            }
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-         
-        }
-    
-            
-      
     }
 
 }

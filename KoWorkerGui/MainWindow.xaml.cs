@@ -41,7 +41,7 @@ namespace KoWorkerGui
         }
         private void MnuWorkerAdmin_Click(object sender, RoutedEventArgs e)
         {
-            mainFrame.Navigate(KoWorkerAdmin.CoWorker_page.GetInstance());
+            mainFrame.Navigate(KoWorkerAdmin.UpdateEmployee_Page.GetInstance());
         }
     }
 }

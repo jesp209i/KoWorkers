@@ -28,17 +28,13 @@ namespace KoWorkerGui.WorkSchedule
         {
             control = Controller.GetInstance();
             InitializeComponent();
-            List<Employee> employeeList = control.GetAllEmployees();
+            List<Employee> employeeList = control.Employees;
             DataContext = employeeList;
             AddWorkSchedule_datagrid.ItemsSource = employeeList;
         }
 
         private void Cell_DoubleClick(object sender, MouseButtonEventArgs e)
         {
-
-            AddShift_Window asw = new AddShift_Window();
-            App.Current.MainWindow = asw;
-            asw.Show();
         }
         private void SetMonthAndYear_Button_Click(object sender, RoutedEventArgs e)
         {

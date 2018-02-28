@@ -51,9 +51,10 @@
     <Compile Include="ShiftRepository.cs" />
     <Compile Include="TimesheetLogic.cs" />
     <Compile Include="WorkSchedule\WorkSchedule.cs" />
+    <Compile Include="WorkSchedule\WorkScheduleShiftRepository.cs" />
     <Compile Include="WorkSchedule\WorkScheduleRepository.cs" />
     <Compile Include="WorkSchedule\WorkScheduleShift.cs" />
-    <Compile Include="WorkSchedule\WorkScheduleViewModel.cs" />
+    <Compile Include="WorkSchedule\ViewModel\WorkScheduleViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

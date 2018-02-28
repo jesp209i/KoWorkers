@@ -77,20 +77,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddShift_Window.xaml.cs">
-      <DependentUpon>AddShift_Window.xaml</DependentUpon>
-    </Compile>
     <Compile Include="WorkSchedule\AddWorkSchedule_Page.xaml.cs">
       <DependentUpon>AddWorkSchedule_Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="CheckIn\CheckInAndOut_Page.xaml.cs">
       <DependentUpon>CheckInAndOut_Page.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="KoWorkerAdmin\CoWorker_page.xaml.cs">
-      <DependentUpon>CoWorker_page.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="KoWorkerAdmin\RemoveEmployee_page.xaml.cs">
-      <DependentUpon>RemoveEmployee_page.xaml</DependentUpon>
     </Compile>
     <Compile Include="WorkSchedule\SetDate_Window.xaml.cs">
       <DependentUpon>SetDate_Window.xaml</DependentUpon>
@@ -104,16 +95,9 @@
     <Compile Include="KoWorkerAdmin\UpdateEmployee_Window.xaml.cs">
       <DependentUpon>UpdateEmployee_Window.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Welcome_page.xaml.cs">
-      <DependentUpon>Welcome_page.xaml</DependentUpon>
-    </Compile>
     <Compile Include="WorkSchedule\WorkSchedule_Page.xaml.cs">
       <DependentUpon>WorkSchedule_Page.xaml</DependentUpon>
     </Compile>
-    <Page Include="AddShift_Window.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="KoWorkerAdmin\AddEmployee_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -123,10 +107,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CheckIn\CheckInAndOut_Page.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="KoWorkerAdmin\CoWorker_page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -145,10 +125,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="KoWorkerAdmin\RemoveEmployee_page.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="WorkSchedule\SetDate_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -162,10 +138,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="KoWorkerAdmin\UpdateEmployee_Window.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Welcome_page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

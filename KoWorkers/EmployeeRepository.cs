@@ -12,7 +12,7 @@ namespace KoWorkers
     {
         private static string connectionString =
     "server = EALSQL1.eal.local; database = DB2017_C02; user Id=USER_C02; Password=SesamLukOp_02;";
-        private List<Employee> employees = new List<Employee>();
+        public List<Employee> Employees { get; set; }
         private static EmployeeRepository instance = null;
         public static EmployeeRepository GetInstance()
         {
@@ -26,14 +26,10 @@ namespace KoWorkers
         {
             FetchAllCurrentEmployees(); // Henter Employees fra DB og laver en liste
         }
-        public List<Employee> GetEmployees()
-        {
-            return employees;
-        }
         public int Count() // for testing
         {
             int personCounter = 0;
-            foreach (Employee person in employees)
+            foreach (Employee person in Employees)
             {
                 personCounter++;
             }
@@ -42,18 +38,19 @@ namespace KoWorkers
         public Employee GetEmployeeFromList(int id)
         {
             Employee employee = null;
-            for (int i = 0; i<employees.Count();i++)
+            for (int i = 0; i<Employees.Count();i++)
             { 
-                if (employees[i].EmployeeId == id)
+                if (Employees[i].EmployeeId == id)
                 {
-                    employee = employees[i];
+                    employee = Employees[i];
                 }
             }
             return employee;
         }
         public void FetchAllCurrentEmployees()
         {
-            employees.Clear(); // nulstiller listen inden den bliver hentet igen
+            Employees = null; // nulstiller listen inden den bliver hentet igen
+            Employees = new List<Employee>();
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 try
@@ -73,7 +70,7 @@ namespace KoWorkers
                             int pinCode = int.Parse(reader["Pin"].ToString());
                             int telephoneNo = int.Parse(reader["TelephoneNo"].ToString());
                             Employee employee = new Employee(employeeID, firstName, lastName, pinCode, telephoneNo);
-                            employees.Add(employee);
+                            Employees.Add(employee);
                         }
                     }
                 }
@@ -175,19 +172,19 @@ namespace KoWorkers
         public Employee GetEmployeeByPin(int pin)
         {
             Employee employee = null;
-            int i = 0;
-            do
+            foreach (Employee current in Employees)
             {
-                employee = employees[i];
-                i++;
-            } while (employees[i].PinCode != pin);
-
+                if (current.PinCode == pin)
+                {
+                    employee = current;
+                }
+            }
               return employee;
         }
         public Employee GetEmployeeById(int idno)
         {
             Employee employee = null;
-            foreach (Employee current in employees)
+            foreach (Employee current in Employees)
             {
                 if (current.EmployeeId == idno)
                 {
