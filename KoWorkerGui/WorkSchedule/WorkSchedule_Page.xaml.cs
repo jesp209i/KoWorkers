@@ -73,6 +73,15 @@ namespace KoWorkerGui.WorkSchedule
             
         }
 
+        public int EndWeekNumber()
+        {
+
+            DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
+            System.Globalization.Calendar cal = dfi.Calendar;
+            return cal.GetWeekOfYear(EndTime, dfi.CalendarWeekRule, dfi.FirstDayOfWeek);
+
+        }
+
 
     }
 }

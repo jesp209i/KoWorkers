@@ -40,6 +40,22 @@ namespace KoWorkerGui.WorkSchedule
             { SetYear_ComboBox.Items.Add(year); }
         }
 
+        private void FillWeekComboBox()
+        {
+            int EndWeek = main.EndWeekNumber();
+            int StartWeek = main.StartWeekNumber();
+            List<string> weeks = new List<string>();
+            for (int i = StartWeek; i <= EndWeek; i++)
+            {
+                string week = ("Uge " + i);
+                weeks.Add(week);
+            }
+            foreach (string week in weeks)
+            {
+                main.PickWeek_ComboBox.Items.Add(week);
+            }
+        }
+
         private void Set_Button_Click(object sender, RoutedEventArgs e)
         {
             int month = -1;
@@ -54,18 +70,12 @@ namespace KoWorkerGui.WorkSchedule
             {
                 year = int.Parse(SetYear_ComboBox.SelectedItem.ToString());
             }
-
             startTime = new DateTime(year, month, 1);
             main.StartTime = startTime;
-            main.EndTime = new DateTime(year, month, DateTime.DaysInMonth(year, month));
-         
-           
+            main.EndTime = new DateTime(year, month, DateTime.DaysInMonth(year, month));   
             control.AddNewScheduleToGui(year, month);
+            FillWeekComboBox();
             //main.NavigationService.Navigate(new Uri("WorkSchedule/AddWorkSchedule_page.xaml", UriKind.Relative));
-            main.Month_Label.Content = startTime.Month.ToString();
-            main.EndDay_label.Content = main.EndTime.Date.ToShortDateString();
-            main.Year_label.Content = main.StartTime.Year.ToString();
-            main.StartDay_label.Content = main.StartTime.Date.ToString();
             this.Close();
         }
 

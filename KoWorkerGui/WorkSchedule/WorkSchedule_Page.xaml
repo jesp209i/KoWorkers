@@ -37,10 +37,6 @@
         <Button x:Name="Create_button" Content="Opret" HorizontalAlignment="Left" Height="29" Margin="402,542,0,0" VerticalAlignment="Top" Width="143"/>
         <Button x:Name="Back_Button" Content="Tilbage" HorizontalAlignment="Left" Height="29" Margin="242,542,0,0" VerticalAlignment="Top" Width="143" />
         <ComboBox x:Name="PickWeek_ComboBox" HorizontalAlignment="Left" Margin="217,29,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="Month_Label" Content="Måned" HorizontalAlignment="Left" Height="35" Margin="75,51,0,0" VerticalAlignment="Top" Width="54"/>
-        <Label x:Name="Year_label" Content="År" HorizontalAlignment="Left" Height="35" Margin="16,51,0,0" VerticalAlignment="Top" Width="54"/>
-        <Label x:Name="StartDay_label" Content="Sdag" HorizontalAlignment="Left" Height="35" Margin="129,51,0,0" VerticalAlignment="Top" Width="54"/>
-        <Label x:Name="EndDay_label" Content="Edag" HorizontalAlignment="Left" Height="35" Margin="173,51,0,0" VerticalAlignment="Top" Width="54"/>
 
     </Grid>
 </Page>
