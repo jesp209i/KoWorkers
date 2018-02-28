@@ -80,6 +80,9 @@
     <Compile Include="AddShift_Window.xaml.cs">
       <DependentUpon>AddShift_Window.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SortTest_Window.xaml.cs">
+      <DependentUpon>SortTest_Window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WorkSchedule\AddWorkSchedule_Page.xaml.cs">
       <DependentUpon>AddWorkSchedule_Page.xaml</DependentUpon>
     </Compile>
@@ -115,6 +118,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="KoWorkerAdmin\AddEmployee_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SortTest_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

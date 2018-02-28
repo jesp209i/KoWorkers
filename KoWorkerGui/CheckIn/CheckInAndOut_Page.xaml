@@ -28,6 +28,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="170" Margin="215,365,0,0" Height="90" Click="Button_Click"/>
 
 
     </Grid>

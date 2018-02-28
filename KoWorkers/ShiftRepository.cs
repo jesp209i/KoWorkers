@@ -139,5 +139,9 @@ namespace KoWorkers
             FetchAllShifts();
             return shift;
         }
+        public List<Shift> GetShifts()
+        {
+            return shifts;
+        }
     }
 }

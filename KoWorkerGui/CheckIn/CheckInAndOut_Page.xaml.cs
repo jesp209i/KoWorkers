@@ -23,6 +23,7 @@ namespace KoWorkerGui.CheckIn
     public partial class CheckInAndOut_Page : Page
     {
         Controller control;
+        SortTest st;
         private static CheckInAndOut_Page instance = null;
         private CheckInAndOut_Page()
         {
@@ -59,7 +60,17 @@ namespace KoWorkerGui.CheckIn
             App.Current.MainWindow = showInformation_Window;
             showInformation_Window.Show();
         }
-       
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            st = new SortTest();
+            st.Sort();
+            SortTest_Window sortTest = new SortTest_Window();
+            App.Current.MainWindow = sortTest;
+            sortTest.MondayLxxx.Text = st.monday.Count.ToString();
+            sortTest.TuesdayLxxx.Text = st.tuesday.Count.ToString();
+            sortTest.Show();
+        }
     }
 }
 
