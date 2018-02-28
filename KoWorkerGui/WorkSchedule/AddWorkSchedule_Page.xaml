@@ -10,14 +10,13 @@
       Title="AddWorkSchedule_Page">
 
     <Grid>
-        <DataGrid  x:Name="AddWorkSchedule_datagrid" HorizontalAlignment="Left" Height="446" Margin="10,91,0,0" VerticalAlignment="Top" Width="580" AutoGenerateColumns="False">
+        <DataGrid  x:Name="AddWorkSchedule_datagrid" HorizontalAlignment="Left" Height="417" Margin="10,91,0,0" VerticalAlignment="Top" Width="580" AutoGenerateColumns="False">
             <DataGrid.CellStyle>
                 <Style TargetType="DataGridCell">
                     <EventSetter Event="MouseDoubleClick" Handler="Cell_DoubleClick"/>
                 </Style>
             </DataGrid.CellStyle>
             <DataGrid.Columns>
-                <DataGridTextColumn  Header=" Medarbejder" Binding="{Binding FullName}" />
                 <DataGridTextColumn  Header=" Mandag" Binding="{Binding FullName, Mode=OneWay}" />
                 <DataGridTextColumn  Header=" Tirsdag" Binding="{Binding FullName, Mode=OneWay}" />
                 <DataGridTextColumn  Header=" Onsdag" Binding="{Binding FullName, Mode=OneWay}" />
@@ -25,8 +24,14 @@
                 <DataGridTextColumn  Header=" Fredag" Binding="{Binding FullName, Mode=OneWay}" />
                 <DataGridTextColumn  Header=" Lørdag" Binding="{Binding FullName, Mode=OneWay}" />
                 <DataGridTextColumn  Header=" Søndag" Binding="{Binding FullName, Mode=OneWay}" />
-                
+
             </DataGrid.Columns>
+            <DataGrid.RowHeaderStyle>
+                <Style TargetType="{x:Type DataGridRowHeader}">
+                    <Setter Property="Content" Value="{Binding FullName}"/>
+                </Style>
+
+            </DataGrid.RowHeaderStyle>
         </DataGrid>
         <Button x:Name="Create_button" Content="Opret" HorizontalAlignment="Left" Height="29" Margin="402,542,0,0" VerticalAlignment="Top" Width="143"/>
         <Button x:Name="Back_Button" Content="Tilbage" HorizontalAlignment="Left" Height="29" Margin="242,542,0,0" VerticalAlignment="Top" Width="143" Click="Back_Button_Click"/>

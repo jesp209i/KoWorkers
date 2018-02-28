@@ -40,13 +40,21 @@ namespace KoWorkerGui.WorkSchedule
 
         private void Set_Button_Click(object sender, RoutedEventArgs e)
         {
-            int month = SetMonth_ComboBox.SelectedIndex + 1;
-            int year = int.Parse(SetYear_ComboBox.SelectedItem.ToString());
-            if (month == -1 && year == -1)
+            int month = -1;
+            int year = -1;
+            month = SetMonth_ComboBox.SelectedIndex + 1;
+            if (month == 0 && year == -1)
             {
                 month = DateTime.Now.Month;
                 year = DateTime.Now.Year;
             }
+            else
+            {
+                year = int.Parse(SetYear_ComboBox.SelectedItem.ToString());
+            }
+
+         
+           
             control.AddNewScheduleToGui(year, month);
             main.NavigationService.Navigate(new Uri("WorkSchedule/AddWorkSchedule_page.xaml", UriKind.Relative));
             this.Close();
