@@ -24,6 +24,7 @@
         </DataGrid>
         <Button x:Name="Back_Button" Content="Tilbage" HorizontalAlignment="Left" Height="29" Margin="242,542,0,0" VerticalAlignment="Top" Width="143" Click="Back_Button_Click"/>
         <Button x:Name="AddStuffB" Content="Tilføj" HorizontalAlignment="Left" Margin="505,405,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.133,-1.25" Click="AddStuffB_Click"/>
+        <TextBox x:Name="NameTB" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="505,165,-25,0"/>
         <TextBox x:Name="MondayTB" HorizontalAlignment="Left" Height="23" Margin="505,195,-25,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="TuesdayTB" HorizontalAlignment="Left" Height="23" Margin="505,225,-25,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="WednesdayTB" HorizontalAlignment="Left" Height="23" Margin="505,255,-25,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
@@ -31,7 +32,6 @@
         <TextBox x:Name="FridayTB" HorizontalAlignment="Left" Height="23" Margin="505,315,-25,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="SaturdayTB" HorizontalAlignment="Left" Height="23" Margin="505,345,-25,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="SundayTB" HorizontalAlignment="Left" Height="23" Margin="505,375,-25,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="NameTB" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="505,165,-25,0"/>
         <Button x:Name="DeleteB" Content="Slet alt" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="505,435,0,0"/>
 
     </Grid>
