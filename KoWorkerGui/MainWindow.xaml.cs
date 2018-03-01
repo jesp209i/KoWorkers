@@ -43,5 +43,11 @@ namespace KoWorkerGui
         {
             mainFrame.Navigate(KoWorkerAdmin.UpdateEmployee_Page.GetInstance());
         }
+        private void MnuAbout_Click(object sender,RoutedEventArgs e)
+        {
+            AboutWindow aboutWindow = new AboutWindow();
+            App.Current.MainWindow = aboutWindow;
+            aboutWindow.Show();
+        }
     }
 }

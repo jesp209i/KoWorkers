@@ -44,8 +44,16 @@ namespace KoWorkerGui.CheckIn
             MessageBox.Show(message, "KoWorkers");
             CheckedInOut_ListView.Items.Refresh();
         }
+        private void ShowInfo_DoubleClick(object sender, RoutedEventArgs e)
+        {
+            ShowInfo_Window();
+        }
         private void ShowInfo_Button_Click(object sender, RoutedEventArgs e)
-        {                   
+        {
+            ShowInfo_Window();
+        }
+        private void ShowInfo_Window()
+        {
             ShowInformation_Window showInformation_Window = new ShowInformation_Window();
             showInformation_Window.DataContext = Controller.GetInstance().CurrentEmployee;
             App.Current.MainWindow = showInformation_Window;
