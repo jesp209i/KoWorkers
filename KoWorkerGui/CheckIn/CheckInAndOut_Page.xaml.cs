@@ -33,8 +33,11 @@ namespace KoWorkerGui.CheckIn
             if (instance == null)
             {
                 instance = new CheckInAndOut_Page();
+                
             }
+            instance.CheckedInOut_ListView.Items.Refresh();
             return instance;
+            
         }
         private void GetEmployee_Button_Click(object sender, RoutedEventArgs e)
         {

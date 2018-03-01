@@ -54,9 +54,10 @@ namespace KoWorkerGui.KoWorkerAdmin
         }
         private void AddEmployeeButton_Click(object sender, RoutedEventArgs e)
         {
-            AddEmployee_Window addEmployee = new AddEmployee_Window();
+            AddEmployee_Window addEmployee = new AddEmployee_Window(this);
             App.Current.MainWindow = addEmployee;
             addEmployee.Show();
+            UpdateEmployees_ListBox.Items.Refresh();
         }
         private void RemoveEmployee_Button_Click(object sender, RoutedEventArgs e)
         {

@@ -120,6 +120,8 @@ namespace KoWorkers
                 }
                 catch (SqlException e) { message = "Der skete en fejl\n" + e.Message +"\nMedarbejder blev ikke tilføjet"; }
             }
+            newEmployee.OpenShift = -1;
+            Employees.Add(newEmployee);
             FetchAllCurrentEmployees();
             return message;
         }

@@ -20,9 +20,11 @@ namespace KoWorkerGui.KoWorkerAdmin
     /// </summary>
     public partial class AddEmployee_Window : Window
     {
+        UpdateEmployee_Page updateEmployee_Page;
         Controller control;     
-        public AddEmployee_Window()
+        public AddEmployee_Window(UpdateEmployee_Page caller)
         {
+            updateEmployee_Page = caller;
             InitializeComponent();
             control = Controller.GetInstance();
         }
@@ -37,6 +39,7 @@ namespace KoWorkerGui.KoWorkerAdmin
             int pinCode = int.Parse(PinCode_TextBox.Text);
             int TelephoneNo = int.Parse(TelephoneNo_TextBox.Text);
             control.AddEmployee(firstName, lastName, pinCode, TelephoneNo);
+            updateEmployee_Page.UpdateEmployees_ListBox.Items.Refresh();
             this.Close();
         }
     }
