@@ -37,20 +37,27 @@ namespace KoWorkerGui.KoWorkerAdmin
             }
             return instance;
         }
+        private void UpdateEmployee_DoubleClick(object sender, RoutedEventArgs e)
+        {
+            DoUpdateEmployeeWindow();
+        }
         private void UpdateEmployee_Button_Click(object sender, RoutedEventArgs e)
         {
-            int idx = UpdateEmployees_ListBox.SelectedIndex;           
+            DoUpdateEmployeeWindow();
+        }
+        private void DoUpdateEmployeeWindow()
+        {
             UpdateEmployee_Window updateEmployee_Window = new UpdateEmployee_Window();
             updateEmployee_Window.DataContext = controller.CurrentEmployee;
             App.Current.MainWindow = updateEmployee_Window;
             updateEmployee_Window.Show();
-         
         }
         private void AddEmployeeButton_Click(object sender, RoutedEventArgs e)
         {
-            AddEmployee_Window addEmployee = new AddEmployee_Window();
+            AddEmployee_Window addEmployee = new AddEmployee_Window(this);
             App.Current.MainWindow = addEmployee;
             addEmployee.Show();
+            UpdateEmployees_ListBox.Items.Refresh();
         }
         private void RemoveEmployee_Button_Click(object sender, RoutedEventArgs e)
         {

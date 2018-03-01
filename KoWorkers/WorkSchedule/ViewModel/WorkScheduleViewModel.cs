@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace KoWorkers.WorkSchedule.ViewModel
 {
@@ -182,6 +183,21 @@ namespace KoWorkers.WorkSchedule.ViewModel
         }
         public void PopulateViewModel(List<WorkScheduleShift> listOfAllShifts)
         {
+            ListForViewModel.Clear();
+            DateTime rightNow = DateTime.Now;
+            DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
+            Calendar cal = dfi.Calendar;
+            List<Employee> employees = Controller.GetInstance().Employees;
+            for (int i = 0; i < 9; i++)
+            {
+                DateTime workingtime = rightNow.AddDays(i * 7);
+                int weekNo = cal.GetWeekOfYear(workingtime, dfi.CalendarWeekRule, dfi.FirstDayOfWeek);
+                foreach (Employee employee in employees)
+                {
+                    WorkScheduleShiftViewModel wssvm = new WorkScheduleShiftViewModel(employee, weekNo, workingtime.Year);
+                    ListForViewModel.Add(wssvm);
+                }
+            }
             foreach (WorkScheduleShift shift in listOfAllShifts)
             {
                 WorkScheduleShiftViewModel wssvm = GetWssVM(shift.Employee, shift.WeekNumber, shift.Year);
